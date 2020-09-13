@@ -1,0 +1,101 @@
+# == Core ==
+
+# Directories at root of a first
+/node_modules/
+/build/
+/coverage/
+/flow-coverage/
+/dist/
+
+# Files
+*.log
+*.env
+.env.development
+.env.production
+
+# == VIM ==
+
+# ctags
+.tags
+.tags*
+
+# Swap
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-v][a-z]
+[._]sw[a-p]
+
+# Session
+Session.vim
+
+# Temporary
+.netrwhist
+*~
+# Auto-generated tag files
+tags
+
+
+# == JetBrains ==
+
+# Main
+.idea/
+
+# CMake
+cmake-build-debug/
+cmake-build-release/
+
+# File-based first format:
+*.iws
+
+# Plugin-specific files:
+
+# IntelliJ
+out/
+
+# mpeltonen/sbt-idea plugin
+.idea_modules/
+
+# JIRA plugin
+atlassian-ide-plugin.xml
+
+# Crashlytics plugin (for Android Studio and IntelliJ)
+com_crashlytics_export_strings.xml
+crashlytics.properties
+crashlytics-build.properties
+fabric.properties
+
+
+# == VSCode ==
+
+# Main
+.vscode/*
+
+
+# == macOS ==
+
+# Main
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon must end with two \r
+Icon
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
