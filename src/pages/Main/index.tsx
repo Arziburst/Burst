@@ -49,7 +49,7 @@ const Main: FC = () => {
                 <nav />
                 <input
                     value = { text }
-                    onChange = { (event) => setText(event.target.value) }
+                    onChange = { (event) => void setText(event.target.value) }
                 />
                 <nav>
                     <Button
