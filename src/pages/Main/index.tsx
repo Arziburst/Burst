@@ -17,7 +17,7 @@ import { Button, Spinner } from '../../elements';
 import { Container, Header } from './styles';
 
 const Main: FC = () => {
-    const [ text, setText ] = useState('');
+    const [ text, setText ] = useState<string>('');
     const headerRef = useRef<HTMLElement>(null);
     const { togglersRedux: { isOnline }} = useTogglersRedux();
 
@@ -67,8 +67,8 @@ const Main: FC = () => {
                             isColor = { Boolean(index % 2) }
                             key = { todo.id }
                             { ...todo }
-                            deleteHandler = { () => deleteTodo({ todoId: todo.id }) }
-                            updateHandler = { () => updateTodo({
+                            deleteHandler = { () => void deleteTodo({ todoId: todo.id }) }
+                            updateHandler = { () => void updateTodo({
                                 todoId: todo.id,
                                 body:   { isCompleted: !todo.isCompleted },
                             }) }

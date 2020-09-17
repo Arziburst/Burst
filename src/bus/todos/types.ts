@@ -4,7 +4,7 @@ export type Todo = {
     isCompleted: boolean
 };
 
-export type Todos = Todo[];
+export type Todos = Array<Todo>;
 
 export type FetchTodos = () => Promise<Todos>;
 
@@ -14,7 +14,7 @@ export type CreateTodoInput = {
         text: string
     }
 };
-export type CreateTodo = (input: CreateTodoInput) => Promise<Todo>;
+export type CreateTodoType = (input: CreateTodoInput) => Promise<Todo>;
 
 // Update
 export type UpdateTodoInput = {

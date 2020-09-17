@@ -1,5 +1,5 @@
 // Types
-import { FetchTodos, CreateTodo, UpdateTodo, DeleteTodo } from './types';
+import { FetchTodos, CreateTodoType, UpdateTodo, DeleteTodo } from './types';
 
 // Constants
 import { API_URL } from '../../@init/constants';
@@ -22,7 +22,7 @@ export const fetchTodos: FetchTodos = async () => {
     return response.json();
 };
 
-export const createTodo: CreateTodo = async ({ body }) => {
+export const createTodo: CreateTodoType = async ({ body }) => {
     const response = await fetch(todosUrl, {
         method:  'POST',
         headers: {

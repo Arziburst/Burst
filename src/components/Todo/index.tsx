@@ -7,13 +7,19 @@ import { Button } from '../../elements';
 import { Container } from './styles';
 
 // Types
-type PropTypes = {
+import * as Types from '../../bus/todos/types';
+
+type PropTypes = Types.Todo & {
     isColor: boolean
-    text: string
-    isCompleted: boolean
     updateHandler: Function
     deleteHandler: Function
 }
+
+// interface PropTypes extends Types.Todo {
+//     isColor: boolean
+//     updateHandler: Function
+//     deleteHandler: Function
+// }
 
 export const Todo: FC<PropTypes> = ({
     isColor, text, isCompleted, updateHandler, deleteHandler,
