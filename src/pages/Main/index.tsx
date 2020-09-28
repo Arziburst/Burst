@@ -5,7 +5,7 @@ import React, { FC, useRef, useState } from 'react';
 import { ErrorBoundary, Todo } from '../../components';
 
 // Api
-import { useTodosQuery, useCreateTodo, useUpdateTodo, useDeleteTodo } from '../../bus/todos';
+import { useTodosQuery, useTodosMutations } from '../../bus/todos';
 
 // Redux
 import { useTogglersRedux } from '../../bus/client/togglers';
@@ -20,18 +20,10 @@ const Main: FC = () => {
     const [ text, setText ] = useState<string>('');
     const headerRef = useRef<HTMLElement>(null);
     const { togglersRedux: { isOnline }} = useTogglersRedux();
+    const { data, loading } = useTodosQuery();
+    const { createTodo, updateTodo, deleteTodo } = useTodosMutations();
 
-    const { data, isLoading: isTodosLoading } = useTodosQuery();
-    const [ createTodo, { isLoading: isCreateTodoLoading }] = useCreateTodo();
-    const [ updateTodo, { isLoading: isUpdateTodoLoading }] = useUpdateTodo();
-    const [ deleteTodo, { isLoading: isDeleteTodoLoading }] = useDeleteTodo();
-
-    const isLoading = isTodosLoading
-        || isCreateTodoLoading
-        || isUpdateTodoLoading
-        || isDeleteTodoLoading;
-
-    if (!data || isLoading) {
+    if (data.length === 0 || loading) {
         return <Spinner />;
     }
 

@@ -6,28 +6,41 @@ export type Todo = {
 
 export type Todos = Array<Todo>;
 
-export type FetchTodos = () => Promise<Todos>;
-
-// Create
-export type CreateTodoInput = {
-    body: {
-        text: string
-    }
+// ----------------------------- Fetch -----------------------------
+export const SET_TODOS = 'SET_TODOS';
+export type SetTodosActionType = {
+    type: typeof SET_TODOS;
+    payload: Todos;
 };
-export type CreateTodoType = (input: CreateTodoInput) => Promise<Todo>;
+export type SetTodosContract = (payload: Todos) => SetTodosActionType
 
-// Update
-export type UpdateTodoInput = {
-    todoId: string
-    body: {
-        isCompleted: boolean
-    }
+// ----------------------------- Create -----------------------------
+export const SET_TODO = 'SET_TODO';
+export type SetTodoActionType = {
+    type: typeof SET_TODO;
+    payload: Todo;
 };
-export type UpdateTodo = (input: UpdateTodoInput) => Promise<Todo>;
+export type SetTodoContract = (payload: Todo) => SetTodoActionType
 
-// Delete
-export type DeleteTodoInput = {
-    todoId: string
+// ----------------------------- Update -----------------------------
+export const UPDATE_TODO = 'UPDATE_TODO';
+export type UpdateTodoActionType = {
+    type: typeof UPDATE_TODO;
+    payload: Todo;
 };
-export type DeleteTodo = (input: DeleteTodoInput) => Promise<boolean>;
+export type UpdateTodoContract = (payload: Todo) => UpdateTodoActionType
+
+// ----------------------------- Delete -----------------------------
+export const DELETE_TODO = 'DELETE_TODO';
+export type DeleteTodoActionType = {
+    type: typeof DELETE_TODO;
+    payload: string;
+};
+export type DeleteTodoContract = (payload: string) => DeleteTodoActionType
+
+export type TodosActionTypes =
+    | SetTodosActionType
+    | SetTodoActionType
+    | UpdateTodoActionType
+    | DeleteTodoActionType
 

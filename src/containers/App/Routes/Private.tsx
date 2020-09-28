@@ -22,7 +22,7 @@ export const Private: FC = () => {
                 path = '/'>
                 <Main />
             </Route>
-            <Redirect to = '/' />
+            <Redirect to = '/form' />
         </Switch>
     );
 };
