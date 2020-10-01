@@ -4,17 +4,18 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Router } from 'react-router-dom';
 import { Provider as ReduxProvider } from 'react-redux';
-import { ReactQueryDevtools } from 'react-query-devtools';
+import { PersistGate } from 'redux-persist/integration/react';
 
 // App initializaion
 import {
-    history as routerHistory,
     store as reduxStore,
+    persistor as reduxPersistor,
+    history as routerHistory,
     registerServiceWorker,
-} from './@init';
+} from './#init';
 
 // App
-import { App } from './containers/App';
+import { App } from './@view';
 
 // Assets
 import { initIconsLibrary } from './assets';
@@ -23,20 +24,15 @@ initIconsLibrary();
 
 const Root = () => {
     return (
-        <>
-            {
-                process.env.NODE_ENV === 'development' && (
-                    <ReactQueryDevtools
-                        position = 'bottom-right'
-                    />
-                )
-            }
-            <ReduxProvider store = { reduxStore }>
+        <ReduxProvider store = { reduxStore }>
+            <PersistGate
+                loading = { null }
+                persistor = { reduxPersistor }>
                 <Router history = { routerHistory }>
                     <App />
                 </Router>
-            </ReduxProvider>
-        </>
+            </PersistGate>
+        </ReduxProvider>
     );
 };
 
