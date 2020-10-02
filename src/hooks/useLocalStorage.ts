@@ -3,7 +3,7 @@ import { useState } from 'react';
 import localStorage from 'store';
 
 // Instruments
-import { APP_NAME } from '../@init/constants';
+import { APP_NAME } from '../#init';
 
 export const useLocalStorage = <_, TValue>(key: string, innitialValue: TValue): [TValue, (value: TValue) => void] => {
     const [ storedValue, setStoredValue ] = useState(() => {
