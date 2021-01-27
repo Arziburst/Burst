@@ -12,10 +12,10 @@ import {
     persistor as reduxPersistor,
     history as routerHistory,
     registerServiceWorker,
-} from './#init';
+} from './init';
 
 // App
-import { App } from './@view';
+import { App } from './view';
 
 // Assets
 import { initIconsLibrary } from './assets';
