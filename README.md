@@ -1,6 +1,6 @@
 npm i
 
-.development.env | .production.env {
+.env.development | .env.production {
     APP_NAME=boilerplate
     PUBLIC_URL=http://localhost:3000
     API_URL=https://api.gohardstudy.gq
