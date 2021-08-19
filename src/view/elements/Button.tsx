@@ -30,7 +30,7 @@ const Styled = styled.button<ButtonProps>`
     }
 `;
 
-export const Button: FC<ButtonProps> = ({ children, ...otherProps  }) => {
+export const Button: FC<ButtonProps> = ({ children, ...otherProps }) => {
     return (
         <Styled
             { ...otherProps }>
