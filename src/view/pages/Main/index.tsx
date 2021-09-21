@@ -6,6 +6,7 @@ import { ErrorBoundary } from '../../components';
 
 // Redux
 import { useCounter } from '../../../bus/counter';
+import { useMessages } from '../../../bus/messages';
 
 // Elements
 import { Button } from '../../elements';
@@ -16,6 +17,10 @@ import { Container } from './styles';
 const Main: FC = () => {
     const [ amount, setAmount ] = useState<number>(0);
     const { counterState, increment, decrement, incrementByAmount } = useCounter();
+    const { messages, loading } = useMessages();
+
+    console.log('🚀', messages);
+    console.log('🚀', loading);
 
     return (
         <Container>

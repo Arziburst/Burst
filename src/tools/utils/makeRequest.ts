@@ -1,11 +1,13 @@
 // Core
 import { put, call } from 'redux-saga/effects';
 
-// Types
+// Redux
+import { errorsActions  } from '../../bus/client/errors';
 import { TogglersKeys } from '../../bus/client/togglers';
 
 // Action
 import { togglerCreatorAction } from '../../bus/client/togglers';
+import { IControlledError } from './controlledError';
 
 type OptionsType<T> = {
     fetcher: (...args: any) => Promise<T>;
@@ -15,12 +17,22 @@ type OptionsType<T> = {
         payload: T;
     };
     successSideEffect?: Function;
+    errorSideEffect?: Function;
+    isControlledMode?: boolean
 };
 
 export function* makeRequest<T>(options: OptionsType<T>) {
-    const { fetcher, togglerType, fill, successSideEffect } = options;
+    const {
+        fetcher,
+        togglerType,
+        fill,
+        successSideEffect,
+        errorSideEffect,
+        isControlledMode,
+    } = options;
 
     try {
+        // ------------- SUCCESS BLOCK START -------------
         if (togglerType) {
             yield put(togglerCreatorAction({
                 type:  togglerType,
@@ -28,7 +40,7 @@ export function* makeRequest<T>(options: OptionsType<T>) {
             }));
         }
 
-        const result = yield call(fetcher);
+        const result: T = yield call(fetcher);
 
         if (fill) {
             yield put(fill(result));
@@ -39,17 +51,31 @@ export function* makeRequest<T>(options: OptionsType<T>) {
         }
 
         return result;
+        // ------------- SUCCESS BLOCK END -------------
     } catch (error) {
-        console.log('error', error);
+        // ------------- ERROR BLOCK START -------------
+        if (errorSideEffect) {
+            yield put(errorSideEffect());
+        }
+
+        if (isControlledMode) {
+            const controlledError = error as IControlledError;
+            yield put(errorsActions.setControlledError(controlledError));
+
+            return controlledError;
+        }
 
         return null;
+        // ------------- ERROR BLOCK END -------------
     } finally {
+        // ------------- FINALLY BLOCK START -------------
         if (togglerType) {
             yield put(togglerCreatorAction({
                 type:  togglerType,
                 value: false,
             }));
         }
+        // ------------- FINALLY BLOCK END -------------
     }
 }
 

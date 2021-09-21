@@ -26,7 +26,7 @@ export const errorsSlice = createSlice({
 });
 
 // Interfaces
-const errorsActions = errorsSlice.actions;
+export const errorsActions = errorsSlice.actions;
 export default errorsSlice.reducer;
 
 export const useErrors = () => {
