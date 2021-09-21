@@ -3,7 +3,7 @@ import React, { FC, useEffect } from 'react';
 import { Switch, Route, Redirect, useHistory, useLocation } from 'react-router-dom';
 
 // Pages
-import { Main } from '../../pages';
+import { Main } from '../pages';
 
 export const Private: FC = () => {
     const { push } = useHistory();

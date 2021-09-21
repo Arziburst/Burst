@@ -8,7 +8,7 @@ import { setTodosAction } from '../../actions';
 import * as API from '../api';
 
 // Instruments
-import { makeRequest } from '../../../../tools/helpers';
+import { makeRequest } from '../../../../tools/utils';
 
 export function* fetchTodos() {
     yield makeRequest<Todos>({

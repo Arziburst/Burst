@@ -1,6 +1,8 @@
 // Core
-import { Reducer } from 'redux';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
+
+// Tools
 import { useSelector } from '../../../tools/hooks';
 
 const initialState = {
@@ -8,66 +10,37 @@ const initialState = {
     isTodosFetching: true,
 };
 
-type TogglersState = typeof initialState;
-export type TogglersKeys = keyof TogglersState;
+// Types
+export type TogglersKeys = keyof typeof initialState;
+type Options = { type: TogglersKeys, value: boolean };
 
-export const SET_TOGGLER_STATE = 'SET_TOGGLER_STATE';
-type TogglerCreatorAction = {
-    type: typeof SET_TOGGLER_STATE;
-    payload: {
-        type: TogglersKeys;
-        value: boolean;
-    }
-};
-
-export const RESET_TOGGLERS_TO_INITIAL = 'RESET_TOGGLERS_TO_INITIAL';
-export type ResetTogglersToInitialAction = {
-    type: typeof RESET_TOGGLERS_TO_INITIAL
-};
-
-type TogglersActions =
-    | TogglerCreatorAction
-    | ResetTogglersToInitialAction
-
-export const togglersReducer: Reducer<TogglersState, TogglersActions> = (state = initialState, action) => {
-    switch (action.type) {
-        case SET_TOGGLER_STATE:
-            return { ...state, [ action.payload.type ]: action.payload.value };
-
-        case RESET_TOGGLERS_TO_INITIAL:
-            return {
-                isOnline:        navigator.onLine,
-                isTodosFetching: false,
-            };
-
-        default: return state;
-    }
-};
-
-type Options = {
-    type: TogglersKeys
-    value: boolean
-};
-
-export const togglerCreatorAction = ({ type, value }: Options): TogglersActions  => ({
-    type:    SET_TOGGLER_STATE,
-    payload: {
-        type,
-        value,
+// Slice
+export const toggrersSlice = createSlice({
+    name:     'togglers',
+    initialState,
+    reducers: {
+        togglerCreatorAction: (state, action: PayloadAction<Options>) => ({
+            ...state,
+            [ action.payload.type ]: action.payload.value,
+        }),
+        resetTogglersToInitialAction: () => initialState,
     },
 });
 
-const resetTogglersToInitialAction = (): TogglersActions  => ({
-    type: RESET_TOGGLERS_TO_INITIAL,
-});
+// Interfaces
+const toggrersActions = toggrersSlice.actions;
+export default toggrersSlice.reducer;
 
 export const useTogglersRedux = () => {
     const dispatch = useDispatch();
 
     return {
-        togglersRedux:          useSelector<TogglersState>(({ togglers }) => togglers),
-        setTogglerAction:       (options: Options) => void dispatch(togglerCreatorAction(options)),
-        resetTogglersToInitial: () => void dispatch(resetTogglersToInitialAction()),
+        togglersRedux:          useSelector(({ togglers }) => togglers),
+        setTogglerAction:       (options: Options) => void dispatch(toggrersActions.togglerCreatorAction(options)),
+        resetTogglersToInitial: () => void dispatch(toggrersActions.resetTogglersToInitialAction()),
     };
 };
+
+// Used ./src/tools/helpers/makeRequest
+export const togglerCreatorAction = toggrersActions.togglerCreatorAction;
 

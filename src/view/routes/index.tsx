@@ -9,7 +9,7 @@ import { Private } from './Private';
 // import { useTogglersRedux } from '../../../.init/redux/togglers';
 
 // Elements
-import { Spinner } from '../../elements';
+import { Spinner } from '../elements';
 
 export const Routes: FC = () => {
     // const { togglersRedux: { isLoggedIn }} = useTogglersRedux();

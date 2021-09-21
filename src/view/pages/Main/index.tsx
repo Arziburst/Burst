@@ -1,73 +1,32 @@
 // Core
-import React, { FC, useRef, useState } from 'react';
+import React, { FC, useState } from 'react';
 
 // Components
-import { ErrorBoundary, Todo } from '../../components';
-
-// Api
-import { useTodosQuery, useTodosMutations } from '../../../bus/todos';
+import { ErrorBoundary } from '../../components';
 
 // Redux
-import { useTogglersRedux } from '../../../bus/client/togglers';
+import { useCounter } from '../../../bus/counter';
 
 // Elements
-import { Button, Spinner } from '../../elements';
+import { Button } from '../../elements';
 
 // Styles
-import { Container, Header } from './styles';
+import { Container } from './styles';
 
 const Main: FC = () => {
-    const [ text, setText ] = useState<string>('');
-    const headerRef = useRef<HTMLElement>(null);
-    const { togglersRedux: { isOnline }} = useTogglersRedux();
-    const { data, loading } = useTodosQuery();
-    const { createTodo, updateTodo, deleteTodo } = useTodosMutations();
-
-    if (loading) {
-        return <Spinner />;
-    }
-
-    const onCreate = () => {
-        if (text !== '') {
-            createTodo({ body: { text }});
-            setText('');
-        }
-    };
+    const [ amount, setAmount ] = useState<number>(0);
+    const { counterState, increment, decrement, incrementByAmount } = useCounter();
 
     return (
         <Container>
-            {false && <Spinner absolute />}
-            <Header ref = { headerRef }>
-                <nav />
-                <input
-                    value = { text }
-                    onChange = { (event) => void setText(event.target.value) }
-                />
-                <nav>
-                    <Button
-                        disabled = { !isOnline }
-                        title = 'Create TODO'
-                        onClick = { onCreate }>
-                        CREATE
-                    </Button>
-                </nav>
-            </Header>
-            <main>
-                {
-                    data.map((todo, index) => (
-                        <Todo
-                            isColor = { Boolean(index % 2) }
-                            key = { todo.id }
-                            { ...todo }
-                            deleteHandler = { () => void deleteTodo({ todoId: todo.id }) }
-                            updateHandler = { () => void updateTodo({
-                                todoId: todo.id,
-                                body:   { isCompleted: !todo.isCompleted },
-                            }) }
-                        />
-                    ))
-                }
-            </main>
+            counterState: {counterState}
+            <Button onClick = { () => void increment() }>+</Button>
+            <Button onClick = { () => void decrement() }>-</Button>
+            <input
+                value = { amount }
+                onChange = { (event) => void setAmount(parseInt(event.target.value, 10)) }
+            />
+            <Button onClick = { () => void incrementByAmount(amount) }>incrementByAmount</Button>
         </Container>
     );
 };

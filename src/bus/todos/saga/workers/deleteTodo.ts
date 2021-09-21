@@ -8,7 +8,7 @@ import { deleteTodoAction } from '../../actions';
 import * as API from '../api';
 
 // Instruments
-import { makeRequest } from '../../../../tools/helpers';
+import { makeRequest } from '../../../../tools/utils';
 
 // Types
 import { DeleteTodoActionAsync  } from '../types';

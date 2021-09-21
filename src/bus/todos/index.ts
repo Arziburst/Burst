@@ -1,7 +1,6 @@
 // Core
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useSelector } from '../../tools/hooks';
 
 // Api
 import {
@@ -12,7 +11,7 @@ import {
 } from './saga/actions';
 
 // Toglers
-import { useTogglersRedux } from '../client';
+import { useTogglersRedux } from '../client/togglers';
 
 // Types
 import {
@@ -23,7 +22,7 @@ import {
 
 export const useTodosQuery = () => {
     const dispatch = useDispatch();
-    const data = useSelector(({ todos }) => todos);
+    // const data = useSelector(({ todos }) => todos);
     const { togglersRedux: { isTodosFetching }} = useTogglersRedux();
 
     useEffect(() => {
@@ -31,7 +30,7 @@ export const useTodosQuery = () => {
     }, []);
 
     return {
-        data,
+        // data,
         loading: isTodosFetching,
     };
 };

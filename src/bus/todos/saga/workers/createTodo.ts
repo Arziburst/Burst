@@ -8,7 +8,7 @@ import { setTodoAction } from '../../actions';
 import * as API from '../api';
 
 // Instruments
-import { makeRequest } from '../../../../tools/helpers';
+import { makeRequest } from '../../../../tools/utils';
 import { CreateTodoActionAsync  } from '../types';
 
 export function* createTodo({ payload }: CreateTodoActionAsync) {

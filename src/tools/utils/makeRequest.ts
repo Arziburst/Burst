@@ -2,10 +2,10 @@
 import { put, call } from 'redux-saga/effects';
 
 // Types
-import { TogglersKeys } from '../../bus/client';
+import { TogglersKeys } from '../../bus/client/togglers';
 
 // Action
-import { togglerCreatorAction } from '../../bus/client';
+import { togglerCreatorAction } from '../../bus/client/togglers';
 
 type OptionsType<T> = {
     fetcher: (...args: any) => Promise<T>;

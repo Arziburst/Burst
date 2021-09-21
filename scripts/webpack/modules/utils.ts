@@ -38,17 +38,27 @@ export const connectBundleAnalyzer = (): Configuration => ({
     ],
 });
 
-export const defineEnvVariables = (): Configuration => ({
-    plugins: [
-        new DefinePlugin({
-            'process.env': JSON.stringify(
-                process.env.NODE_ENV === 'development'
-                    ? dotenv.config({ path: '.env.development' }).parsed
-                    : dotenv.config({ path: '.env.production' }).parsed,
-            ),
-        }),
-    ],
-});
+export const defineEnvVariables = (): Configuration => {
+    const envFileFinder = (path: string): string => {
+        return JSON.stringify(dotenv.config({ path }).parsed) ?? envFileFinder('.env.example');
+    };
+
+    const environmentHandler = () => {
+        switch (process?.env?.NODE_ENV) {
+            case 'development': return envFileFinder('.env.development');
+            case 'production': return envFileFinder('.env.production');
+            default: return envFileFinder('.env.example');
+        }
+    };
+
+    return {
+        plugins: [
+            new DefinePlugin({
+                'process.env': environmentHandler(),
+            }),
+        ],
+    };
+};
 
 export const provideGlobals = (): Configuration => ({
     plugins: [
