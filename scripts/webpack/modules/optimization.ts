@@ -2,7 +2,7 @@
 import { ContextReplacementPlugin, Configuration } from 'webpack';
 import TerserPlugin from 'terser-webpack-plugin';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
-//import LodashModuleReplacementPlugin from 'lodash-webpack-plugin';
+import LodashModuleReplacementPlugin from 'lodash-webpack-plugin';
 
 /**
  * production — оптимизация включена только в mode: 'production'
@@ -122,10 +122,12 @@ export const filterMomentLocales = (): Configuration => ({
     plugins: [ new ContextReplacementPlugin(/moment[\/\\]locale$/, /en-gb|ru/) ],
 });
 
-// export const filterLodashModules = (): Configuration => ({
-//     plugins: [
-//         new LodashModuleReplacementPlugin({
-//             collections: true,
-//         }),
-//     ],
-// });
+export const filterLodashModules = (): Configuration => {
+    const lodashPlugin = new LodashModuleReplacementPlugin({
+        collections: true,
+    });
+
+    return {
+        plugins: [ /* lodashPlugin */ ],
+    };
+};

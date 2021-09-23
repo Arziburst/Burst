@@ -13,6 +13,7 @@ export const getDevConfig = () => {
         {
             mode:      'development',
             devtool:   'eval-cheap-module-source-map',
+            stats:     'none',
             devServer: {
                 hot: true,
             },

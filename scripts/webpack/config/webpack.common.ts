@@ -33,7 +33,6 @@ export const getCommonConfig = () => {
             resolve: {
                 extensions: [ '.tsx', '.ts', '.js', '.jsx' ],
             },
-            stats: 'none',
         },
         modules.loadTypeScript(),
         modules.defineEnvVariables(),
