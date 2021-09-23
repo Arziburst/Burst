@@ -22,7 +22,7 @@ export const optimizeBuild = (): Configuration => ({
         minimizer: [ new TerserPlugin() ],
 
         // production: останавливает эмит сборки при возникновении ошибки во время компиляции.
-        noEmitOnErrors: true,
+        emitOnErrors: true,
 
         // ✓ Не добавляет в сборку пустые чанки — это уменьшает нагрузку на систему, что ускоряет ребилд.
         removeEmptyChunks:      true,

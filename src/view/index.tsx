@@ -14,6 +14,8 @@ import { useTogglersRedux } from '../bus/client/togglers';
 import { GlobalStyles, defaultTheme } from '../assets';
 import { AppContainer } from './styles';
 
+import './styles.css';
+
 export const App: FC = () => {
     const { setTogglerAction } = useTogglersRedux();
     const [ isDefaultTheme ] = useLocalStorage('isDefaultTheme', true);
@@ -35,7 +37,7 @@ export const App: FC = () => {
             <AppContainer>
                 <TopBar />
                 <Routes />
-                123
+                <p className = 'www'>adssdddddddd</p>
             </AppContainer>
         </ThemeProvider>
     );

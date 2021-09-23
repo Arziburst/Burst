@@ -27,7 +27,8 @@ export const getCommonConfig = () => {
                 //hashDigestLength:    5,
                 assetModuleFilename: IS_DEVELOPMENT      // asset name
                     ? 'assets/[name][ext]'
-                    : 'assets/[fullhash][ext]',
+                    : 'assets/[hash][ext]',
+                hashDigestLength: 5,
             },
             resolve: {
                 extensions: [ '.tsx', '.ts', '.js', '.jsx' ],

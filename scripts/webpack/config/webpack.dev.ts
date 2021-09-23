@@ -11,13 +11,15 @@ export const getDevConfig = () => {
     return merge(
         getCommonConfig(),
         {
-            mode:    'development',
-            devtool: 'eval-cheap-module-source-map',
-            //entry:     [ 'webpack-hot-middleware/client?reload=true&quiet=true' ],
+            mode:      'development',
+            devtool:   'eval-cheap-module-source-map',
+            devServer: {
+                hot: true,
+            },
         },
         modules.loadImagesDev(),
         modules.loadDevCss(),
-        modules.connectHMR(),
+        // modules.connectHMR(), // TODO работать без этого плагина, тестировать
         modules.connectFriendlyErrors(),
     );
 };

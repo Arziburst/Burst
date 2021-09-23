@@ -19,19 +19,8 @@ export const loadImagesDev = (): Configuration => ({
     module: {
         rules: [
             {
-                test: /\.(gif|png|jpe?g|svg)$/i,
-                use:  [
-                    'file-loader',
-                    {
-                        loader:  'image-webpack-loader',
-                        // Disable optimizations
-                        options: {
-                            bypassOnDebug: true,
-                            disable:       true,
-                        },
-                    },
-                    // FIXME Refactor
-                ],
+                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                type: 'asset/resource',
             },
         ],
     },
@@ -41,9 +30,28 @@ export const loadImagesProd = (): Configuration => ({
     module: {
         rules: [
             {
-                test: /\.(png|svg|jpg|jpeg|gif)$/i,
-                type: 'asset/resource',
-                // FIXME OPTIONS
+                test:    /\.(png|svg|jpg|jpeg|gif)$/i,
+                type:    'asset/resource',
+                loader:  'image-webpack-loader',
+                options: {
+                    mozjpeg: {
+                        progressive: true,
+                        quality:     65,
+                    },
+                    optipng: {
+                        enabled: true,
+                    },
+                    pngquant: {
+                        quality: [ 0.65, 0.90 ],
+                        speed:   4,
+                    },
+                    gifsicle: {
+                        interlaced: false,
+                    },
+                    webp: {
+                        quality: 75,
+                    },
+                },
             },
         ],
     },
@@ -54,6 +62,7 @@ export const loadAudio = (): Configuration => ({
         rules: [
             {
                 test: /\.(wav|mp3)$/,
+                type: 'asset/resource',
                 use:  [
                     {
                         loader:  'file-loader',
