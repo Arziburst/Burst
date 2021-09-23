@@ -5,8 +5,6 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 const loadCss = ({ sourceMap }: { sourceMap: boolean }) => ({
     loader:  'css-loader',
     options: {
-        // modules: false,
-        // localIdentName: '[path][name]__[local]--[hash:base64:5]',
         sourceMap,
     },
 });

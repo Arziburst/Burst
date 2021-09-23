@@ -19,18 +19,8 @@ export const loadImagesDev = (): Configuration => ({
     module: {
         rules: [
             {
-                test: /\.(gif|png|jpe?g|svg)$/i,
-                use:  [
-                    'file-loader',
-                    {
-                        loader:  'image-webpack-loader',
-                        // Disable optimizations
-                        options: {
-                            bypassOnDebug: true,
-                            disable:       true,
-                        },
-                    },
-                ],
+                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                type: 'asset/resource',
             },
         ],
     },
@@ -40,36 +30,28 @@ export const loadImagesProd = (): Configuration => ({
     module: {
         rules: [
             {
-                test: /\.(gif|png|jpe?g|svg)$/i,
-                use:  [
-                    'file-loader',
-                    {
-                        loader:  'image-webpack-loader',
-                        // https://github.com/tcoopman/image-webpack-loader
-                        // options and links
-                        options: {
-                            mozjpeg: {
-                                progressive: true,
-                                quality:     65,
-                            },
-                            // optipng.enabled: false will disable optipng
-                            optipng: {
-                                enabled: false,
-                            },
-                            pngquant: {
-                                quality: [ 0.65, 0.90 ],
-                                speed:   4,
-                            },
-                            gifsicle: {
-                                interlaced: false,
-                            },
-                            // the webp option will enable WEBP
-                            webp: {
-                                quality: 75,
-                            },
-                        },
+                test:    /\.(png|svg|jpg|jpeg|gif)$/i,
+                type:    'asset/resource',
+                loader:  'image-webpack-loader',
+                options: {
+                    mozjpeg: {
+                        progressive: true,
+                        quality:     65,
                     },
-                ],
+                    optipng: {
+                        enabled: true,
+                    },
+                    pngquant: {
+                        quality: [ 0.65, 0.90 ],
+                        speed:   4,
+                    },
+                    gifsicle: {
+                        interlaced: false,
+                    },
+                    webp: {
+                        quality: 75,
+                    },
+                },
             },
         ],
     },
@@ -80,6 +62,7 @@ export const loadAudio = (): Configuration => ({
         rules: [
             {
                 test: /\.(wav|mp3)$/,
+                type: 'asset/resource',
                 use:  [
                     {
                         loader:  'file-loader',
@@ -97,15 +80,9 @@ export const loadFonts = (): Configuration => ({
     module: {
         rules: [
             {
-                test: /\.(woff|woff2|ttf|eot|otf)$/,
-                use:  [
-                    {
-                        loader:  'file-loader',
-                        options: {
-                            name: 'fonts/[name].[hash:5].[ext]',
-                        },
-                    },
-                ],
+                test: /\.(woff|woff2|eot|ttf|otf)$/i,
+                type: 'asset/resource',
+                // FIXME OPTIONS
             },
         ],
     },
