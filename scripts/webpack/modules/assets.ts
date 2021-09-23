@@ -30,6 +30,7 @@ export const loadImagesDev = (): Configuration => ({
                             disable:       true,
                         },
                     },
+                    // FIXME Refactor
                 ],
             },
         ],
@@ -40,36 +41,9 @@ export const loadImagesProd = (): Configuration => ({
     module: {
         rules: [
             {
-                test: /\.(gif|png|jpe?g|svg)$/i,
-                use:  [
-                    'file-loader',
-                    {
-                        loader:  'image-webpack-loader',
-                        // https://github.com/tcoopman/image-webpack-loader
-                        // options and links
-                        options: {
-                            mozjpeg: {
-                                progressive: true,
-                                quality:     65,
-                            },
-                            // optipng.enabled: false will disable optipng
-                            optipng: {
-                                enabled: false,
-                            },
-                            pngquant: {
-                                quality: [ 0.65, 0.90 ],
-                                speed:   4,
-                            },
-                            gifsicle: {
-                                interlaced: false,
-                            },
-                            // the webp option will enable WEBP
-                            webp: {
-                                quality: 75,
-                            },
-                        },
-                    },
-                ],
+                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                type: 'asset/resource',
+                // FIXME OPTIONS
             },
         ],
     },
@@ -97,15 +71,9 @@ export const loadFonts = (): Configuration => ({
     module: {
         rules: [
             {
-                test: /\.(woff|woff2|ttf|eot|otf)$/,
-                use:  [
-                    {
-                        loader:  'file-loader',
-                        options: {
-                            name: 'fonts/[name].[hash:5].[ext]',
-                        },
-                    },
-                ],
+                test: /\.(woff|woff2|eot|ttf|otf)$/i,
+                type: 'asset/resource',
+                // FIXME OPTIONS
             },
         ],
     },

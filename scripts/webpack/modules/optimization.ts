@@ -2,7 +2,7 @@
 import { ContextReplacementPlugin, Configuration } from 'webpack';
 import TerserPlugin from 'terser-webpack-plugin';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
-import LodashModuleReplacementPlugin from 'lodash-webpack-plugin';
+//import LodashModuleReplacementPlugin from 'lodash-webpack-plugin';
 
 /**
  * production — оптимизация включена только в mode: 'production'
@@ -31,11 +31,6 @@ export const optimizeBuild = (): Configuration => ({
         // ✓ Удаляет модуль из чанка, если этот модуль присутствует в родительском чанке (то есть уже доступен).
         removeAvailableModules: true,
 
-        // production: находит наиболее часто-используемые модули, и даёт им наименьшие идентификаторы.
-        // Таким образом наиболее часто-используемые модули смогут быть загружены в сборку быстрее.
-        // Эта настройка также помогает вебпаку более эффективно компрессировать финальную сборку.
-        // TODO webpack 5 remove optimization.occurrenceOrder
-        occurrenceOrder:    true,
         // production: анализирует module graph и пытается найти модули, которые можно смержить в один единый модуль.
         // ? эта настройка зависит от providedExports и usedExports.
         concatenateModules: true, // module concatenation, scope hoisting
@@ -52,23 +47,13 @@ export const optimizeBuild = (): Configuration => ({
         // ? эта настройка зависит от providedExports и usedExports
         sideEffects:     true,
 
-        // development: вместо числовых идентификаторов даёт модулям более понятные имена.
-        // TODO webpack 5 add `moduleIds: "named"` default for development
-        // TODO webpack 5 add `moduleIds: "size"` default for production
-        // TODO webpack 5 remove optimization.namedModules
-        namedModules: false,
         // Определяет механизм генерирования идентификатора для модуля.
         // https://webpack.js.org/configuration/optimization/#optimization-moduleids
-        moduleIds:    false,
+        moduleIds: 'size',
 
-        // development: вместо числовых идентификаторов даёт чанкам более понятные имена.
-        // TODO webpack 5 add `chunkIds: "named"` default for development
-        // TODO webpack 5 add `chunkIds: "size"` default for production
-        // TODO webpack 5 remove optimization.namedChunks
-        namedChunks: true,
         // Определяет механизм генерирования идентификатора для чанка.
         // https://webpack.js.org/configuration/optimization/#optimization-chunkids
-        chunkIds:    false,
+        chunkIds: 'total-size',
 
         // initial chunk (vedors — react, react-dom)
         // async chunk (on demond)
@@ -80,7 +65,7 @@ export const optimizeBuild = (): Configuration => ({
             // Минимальный размер нового чанка для отделения.
             minSize:                30000, // bytes
             // Максимальный размер нового чанка для отделения.
-            maxSize:                0,
+            maxSize:                500000,
             // Минимальное количество чанков, которые зависят от модуля
             // перед отделением этого модуля в отдельный чанк.
             minChunks:              1,
@@ -93,7 +78,7 @@ export const optimizeBuild = (): Configuration => ({
             // Символ-разделитель имени сплит-чанка (напр. vendors~main.js).
             automaticNameDelimiter: '~',
             // Определяет имя нового чанка
-            name:                   true,
+            name:                   false,
             // Мо-умолчанию cacheGroups наследует от остальных опций splitChunks ↑.
             // Уникальные для cacheGroups только test, priority и reuseExistingChunk.
             // Ключ каждой кеш-группы определяет её имя.
@@ -137,10 +122,10 @@ export const filterMomentLocales = (): Configuration => ({
     plugins: [ new ContextReplacementPlugin(/moment[\/\\]locale$/, /en-gb|ru/) ],
 });
 
-export const filterLodashModules = () => ({
-    plugins: [
-        new LodashModuleReplacementPlugin({
-            collections: true,
-        }),
-    ],
-});
+// export const filterLodashModules = (): Configuration => ({
+//     plugins: [
+//         new LodashModuleReplacementPlugin({
+//             collections: true,
+//         }),
+//     ],
+// });
