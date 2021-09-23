@@ -30,16 +30,7 @@ const compiler = webpack(getDevConfig());
             port:               choosenPort,
             historyApiFallback: true,
             hot:                false,
-            client:             {
-                overlay: true,
-                logging: 'none',
-            },
-            onListening: () => {
-                console.log(
-                    `${chalk.greenBright(
-                        '→ Server listening on',
-                    )} ${chalk.blueBright(`http://${HOST}:${choosenPort}`)}`,
-                );
+            onListening:        () => {
                 openBrowser(`http://${HOST}:${choosenPort}`);
             },
         }, compiler);
