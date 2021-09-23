@@ -38,6 +38,6 @@ const compiler = webpack(getDevConfig());
         server.start();
     } catch (error) {
         console.log(chalk.redBright('→ Error!'));
-        console.error(error || error);
+        console.error(error ?? 'No error data.');
     }
 })();
