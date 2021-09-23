@@ -3,7 +3,6 @@ import React, { FC, useEffect, useCallback } from 'react';
 import { ThemeProvider } from 'styled-components';
 
 // Containers
-import { TopBar } from './containers/TopBar';
 import { Routes } from './routes';
 
 // Hooks
@@ -33,7 +32,6 @@ export const App: FC = () => {
         <ThemeProvider theme = { isDefaultTheme ? defaultTheme : defaultTheme } >
             <GlobalStyles />
             <AppContainer>
-                <TopBar />
                 <Routes />
             </AppContainer>
         </ThemeProvider>
