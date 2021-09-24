@@ -1,69 +1,133 @@
 // Core
-import styled from "styled-components";
+import styled, { css } from 'styled-components';
 
 // Images
-import weatherIconCloudy from "../../../assets/images/weather-icon-cloudy.png";
-import weatherIconRainy from "../../../assets/images/weather-icon-rainy.png";
-import weatherIconSunny from "../../../assets/images/weather-icon-sunny.png";
+import weatherIconCloudy from '../../../assets/images/weather-icon-cloudy.png';
+import weatherIconRainy from '../../../assets/images/weather-icon-rainy.png';
+import weatherIconSunny from '../../../assets/images/weather-icon-sunny.png';
+import rainy from '../../../assets/images/rainy.png';
+import humidity from '../../../assets/images/humidity.png';
 
 export const Main = styled.main`
   width: 910px;
   margin: 0 auto;
 `;
 
-export const Head = styled.div`
+export const Forecast = styled.div`
   display: flex;
-  justify-content: center;
-  margin-top: 60px;
-  margin-bottom: 83px;
+  margin-bottom: 40px;
 `;
 
-export const IconCloudy = styled.div`
-  margin-right: 30px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  height: 88px;
-  width: 114px;
-  background-image: url(${weatherIconCloudy});
-`;
-
-export const IconRainy = styled.div`
-  margin-right: 30px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  height: 88px;
-  width: 100px;
-  background-image: url(${weatherIconRainy});
-`;
-
-export const IconSunny = styled.div`
-  margin-right: 30px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  height: 88px;
-  width: 88px;
-  background-image: url(${weatherIconSunny});
-`;
-
-export const CurrentDate = styled.div`
+export const CloudyDay = styled.div<{selected?: boolean}>`
+  position: relative;
+  width: 130px;
+  height: 204px;
+  background-color: #C486BB;
+  color: #fff;
+  padding-top: 35px;
+  text-align: center;
   display: flex;
   flex-direction: column;
+  align-items: center;
+
+  :before {
+    position: absolute;
+    top: 86px;
+    content: '';
+    display: block;
+    width: 62px;
+    height: 37px;
+    background-image: url(${weatherIconCloudy});
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  ${(props) => props.selected && css`
+    background-color: #D9A9CE;
+  `};
 `;
 
-export const CurrentDateText = styled.p`
-  font-family: "Roboto", sans-serif;
-  font-weight: 400;
-  font-size: 28px;
+export const RainyDay = styled.div<{selected?: boolean}>`
+  position: relative;
+  width: 130px;
+  height: 204px;
+  background-color: #C486BB;
   color: #fff;
+  padding-top: 35px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  :before {
+    position: absolute;
+    top: 86px;
+    content: '';
+    display: block;
+    width: 43px;
+    height: 37px;
+    background-image: url(${weatherIconRainy});
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  ${(props) => props.selected && css`
+     background-color: #D9A9CE;
+  `};
+`;
+
+export const SunnyDay = styled.div<{selected?: boolean}>`
+  position: relative;
+  width: 130px;
+  height: 204px;
+  background-color: #C486BB;
+  color: #fff;
+  padding-top: 35px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  :before {
+    position: absolute;
+    top: 86px;
+    content: '';
+    display: block;
+    width: 37px;
+    height: 37px;
+    background-image: url(${weatherIconSunny});
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  ${(props) => props.selected && css`
+     background-color: #D9A9CE;
+  `};
+`;
+
+export const DayText = styled.p`
   display: inline-block;
-  margin-top: 15px;
-  margin-bottom: 10px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  margin-bottom: 90px;
 `;
 
-export const CurrentDateNumber = styled.span`
-  font-family: "Roboto", sans-serif;
+export const DayNumber = styled.span`
+  position: relative;
+  font-family: 'Roboto', sans-serif;
   font-weight: 200;
-  font-size: 14px;
-  color: #fff;
-  text-transform: uppercase;
+  font-size: 30px;
+
+  :after {
+    margin-left: 5px;
+    transform: translateY(-15px);
+    content: '';
+    display: inline-block;
+    width: 5px;
+    height: 6px;
+    border: solid 1px #fff;
+    border-radius: 50%;
+  }
 `;
+

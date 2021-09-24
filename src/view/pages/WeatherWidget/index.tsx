@@ -1,85 +1,62 @@
 // Core
-import React from "react";
+import React from 'react';
 
 // Components
-import { ErrorBoundary } from "../../components";
+import { ErrorBoundary, Filter, Head, CurrentWeather } from '../../components';
 
 // Styles
 import {
-  Main,
-  Head,
-  IconCloudy,
-  CurrentDate,
-  CurrentDateText,
-  CurrentDateNumber,
-} from "./styles";
+    Main,
+    Forecast,
+    CloudyDay,
+    RainyDay,
+    SunnyDay,
+    DayText,
+    DayNumber,
+} from './styles';
 
 const WeatherWidget = () => {
-  return (
-    <Main>
-      <div className="filter">
-        <span className="checkbox">Облачно</span>
-        <span className="checkbox selected">Солнечно</span>
-        <p className="custom-input">
-          <label htmlFor="min-temperature">Минимальная температура</label>
-          <input id="min-temperature" type="text" />
-        </p>
-        <p className="custom-input">
-          <label htmlFor="min-temperature">Максимальная температура</label>
-          <input id="max-temperature" type="text" />
-        </p>
-        <button>Отфильтровать</button>
-      </div>
-      <Head>
-        <IconCloudy />
-        <CurrentDate>
-          <CurrentDateText>Пятница</CurrentDateText>
-          <CurrentDateNumber>29 ноября</CurrentDateNumber>
-        </CurrentDate>
-      </Head>
-      <div className="current-weather">
-        <p className="temperature">17</p>
-        <p className="meta">
-          <span className="rainy">%35</span>
-          <span className="humidity">%72</span>
-        </p>
-      </div>
-      <div className="forecast">
-        <div className="day cloudy selected">
-          <p>Пятница</p>
-          <span>17</span>
-        </div>
-        <div className="day cloudy">
-          <p>Суббота</p>
-          <span>19</span>
-        </div>
-        <div className="day cloudy">
-          <p>Понедельник</p>
-          <span>18</span>
-        </div>
-        <div className="day cloudy">
-          <p>Вторник</p>
-          <span>21</span>
-        </div>
-        <div className="day rainy">
-          <p>Среда</p>
-          <span>16</span>
-        </div>
-        <div className="day rainy">
-          <p>Четверг</p>
-          <span>19</span>
-        </div>
-        <div className="day sunny">
-          <p>Пятница</p>
-          <span>26</span>
-        </div>
-      </div>
-    </Main>
-  );
+    return (
+        <Main>
+            <Filter/>
+            <Head/>
+            <CurrentWeather/>
+            <Forecast>
+                <CloudyDay selected>
+                    <DayText>Пятница</DayText>
+                    <DayNumber>17</DayNumber>
+                </CloudyDay>
+                <CloudyDay>
+                    <DayText>Суббота</DayText>
+                    <DayNumber>19</DayNumber>
+                </CloudyDay>
+                <CloudyDay>
+                    <DayText>Понедельник</DayText>
+                    <DayNumber>18</DayNumber>
+                </CloudyDay>
+                <CloudyDay>
+                    <DayText>Вторник</DayText>
+                    <DayNumber>21</DayNumber>
+                </CloudyDay>
+                <RainyDay>
+                    <DayText>Среда</DayText>
+                    <DayNumber>16</DayNumber>
+                </RainyDay>
+                <RainyDay>
+                    <DayText>Четверг</DayText>
+                    <DayNumber>19</DayNumber>
+                </RainyDay>
+                <SunnyDay>
+                    <DayText>Пятница</DayText>
+                    <DayNumber>26</DayNumber>
+                </SunnyDay>
+            </Forecast>
+        </Main>
+    );
 };
 
 export default () => (
-  <ErrorBoundary>
-    <WeatherWidget />
-  </ErrorBoundary>
+    <ErrorBoundary>
+        <WeatherWidget />
+    </ErrorBoundary>
 );
