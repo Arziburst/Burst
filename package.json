@@ -1,8 +1,12 @@
 {
     "name": "boilerplate-frontend",
-    "version": "3.0.0",
+    "version": "3.0.1",
     "description": "boilerplate",
     "author": "arziburst@gmail.com",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Arziburst/boilerplate.git"
+    },
     "scripts": {
         "start": "cross-env-shell NODE_ENV=development ts-node -P \"./tsconfig.webpack.json\" \"./scripts/webpack/start\"",
         "build": "cross-env-shell NODE_ENV=production ts-node -P \"./tsconfig.webpack.json\" \"./scripts/webpack/build\"",
