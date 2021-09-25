@@ -1,17 +1,26 @@
 // Core
 import React, { FC, useEffect } from 'react';
-import { Switch, Route, Redirect, useHistory, useLocation } from 'react-router-dom';
+import {
+    Switch,
+    Route,
+    Redirect,
+    useHistory,
+    useLocation,
+} from 'react-router-dom';
 
 // Pages
 import { WeatherWidget } from '../pages';
+
+// Book
+import * as book from './book';
 
 export const Private: FC = () => {
     const { push } = useHistory();
     const { pathname } = useLocation();
 
-    useEffect(()=> {
+    useEffect(() => {
         if (pathname.match(/login|register/)) {
-            push('/');
+            push(book.ROOT);
         }
     });
 
@@ -19,10 +28,10 @@ export const Private: FC = () => {
         <Switch>
             <Route
                 exact
-                path = '/'>
-                <WeatherWidget />
+                path = { book.ROOT }>
+                <WeatherWidget/>
             </Route>
-            <Redirect to = '/form' />
+            <Redirect to = { book.ROOT } />
         </Switch>
     );
 };

@@ -17,7 +17,7 @@ import { resolve } from 'path';
 import { SOURCE_DIRECTORY } from '../constants';
 
 export const connectBuildProgressIndicator = (): Configuration => ({
-    plugins: [ new WebpackBar() ],
+    plugins: [ new WebpackBar({ basic: true }) ],
 });
 
 export const connectFriendlyErrors = (): Configuration => ({
@@ -100,6 +100,6 @@ export const generateManifest = (): Configuration => {
     });
 
     return {
-        plugins: [ manifest ],
+        plugins: [ /* manifest */ ],
     };
 };

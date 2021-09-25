@@ -17,11 +17,17 @@ export const getCommonConfig = () => {
             entry:  [ SOURCE_DIRECTORY ],
             output: {
                 path:     BUILD_DIRECTORY,
-                filename: IS_DEVELOPMENT
-                    ? 'js/bundle.[hash].chunk.js'
-                    : 'js/bundle.[chunkhash].bundle.js', // entry point bundle name
-                chunkFilename:    'js/bundle.[chunkhash].chunk.js', // chunk name
-                publicPath:       '/',
+                filename: IS_DEVELOPMENT                 // entry point bundle name
+                    ? 'js/entrypoint.[fullhash].chunk.js'
+                    : 'js/[chunkhash].bundle.js',
+                chunkFilename: IS_DEVELOPMENT            // chunk name
+                    ? 'js/[name].[fullhash].chunk.js'
+                    : 'js/[chunkhash].bundle.js',
+                publicPath:          '/',
+                //hashDigestLength:    5,
+                assetModuleFilename: IS_DEVELOPMENT      // asset name
+                    ? 'assets/[name][ext]'
+                    : 'assets/[hash][ext]',
                 hashDigestLength: 5,
             },
             resolve: {
