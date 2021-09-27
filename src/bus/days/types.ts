@@ -11,15 +11,20 @@ import { CaseReducer, PayloadAction } from '@reduxjs/toolkit';
 // }
 
 export type Day = {
-    id: string
-    rain_probability: number
-    humidity: number
-    day: number
-    temperature: number
-    type: 'cloudy' | 'rainy' | 'sunny'
-}
+    id: string;
+    rain_probability: number;
+    humidity: number;
+    day: number;
+    temperature: number;
+    type: 'cloudy' | 'rainy' | 'sunny';
+};
 
-export type DaysState = Array<Day>
+export type DaysState = Array<Day>;
 
 // Contracts
-export type SetDaysContract = CaseReducer<DaysState, PayloadAction<DaysState>>
+export type SetDaysContract = CaseReducer<DaysState, PayloadAction<DaysState>>;
+
+export type CurrentDayState = Day;
+
+// Contracts
+export type SetCurrentDayContract = CaseReducer<CurrentDayState, PayloadAction<CurrentDayState>>;

@@ -128,6 +128,8 @@ export const filterLodashModules = (): Configuration => {
     });
 
     return {
-        plugins: [ /* lodashPlugin */ ],
+        plugins: [
+            /* lodashPlugin */
+        ],
     };
 };

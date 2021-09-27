@@ -17,9 +17,9 @@ export const fetchDays: FetchDaysContract = async () => {
             throw new Error('fetchDays failed');
         }
 
-        const result = await response.json();
+        const { data } = await response.json();
 
-        return result;
+        return data;
     } catch (error) {
         console.log(error);
 

@@ -14,10 +14,7 @@ export const loadDevCss = (): Configuration => ({
         rules: [
             {
                 test: /\.css$/,
-                use:  [
-                    'style-loader',
-                    loadCss({ sourceMap: true }),
-                ],
+                use:  [ 'style-loader', loadCss({ sourceMap: true }) ],
             },
         ],
     },
@@ -28,10 +25,7 @@ export const loadProdCss = (): Configuration => ({
         rules: [
             {
                 test: /\.css$/,
-                use:  [
-                    MiniCssExtractPlugin.loader,
-                    loadCss({ sourceMap: false }),
-                ],
+                use:  [ MiniCssExtractPlugin.loader, loadCss({ sourceMap: false }) ],
             },
         ],
     },

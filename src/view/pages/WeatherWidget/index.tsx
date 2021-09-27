@@ -19,6 +19,7 @@ import { Main } from './styles';
 const WeatherWidget = () => {
     const { days, isDaysFetching } = useDays();
     console.log('🚀 ~ file: index.tsx ~ line 21 ~ WeatherWidget ~ days', days);
+
     if (isDaysFetching) {
         return <div>Loading...</div>;
     }
@@ -26,9 +27,9 @@ const WeatherWidget = () => {
     return (
         <Main>
             <Filter />
-            <Head />
-            <CurrentWeather />
-            <Forecast />
+            <Head days = { days } />
+            <CurrentWeather days = { days } />
+            <Forecast days = { days } />
         </Main>
     );
 };

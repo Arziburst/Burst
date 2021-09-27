@@ -1,9 +1,9 @@
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components';
 
 // Images
-import weatherIconCloudy from "../../../assets/images/weather-icon-cloudy.png";
-import weatherIconRainy from "../../../assets/images/weather-icon-rainy.png";
-import weatherIconSunny from "../../../assets/images/weather-icon-sunny.png";
+import weatherIconCloudy from '../../../assets/images/weather-icon-cloudy.png';
+import weatherIconRainy from '../../../assets/images/weather-icon-rainy.png';
+import weatherIconSunny from '../../../assets/images/weather-icon-sunny.png';
 
 export const StyledForecast = styled.div`
   display: flex;
@@ -34,9 +34,8 @@ export const CloudyDay = styled.div<{ selected?: boolean }>`
     background-repeat: no-repeat;
   }
 
-  ${(props) =>
-    props.selected &&
-    css`
+  ${(props) => props.selected
+    && css`
       background-color: #d9a9ce;
     `};
 `;
@@ -65,9 +64,8 @@ export const RainyDay = styled.div<{ selected?: boolean }>`
     background-repeat: no-repeat;
   }
 
-  ${(props) =>
-    props.selected &&
-    css`
+  ${(props) => props.selected
+    && css`
       background-color: #d9a9ce;
     `};
 `;
@@ -96,9 +94,8 @@ export const SunnyDay = styled.div<{ selected?: boolean }>`
     background-repeat: no-repeat;
   }
 
-  ${(props) =>
-    props.selected &&
-    css`
+  ${(props) => props.selected
+    && css`
       background-color: #d9a9ce;
     `};
 `;

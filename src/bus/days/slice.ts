@@ -5,14 +5,14 @@ import { createSlice } from '@reduxjs/toolkit';
 import { DaysState } from './types';
 
 // Reducers
-import * as reducers from './reducers';
+import { setDays } from './reducers';
 
 const initialState: DaysState = [];
 
 export const daysSlice = createSlice({
-    name: 'days',
+    name:     'days',
     initialState,
-    reducers,
+    reducers: { setDays },
 });
 
 export const daysActions = daysSlice.actions;

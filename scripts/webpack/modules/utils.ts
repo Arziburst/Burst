@@ -40,14 +40,20 @@ export const connectBundleAnalyzer = (): Configuration => ({
 
 export const defineEnvVariables = (): Configuration => {
     const envFileFinder = (path: string): string => {
-        return JSON.stringify(dotenv.config({ path }).parsed) ?? envFileFinder('.env.example');
+        return (
+            JSON.stringify(dotenv.config({ path }).parsed)
+      ?? envFileFinder('.env.example')
+        );
     };
 
     const environmentHandler = () => {
         switch (process?.env?.NODE_ENV) {
-            case 'development': return envFileFinder('.env.development');
-            case 'production': return envFileFinder('.env.production');
-            default: return envFileFinder('.env.example');
+            case 'development':
+                return envFileFinder('.env.development');
+            case 'production':
+                return envFileFinder('.env.production');
+            default:
+                return envFileFinder('.env.example');
         }
     };
 
@@ -100,6 +106,8 @@ export const generateManifest = (): Configuration => {
     });
 
     return {
-        plugins: [ /* manifest */ ],
+        plugins: [
+            /* manifest */
+        ],
     };
 };

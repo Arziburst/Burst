@@ -18,22 +18,23 @@ const compiler = webpack(getDevConfig());
         const choosenPort = await choosePort(HOST, PORT);
 
         if (!choosenPort) {
-            console.log(
-                chalk.yellowBright('→ It\'s impossible to run the app :('),
-            );
+            console.log(chalk.yellowBright('→ It\'s impossible to run the app :('));
 
             return null;
         }
 
-        const server = new DevServer({
-            host:               HOST,
-            port:               choosenPort,
-            historyApiFallback: true,
-            hot:                false,
-            onListening:        () => {
-                openBrowser(`http://${HOST}:${choosenPort}`);
+        const server = new DevServer(
+            {
+                host:               HOST,
+                port:               choosenPort,
+                historyApiFallback: true,
+                hot:                false,
+                onListening:        () => {
+                    openBrowser(`http://${HOST}:${choosenPort}`);
+                },
             },
-        }, compiler);
+            compiler,
+        );
 
         server.start();
     } catch (error) {

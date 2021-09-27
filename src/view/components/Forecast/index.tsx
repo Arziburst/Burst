@@ -1,5 +1,6 @@
 // Core
-import React from 'react';
+import React, { FC } from 'react';
+import moment from 'moment';
 
 // Styles
 import {
@@ -11,37 +12,58 @@ import {
     DayNumber,
 } from './styles';
 
-export const Forecast = () => {
+// Types
+import * as Types from '../../../bus/days/types';
+
+type PropTypes = {
+    days: Types.DaysState
+};
+
+export const Forecast: FC<PropTypes> = ({ days }) => {
+    const currentWeek = days.slice(0, 7);
+
     return (
         <StyledForecast>
-            <CloudyDay selected>
-                <DayText>Пятница</DayText>
-                <DayNumber>17</DayNumber>
-            </CloudyDay>
-            <CloudyDay>
-                <DayText>Суббота</DayText>
-                <DayNumber>19</DayNumber>
-            </CloudyDay>
-            <CloudyDay>
-                <DayText>Понедельник</DayText>
-                <DayNumber>18</DayNumber>
-            </CloudyDay>
-            <CloudyDay>
-                <DayText>Вторник</DayText>
-                <DayNumber>21</DayNumber>
-            </CloudyDay>
-            <RainyDay>
-                <DayText>Среда</DayText>
-                <DayNumber>16</DayNumber>
-            </RainyDay>
-            <RainyDay>
-                <DayText>Четверг</DayText>
-                <DayNumber>19</DayNumber>
-            </RainyDay>
-            <SunnyDay>
-                <DayText>Пятница</DayText>
-                <DayNumber>26</DayNumber>
-            </SunnyDay>
+            {currentWeek.map(({ id, day, temperature, type }) => {
+                if (type === 'cloudy') {
+                    return (
+                        <CloudyDay
+                            selected
+                            key = { id }>
+                            <DayText>{moment(day).locale('ru')
+                                .format('dddd')}
+                            </DayText>
+                            <DayNumber>{temperature}</DayNumber>
+                        </CloudyDay>
+                    );
+                }
+
+                if (type === 'rainy') {
+                    return (
+                        <RainyDay
+                            key = { id }>
+                            <DayText>{moment(day).locale('ru')
+                                .format('dddd')}
+                            </DayText>
+                            <DayNumber>{temperature}</DayNumber>
+                        </RainyDay>
+                    );
+                }
+
+                if (type === 'sunny') {
+                    return (
+                        <SunnyDay
+                            key = { id }>
+                            <DayText>{moment(day).locale('ru')
+                                .format('dddd')}
+                            </DayText>
+                            <DayNumber>{temperature}</DayNumber>
+                        </SunnyDay>
+                    );
+                }
+
+                return null;
+            })}
         </StyledForecast>
     );
 };

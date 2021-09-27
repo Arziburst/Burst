@@ -17,7 +17,10 @@ import { daysActions } from './slice';
 // Hooks
 export const useDays = () => {
     const dispatch = useDispatch();
-    const { togglersRedux:{ isDaysFetching }, setTogglerAction } = useTogglersRedux();
+    const {
+        togglersRedux: { isDaysFetching },
+        setTogglerAction,
+    } = useTogglersRedux();
     const days = useSelector(({ days }) => days);
 
     const fetchDaysAsync = async () => {

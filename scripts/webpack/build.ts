@@ -16,7 +16,7 @@ const compiler = webpack(getProdConfig());
 
 compiler.run((error, stats) => {
     if (error) {
-        // ошибка конфигурации
+    // ошибка конфигурации
         console.error(error.stack || error);
 
         if (error.message) {
@@ -44,13 +44,13 @@ compiler.run((error, stats) => {
     console.log(info);
 
     if (stats?.hasErrors()) {
-        // ошибка во время компиляции (битый импорт, ошибка синтаксиса, etc)
+    // ошибка во время компиляции (битый импорт, ошибка синтаксиса, etc)
         console.log(chalk.redBright('→ Error!'));
         console.error(info);
     }
 
     if (stats?.hasWarnings()) {
-        // ворнинг во время компиляции
+    // ворнинг во время компиляции
         console.log(chalk.yellowBright('→ Warning!'));
         console.warn(info);
     }
