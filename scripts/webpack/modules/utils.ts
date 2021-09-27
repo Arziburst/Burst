@@ -82,7 +82,7 @@ export const generateServiceWorker = (): Configuration => {
 };
 
 export const generateManifest = (): Configuration => {
-    const manifest: WebpackPwaManifest = new WebpackPwaManifest({
+    const manifest = new WebpackPwaManifest({
         name:             process.env.APP_NAME || 'Awesome app',
         short_name:       process.env.APP_NAME || 'Awesome app',
         background_color: '#ffffff',
@@ -100,6 +100,6 @@ export const generateManifest = (): Configuration => {
     });
 
     return {
-        plugins: [ manifest ],
+        plugins: [ /* manifest */ ],
     };
 };

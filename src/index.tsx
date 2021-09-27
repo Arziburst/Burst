@@ -26,7 +26,6 @@ const Root = () => {
             <Router history = { routerHistory }>
                 <App />
             </Router>
-            123
         </ReduxProvider>
     );
 };
