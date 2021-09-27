@@ -1,6 +1,7 @@
 // Core
 import { Configuration } from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import ImageMinimizerPlugin from 'image-minimizer-webpack-plugin';
 
 // Constants
 import { STATIC_DIRECTORY, APP_NAME } from '../constants';
@@ -19,7 +20,7 @@ export const loadImagesDev = (): Configuration => ({
     module: {
         rules: [
             {
-                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                test: /\.(png|svg|jpe?g|gif)$/i,
                 type: 'asset/resource',
             },
         ],
@@ -30,32 +31,64 @@ export const loadImagesProd = (): Configuration => ({
     module: {
         rules: [
             {
-                test:    /\.(png|svg|jpg|jpeg|gif)$/i,
-                type:    'asset/resource',
-                loader:  'image-webpack-loader',
-                options: {
-                    mozjpeg: {
-                        progressive: true,
-                        quality:     65,
-                    },
-                    optipng: {
-                        enabled: true,
-                    },
-                    pngquant: {
-                        quality: [ 0.65, 0.90 ],
-                        speed:   4,
-                    },
-                    gifsicle: {
-                        interlaced: false,
-                    },
-                    webp: {
-                        quality: 75,
-                    },
-                },
+                test: /\.(png|svg|jpe?g|gif)$/i,
+                type: 'asset/resource',
             },
         ],
     },
+    plugins: [
+        new ImageMinimizerPlugin({
+            test:                 /\.(svg|jpe?g|gif)$/i,
+            filename:             '[path][name][ext]',
+            deleteOriginalAssets: true,
+            minimizerOptions:     {
+                plugins: [
+                    [ 'gifsicle', { interlaced: true }],
+                    [ 'jpegtran', { progressive: true }],
+                    'svgo',
+                ],
+            },
+        }),
+        new ImageMinimizerPlugin({
+            test:                 /\.(png)$/i,
+            filename:             '[path][name].webp',
+            deleteOriginalAssets: true,
+            minimizerOptions:     {
+                plugins: [ 'imagemin-webp' ],
+            },
+        }),
+    ],
 });
+// export const loadImagesProd = (): Configuration => ({
+//     module: {
+//         rules: [
+//             {
+//                 test:    /\.(png|svg|jpg|jpeg|gif)$/i,
+//                 type:    'asset/resource',
+//                 loader:  'image-webpack-loader',
+//                 options: {
+//                     mozjpeg: {
+//                         progressive: true,
+//                         quality:     65,
+//                     },
+//                     optipng: {
+//                         enabled: true,
+//                     },
+//                     pngquant: {
+//                         quality: [ 0.65, 0.90 ],
+//                         speed:   4,
+//                     },
+//                     gifsicle: {
+//                         interlaced: false,
+//                     },
+//                     webp: {
+//                         quality: 75,
+//                     },
+//                 },
+//             },
+//         ],
+//     },
+// });
 
 export const loadAudio = (): Configuration => ({
     module: {
