@@ -24,7 +24,3 @@ export type DaysState = Array<Day>;
 // Contracts
 export type SetDaysContract = CaseReducer<DaysState, PayloadAction<DaysState>>;
 
-export type CurrentDayState = Day;
-
-// Contracts
-export type SetCurrentDayContract = CaseReducer<CurrentDayState, PayloadAction<CurrentDayState>>;
