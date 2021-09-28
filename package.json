@@ -83,6 +83,7 @@
         "imagemin-gifsicle": "^7.0.0",
         "imagemin-jpegtran": "^7.0.0",
         "imagemin-optipng": "^8.0.0",
+        "imagemin-pngquant": "^9.0.2",
         "imagemin-svgo": "^10.0.0",
         "inquirer": "^8.1.5",
         "lodash-webpack-plugin": "^0.11.6",

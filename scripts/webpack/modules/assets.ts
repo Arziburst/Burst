@@ -20,7 +20,7 @@ export const loadImagesDev = (): Configuration => ({
     module: {
         rules: [
             {
-                test: /\.(png|svg|jpe?g|gif)$/i,
+                test: /\.(png|svg|jpg|jpeg|gif)$/i,
                 type: 'asset/resource',
             },
         ],
@@ -31,34 +31,29 @@ export const loadImagesProd = (): Configuration => ({
     module: {
         rules: [
             {
-                test: /\.(png|svg|jpe?g|gif)$/i,
+                test: /\.(png|svg|jpg|jpeg|gif|webp)$/i,
                 type: 'asset/resource',
+                use:  [
+                    {
+                        loader:  ImageMinimizerPlugin.loader,
+                        options: {
+                            deleteOriginalAssets: true,
+                            minimizerOptions:     {
+                                plugins: [
+                                    [ 'optipng', { optimizationLevel: 7, interlaced: false }],
+                                    [ 'mozjpeg', { progressive: true, quality: 65 }],
+                                    [ 'gifsicle', { optimizationLevel: 7, interlaced: false }],
+                                    [ 'webp', { quality: 75 }],
+                                ],
+                            },
+                        },
+                    },
+                ],
             },
         ],
     },
-    plugins: [
-        new ImageMinimizerPlugin({
-            test:                 /\.(svg|jpe?g|gif)$/i,
-            filename:             '[path][name][ext]',
-            deleteOriginalAssets: true,
-            minimizerOptions:     {
-                plugins: [
-                    [ 'gifsicle', { interlaced: true }],
-                    [ 'jpegtran', { progressive: true }],
-                    'svgo',
-                ],
-            },
-        }),
-        new ImageMinimizerPlugin({
-            test:                 /\.(png)$/i,
-            filename:             '[path][name].webp',
-            deleteOriginalAssets: true,
-            minimizerOptions:     {
-                plugins: [ 'imagemin-webp' ],
-            },
-        }),
-    ],
 });
+
 // export const loadImagesProd = (): Configuration => ({
 //     module: {
 //         rules: [

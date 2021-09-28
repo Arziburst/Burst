@@ -10,3 +10,15 @@ declare module '*.jpg' {
 
     export = File
 }
+
+declare module '*.gif' {
+    const File: string;
+
+    export = File
+}
+
+declare module '*.svg' {
+    const File: string;
+
+    export = File
+}
