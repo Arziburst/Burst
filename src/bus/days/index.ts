@@ -21,7 +21,26 @@ export const useDays = () => {
         togglersRedux: { isDaysFetching },
         setTogglerAction,
     } = useTogglersRedux();
-    const days = useSelector(({ days }) => days);
+    const days = useSelector(({ days, filter }) => {
+        console.log(days);
+        console.log(filter);
+
+        const { isCloudy, isSunny, minTemp, maxTemp, isFiltered } = filter;
+
+        if (isCloudy && days.length !== 0 && isFiltered) {
+            return days.filter(({ type }) => type === 'cloudy');
+        }
+
+        if (isSunny && days.length !== 0 && isFiltered) {
+            return days.filter(({ type }) => type === 'sunny');
+        }
+
+        if (minTemp !== 0 || maxTemp !== 0) {
+            return days.filter(({ temperature }) => temperature >= minTemp && temperature <= maxTemp);
+        }
+
+        return days;
+    });
 
     const fetchDaysAsync = async () => {
         setTogglerAction({

@@ -7,8 +7,3 @@ export const setDays: types.SetDaysContract = (...args) => {
     return action.payload;
 };
 
-export const setCurrentDay: types.SetCurrentDayContract = (...args) => {
-    const [ , action ] = args;
-
-    return action.payload;
-};
