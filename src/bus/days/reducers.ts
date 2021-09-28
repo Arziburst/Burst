@@ -6,3 +6,4 @@ export const setDays: types.SetDaysContract = (...args) => {
 
     return action.payload;
 };
+

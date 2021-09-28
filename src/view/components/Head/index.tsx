@@ -9,21 +9,21 @@ import { StyledHead, IconCloudy, IconRainy, IconSunny, CurrentDate, CurrentDateT
 import * as Types from '../../../bus/days/types';
 
 type PropTypes = {
-    days: Types.DaysState
+    activeDay?: Types.Day
 };
 
-export const Head: FC<PropTypes> = ({ days }) => {
-    const [ currentDay ] = days;
+export const Head: FC<PropTypes> = ({ activeDay }) => {
+    // const [ currentDay ] = days;
     let currentDateText = '';
     let currentDateNumber = '';
     let type = null;
 
-    if (currentDay?.day && currentDay?.type) {
-        currentDateText = moment(currentDay.day).locale('ru')
+    if (activeDay?.day && activeDay?.type) {
+        currentDateText = moment(activeDay.day).locale('ru')
             .format('dddd');
-        currentDateNumber = moment(currentDay.day).locale('ru')
+        currentDateNumber = moment(activeDay.day).locale('ru')
             .format('D MMMM');
-        type = currentDay.type;
+        type = activeDay.type;
     }
 
 

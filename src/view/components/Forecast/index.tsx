@@ -2,6 +2,9 @@
 import React, { FC } from 'react';
 import moment from 'moment';
 
+// Redux
+import { useDaysFilter } from '../../../bus/daysFilter';
+
 // Styles
 import {
     StyledForecast,
@@ -22,42 +25,47 @@ type PropTypes = {
 export const Forecast: FC<PropTypes> = ({ days }) => {
     const currentWeek = days.slice(0, 7);
 
+    const {   setCurrentDay  } = useDaysFilter();
+
     return (
         <StyledForecast>
-            {currentWeek.map(({ id, day, temperature, type }) => {
-                if (type === 'cloudy') {
+            {currentWeek.map((day) => {
+                if (day.type === 'cloudy') {
                     return (
                         <CloudyDay
                             selected
-                            key = { id }>
-                            <DayText>{moment(day).locale('ru')
+                            key = { day.id }
+                            onClick = { () => setCurrentDay(day) }>
+                            <DayText>{moment(day.day).locale('ru')
                                 .format('dddd')}
                             </DayText>
-                            <DayNumber>{temperature}</DayNumber>
+                            <DayNumber>{day.temperature}</DayNumber>
                         </CloudyDay>
                     );
                 }
 
-                if (type === 'rainy') {
+                if (day.type === 'rainy') {
                     return (
                         <RainyDay
-                            key = { id }>
-                            <DayText>{moment(day).locale('ru')
+                            key = { day.id }
+                            onClick = { () => setCurrentDay(day) }>
+                            <DayText>{moment(day.day).locale('ru')
                                 .format('dddd')}
                             </DayText>
-                            <DayNumber>{temperature}</DayNumber>
+                            <DayNumber>{day.temperature}</DayNumber>
                         </RainyDay>
                     );
                 }
 
-                if (type === 'sunny') {
+                if (day.type === 'sunny') {
                     return (
                         <SunnyDay
-                            key = { id }>
-                            <DayText>{moment(day).locale('ru')
+                            key = { day.id }
+                            onClick = { () => setCurrentDay(day) }>
+                            <DayText>{moment(day.day).locale('ru')
                                 .format('dddd')}
                             </DayText>
-                            <DayNumber>{temperature}</DayNumber>
+                            <DayNumber>{day.temperature}</DayNumber>
                         </SunnyDay>
                     );
                 }

@@ -12,12 +12,17 @@ import {
 
 // Redux
 import { useDays } from '../../../bus/days';
+import { useDaysFilter } from '../../../bus/daysFilter';
 
 // Styles
 import { Main } from './styles';
 
 const WeatherWidget = () => {
     const { days, isDaysFetching } = useDays();
+    const { currentDay } = useDaysFilter();
+
+    const activeDay = currentDay.id ? days.find(({ id }) => id === currentDay.id) : days[ 0 ];
+    console.log(activeDay);
     console.log('🚀 ~ file: index.tsx ~ line 21 ~ WeatherWidget ~ days', days);
 
     if (isDaysFetching) {
@@ -27,7 +32,7 @@ const WeatherWidget = () => {
     return (
         <Main>
             <Filter />
-            <Head days = { days } />
+            <Head activeDay = { activeDay } />
             <CurrentWeather days = { days } />
             <Forecast days = { days } />
         </Main>
