@@ -4,11 +4,12 @@ import {
     DefinePlugin,
     ProvidePlugin,
     HotModuleReplacementPlugin,
+    Compiler,
 } from 'webpack';
 import WebpackBar from 'webpackbar';
 import FriendlyErrorsWebpackPlugin from 'friendly-errors-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
-import { GenerateSW } from 'workbox-webpack-plugin';
+import { GenerateSW  } from 'workbox-webpack-plugin';
 import WebpackPwaManifest from 'webpack-pwa-manifest';
 import dotenv from 'dotenv';
 import { resolve } from 'path';
@@ -100,6 +101,6 @@ export const generateManifest = (): Configuration => {
     });
 
     return {
-        plugins: [ /* manifest */ ],
+        plugins: [ manifest ],
     };
 };
