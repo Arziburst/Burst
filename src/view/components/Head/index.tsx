@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 import moment from 'moment';
 
 // Styles
-import { StyledHead, IconCloudy, IconRainy, IconSunny, CurrentDate, CurrentDateText, CurrentDateNumber } from './styles';
+import * as S from './styles';
 
 // Types
 import * as Types from '../../../bus/days/types';
@@ -28,14 +28,14 @@ export const Head: FC<PropTypes> = ({ activeDay }) => {
 
 
     return (
-        <StyledHead>
-            {type === 'cloudy' && <IconCloudy />}
-            {type === 'rainy' && <IconRainy />}
-            {type === 'sunny' && <IconSunny />}
-            <CurrentDate>
-                <CurrentDateText>{currentDateText}</CurrentDateText>
-                <CurrentDateNumber>{currentDateNumber}</CurrentDateNumber>
-            </CurrentDate>
-        </StyledHead>
+        <S.StyledHead>
+            {type === 'cloudy' && <S.IconCloudy />}
+            {type === 'rainy' && <S.IconRainy />}
+            {type === 'sunny' && <S.IconSunny />}
+            <S.CurrentDate>
+                <S.CurrentDateText>{currentDateText}</S.CurrentDateText>
+                <S.CurrentDateNumber>{currentDateNumber}</S.CurrentDateNumber>
+            </S.CurrentDate>
+        </S.StyledHead>
     );
 };

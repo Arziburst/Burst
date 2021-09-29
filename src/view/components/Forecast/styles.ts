@@ -34,6 +34,11 @@ export const CloudyDay = styled.div<{ selected?: boolean }>`
     background-repeat: no-repeat;
   }
 
+  :hover {
+    cursor: pointer;
+    background-color: #d9a9ce;
+  }
+
   ${(props) => props.selected
     && css`
       background-color: #d9a9ce;
@@ -62,6 +67,11 @@ export const RainyDay = styled.div<{ selected?: boolean }>`
     background-image: url(${weatherIconRainy});
     background-size: contain;
     background-repeat: no-repeat;
+  }
+
+  :hover {
+    cursor: pointer;
+    background-color: #d9a9ce;
   }
 
   ${(props) => props.selected
@@ -94,10 +104,15 @@ export const SunnyDay = styled.div<{ selected?: boolean }>`
     background-repeat: no-repeat;
   }
 
-  ${(props) => props.selected
-    && css`
-      background-color: #d9a9ce;
-    `};
+  :hover {
+    cursor: pointer;
+    background-color: #d9a9ce;
+  }
+
+  ${(props) => props.selected && {
+        backgroundColor: '#d9a9ce',
+    }
+};
 `;
 
 export const DayText = styled.p`

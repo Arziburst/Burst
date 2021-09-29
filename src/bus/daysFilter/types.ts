@@ -37,5 +37,5 @@ export type FilterState = {
 // Contracts
 export type SetFilterContract = CaseReducer<FilterState, PayloadAction<SetFilterState>>;
 export type SetCurrentDayContract = CaseReducer<FilterState, PayloadAction<CurrentDay>>;
-export type ToggleOptionContract = CaseReducer<FilterState, PayloadAction<number>>;
+export type ToggleOptionContract = CaseReducer<FilterState, PayloadAction<number | undefined>>;
 

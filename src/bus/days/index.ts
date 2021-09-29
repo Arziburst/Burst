@@ -14,6 +14,9 @@ import * as API from './api';
 // Actions
 import { daysActions } from './slice';
 
+// Types
+// import { DaysState } from './types';
+
 // Hooks
 export const useDays = () => {
     const dispatch = useDispatch();
@@ -21,11 +24,15 @@ export const useDays = () => {
         togglersRedux: { isDaysFetching },
         setTogglerAction,
     } = useTogglersRedux();
-    const days = useSelector(({ days, filter }) => {
+    const { days, filter } = useSelector((state) => state);
+
+    const filterHandler = () => {
         console.log(days);
         console.log(filter);
 
         const { isCloudy, isSunny, minTemp, maxTemp, isFiltered } = filter;
+
+        // const daysFilterHandler = (callback: (days: DaysState) => boolean) => days.filter(callback);
 
         if (isCloudy && days.length !== 0 && isFiltered) {
             return days.filter(({ type }) => type === 'cloudy');
@@ -50,7 +57,7 @@ export const useDays = () => {
         }
 
         return days;
-    });
+    };
 
     const fetchDaysAsync = async () => {
         setTogglerAction({
@@ -77,7 +84,7 @@ export const useDays = () => {
     console.log(days);
 
     return {
-        days,
+        days: filterHandler(),
         isDaysFetching,
     };
 };

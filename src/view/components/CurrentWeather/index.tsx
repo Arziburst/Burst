@@ -8,14 +8,15 @@ import { StyledCurrentWeather, Temperature, RainyMeta, HumidityMeta } from './st
 import * as Types from '../../../bus/days/types';
 
 type PropTypes = {
-    days: Types.DaysState
+    activeDay?: Types.Day
 };
 
-export const CurrentWeather: FC<PropTypes> = ({ days }) => {
-    const [ currentDay ] = days;
-    const temperature = currentDay?.temperature;
-    const rainProbability = currentDay?.rain_probability;
-    const humidity = currentDay?.humidity;
+export const CurrentWeather: FC<PropTypes> = ({ activeDay }) => {
+    console.log(activeDay);
+    // const [ currentDay ] = days;
+    const temperature = activeDay?.temperature;
+    const rainProbability = activeDay?.rain_probability;
+    const humidity = activeDay?.humidity;
 
     return (
         <StyledCurrentWeather>

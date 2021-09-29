@@ -9,9 +9,9 @@ export const StyledFilter = styled.div`
   align-items: flex-end;
 `;
 
-export const Checkbox = styled.span<{selected?: boolean}>`
+export const Checkbox = styled.span<{ selected?: boolean; disable?: boolean }>`
   position: relative;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 16px;
   text-transform: uppercase;
@@ -25,22 +25,28 @@ export const Checkbox = styled.span<{selected?: boolean}>`
   }
 
   :after {
-      content: '';
-      display: inline-block;
-      width: 25px;
-      height: 25px;
-      border: solid 1px #fff;
-      border-radius: 3px;
-      margin-left: 14px;
+    content: "";
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    border: solid 1px #fff;
+    border-radius: 3px;
+    margin-left: 14px;
   }
 
-  ${(props) => props.selected && css`
-    :before {
-      content: '✓';
-      position: absolute;
-      right: 7px;
-    }
-  `};
+  ${(props) => props.selected
+    && css`
+      :before {
+        content: "✓";
+        position: absolute;
+        right: 7px;
+      }
+    `};
+
+  ${(props) => props.disable
+    && css`
+      pointer-events: none;
+    `};
 `;
 
 export const CustomInput = styled.p`
@@ -49,7 +55,7 @@ export const CustomInput = styled.p`
 
 export const CustomInputLabel = styled.label`
   display: inline-block;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 16px;
   text-transform: uppercase;
@@ -66,26 +72,29 @@ export const CustomInputField = styled.input`
   width: 40px;
   outline: none;
   color: #fff;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 16px;
   text-align: center;
 `;
 
-export const FilterBtn = styled.button`
-  background-color: #C584BC;
+export const FilterBtn = styled.button<{ disabled?: boolean }>`
+  background-color: #c584bc;
   border: none;
   padding: 10px 15px;
   border-radius: 8px;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 16px;
   letter-spacing: 1px;
   color: #fff;
   text-transform: uppercase;
 
-  :hover {
-    cursor: pointer;
-    background-color: #966590;
-  }
+  ${(props) => !props.disabled
+    && css`
+      :hover {
+        cursor: pointer;
+        background-color: #966590;
+      }
+    `};
 `;

@@ -21,8 +21,10 @@ const WeatherWidget = () => {
     const { days, isDaysFetching } = useDays();
     const { currentDay } = useDaysFilter();
 
-    const activeDay = currentDay.id ? days.find(({ id }) => id === currentDay.id) : days[ 0 ];
-    console.log(activeDay);
+    const filteredDays = days.find(({ id }) => id === currentDay.id);
+
+    const activeDay = filteredDays ? filteredDays : days[ 0 ];
+    console.log('id текущего дня', currentDay.id);
     console.log('🚀 ~ file: index.tsx ~ line 21 ~ WeatherWidget ~ days', days);
 
     if (isDaysFetching) {
@@ -33,7 +35,7 @@ const WeatherWidget = () => {
         <Main>
             <Filter />
             <Head activeDay = { activeDay } />
-            <CurrentWeather days = { days } />
+            <CurrentWeather activeDay = { activeDay } />
             <Forecast days = { days } />
         </Main>
     );

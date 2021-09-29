@@ -30,7 +30,9 @@ export const useDaysFilter = () => {
         isSunny,
         currentDay,
         setCurrentDay: (currentDay: CurrentDay) => void dispatch(filterActions.setCurrentDay(currentDay)),
-        toggleOption:  (number:number) => void dispatch(filterActions.toggleOption(number)),
+        toggleOption:  (number?: number) => {
+            void dispatch(filterActions.toggleOption(number))
+        },
         setFilter:     (data: SetFilterState) => void dispatch(filterActions.setFilter(data)),
         // toggleSunny:  () => void dispatch(daysFilterActions.toggleSunnyOption()),
     };

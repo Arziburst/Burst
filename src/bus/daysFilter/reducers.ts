@@ -12,14 +12,21 @@ export const setCurrentDay: types.SetCurrentDayContract = (state, action: Payloa
     state.currentDay = action.payload;
 };
 
-export const toggleOption: types.ToggleOptionContract = (state, action: PayloadAction<number>) => {
-    if (action.payload === 0) {
+export const toggleOption: types.ToggleOptionContract = (state, action: PayloadAction<number | undefined>) => {
+    if (action.payload === 'setCloudy') {
         state.isSunny = false;
         state.isCloudy = true;
+
+        return;
     }
 
-    if (action.payload === 1) {
+    if (action.payload === 'setSunny') {
         state.isSunny = true;
         state.isCloudy = false;
+
+        return;
     }
+
+    state.isSunny = false;
+    state.isCloudy = false;
 };
