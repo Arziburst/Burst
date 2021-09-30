@@ -4,7 +4,6 @@ import {
     DefinePlugin,
     ProvidePlugin,
     HotModuleReplacementPlugin,
-    Compiler,
 } from 'webpack';
 import WebpackBar from 'webpackbar';
 import FriendlyErrorsWebpackPlugin from 'friendly-errors-webpack-plugin';
@@ -101,6 +100,7 @@ export const generateManifest = (): Configuration => {
     });
 
     return {
+        // @ts-ignore
         plugins: [ manifest ],
     };
 };
