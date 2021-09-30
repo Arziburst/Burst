@@ -13,7 +13,10 @@ import { TopbarContainer, Logo } from './styles';
 export const TopBar: FC = () => {
     return (
         <TopbarContainer>
-            <Logo src = { logo } />
+            <Logo
+                alt = 'logo'
+                src = { logo }
+            />
             <h1>Boilerplate</h1>
             <UserMenu />
         </TopbarContainer>
