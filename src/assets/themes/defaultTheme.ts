@@ -1,9 +1,5 @@
-// Instruments
-import { breakpoints } from './breakpoints';
-
 export const defaultTheme = {
     name:   'defaultTheme',
-    ...breakpoints,
     button: {
         primary:   '#BDBDBD',
         secondary: '#FFEE58',

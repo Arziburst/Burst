@@ -22,4 +22,4 @@
 //         </Switch>
 //     );
 // };
-export const a = null;
+export const mock = null;
