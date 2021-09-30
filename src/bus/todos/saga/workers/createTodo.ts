@@ -13,8 +13,8 @@ import { CreateTodoActionAsync  } from '../types';
 
 export function* createTodo({ payload }: CreateTodoActionAsync) {
     yield makeRequest<Todo>({
-        fetcher:     API.createTodo(payload),
-        togglerType: 'isTodosFetching',
-        fill:        setTodoAction,
+        fetcher:      API.createTodo(payload),
+        togglerType:  'isTodosFetching',
+        succesAction: setTodoAction,
     });
 }

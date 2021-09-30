@@ -13,8 +13,8 @@ import { UpdateTodoActionAsync  } from '../types';
 
 export function* updateTodo({ payload }: UpdateTodoActionAsync) {
     yield makeRequest<Todo>({
-        fetcher:     API.updateTodo(payload),
-        togglerType: 'isTodosFetching',
-        fill:        updateTodoAction,
+        fetcher:      API.updateTodo(payload),
+        togglerType:  'isTodosFetching',
+        succesAction: updateTodoAction,
     });
 }

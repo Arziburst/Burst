@@ -2,7 +2,7 @@
 import { put, call } from 'redux-saga/effects';
 
 // Redux
-import { errorsActions  } from '../../bus/client/errors';
+import { errorsActions } from '../../bus/client/errors';
 import { TogglersKeys } from '../../bus/client/togglers';
 
 // Action
@@ -12,10 +12,11 @@ import { IControlledError } from './controlledError';
 type OptionsType<T> = {
     fetcher: (...args: any) => Promise<T>;
     togglerType?: TogglersKeys;
-    fill?: (payload: T) => {
+    succesAction?: (payload: T) => {
         type: string;
         payload: T;
     };
+    errorAction?: Function;
     successSideEffect?: Function;
     errorSideEffect?: Function;
     isControlledMode?: boolean
@@ -23,11 +24,9 @@ type OptionsType<T> = {
 
 export function* makeRequest<T>(options: OptionsType<T>) {
     const {
-        fetcher,
-        togglerType,
-        fill,
-        successSideEffect,
-        errorSideEffect,
+        fetcher, togglerType,
+        succesAction, errorAction,
+        successSideEffect, errorSideEffect,
         isControlledMode,
     } = options;
 
@@ -42,12 +41,12 @@ export function* makeRequest<T>(options: OptionsType<T>) {
 
         const result: T = yield call(fetcher);
 
-        if (fill) {
-            yield put(fill(result));
+        if (succesAction) {
+            yield put(succesAction(result));
         }
 
         if (successSideEffect) {
-            yield put(successSideEffect());
+            yield successSideEffect();
         }
 
         return result;
@@ -55,7 +54,11 @@ export function* makeRequest<T>(options: OptionsType<T>) {
     } catch (error) {
         // ------------- ERROR BLOCK START -------------
         if (errorSideEffect) {
-            yield put(errorSideEffect());
+            yield errorSideEffect();
+        }
+
+        if (errorAction) {
+            yield put(errorAction());
         }
 
         if (isControlledMode) {

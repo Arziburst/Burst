@@ -12,8 +12,8 @@ import { makeRequest } from '../../../../tools/utils';
 
 export function* fetchTodos() {
     yield makeRequest<Todos>({
-        fetcher:     API.fetchTodos,
-        togglerType: 'isTodosFetching',
-        fill:        setTodosAction,
+        fetcher:      API.fetchTodos,
+        togglerType:  'isTodosFetching',
+        succesAction: setTodosAction,
     });
 }

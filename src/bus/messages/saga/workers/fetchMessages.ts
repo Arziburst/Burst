@@ -14,7 +14,7 @@ export function* fetchMessages() {
     const combineResult: IControlledError & MessagesState = yield makeRequest<MessagesState>({
         fetcher:          API.fetchMessages,
         togglerType:      'isMessagesFetching',
-        fill:             messagesActions.setMessages,
+        succesAction:     messagesActions.setMessages,
         isControlledMode: true,
     });
 
