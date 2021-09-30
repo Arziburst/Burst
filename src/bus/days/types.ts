@@ -1,14 +1,7 @@
 // Core
 import { CaseReducer, PayloadAction } from '@reduxjs/toolkit';
 
-// {
-//     "id": "6210658e-5293-44db-a79e-e92eae33825a",
-//     "rain_probability": 35,
-//     "humidity": 49,
-//     "day": 1632546000000,
-//     "temperature": 21,
-//     "type": "cloudy"
-// }
+export type DayType = 'cloudy' | 'rainy' | 'sunny';
 
 export type Day = {
     id: string;
@@ -16,7 +9,7 @@ export type Day = {
     humidity: number;
     day: number;
     temperature: number;
-    type: 'cloudy' | 'rainy' | 'sunny';
+    type: DayType
 };
 
 export type DaysState = Array<Day>;

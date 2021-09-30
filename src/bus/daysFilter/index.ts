@@ -8,59 +8,33 @@ import { useSelector } from '../../tools/hooks';
 import { filterActions } from './slice';
 
 // Types
-import { SetFilterState, CurrentDay } from './types';
+import { SetFilterState } from './types';
+import { Day } from '../days/types';
 
 // Hooks
 export const useDaysFilter = () => {
     const dispatch = useDispatch();
 
-    const  { isCloudy, isSunny, currentDay }  = useSelector(({ filter }) => filter);
-    // const { filteredDays, isCloudy, isSunny } = useSelector(({ daysFilter }) => daysFilter);
-    // console.log(days);
-    // const fillDaysFilter = () => {
-    //     dispatch(daysFilterActions.setDaysFilter(days));
-    // };
-
-    // useEffect(() => {
-    //     fillDaysFilter();
-    // }, []);
+    const  {
+        isCloudy, isSunny, minTemp, maxTemp,
+        currentDay,
+    }  = useSelector(({ filter }) => filter);
 
     return {
-        isCloudy,
-        isSunny,
-        currentDay,
-        setCurrentDay: (currentDay: CurrentDay) => void dispatch(filterActions.setCurrentDay(currentDay)),
-        toggleOption:  (number?: number) => {
-            void dispatch(filterActions.toggleOption(number))
+        filter: {
+            isCloudy,
+            isSunny,
+            minTemp,
+            maxTemp,
         },
-        setFilter:     (data: SetFilterState) => void dispatch(filterActions.setFilter(data)),
-        // toggleSunny:  () => void dispatch(daysFilterActions.toggleSunnyOption()),
+        currentDay,
+
+        setCurrentDay: (currentDay: Day) => void dispatch(filterActions.setCurrentDay(currentDay)),
+
+        setFilterState: (filterState: SetFilterState) => void dispatch(
+            filterActions.setFilterState(filterState),
+        ),
+
+        resetFilterState: () => void dispatch(filterActions.resetFilterState()),
     };
-
-    // const fetchDaysAsync = async () => {
-    //     setTogglerAction({
-    //         type:  'isDaysFetching',
-    //         value: true,
-    //     });
-
-    //     const result = await API.fetchDays();
-
-    //     if (result !== null) {
-    //         dispatch(daysActions.setDays(result));
-    //     }
-
-    //     setTogglerAction({
-    //         type:  'isDaysFetching',
-    //         value: false,
-    //     });
-    // };
-
-    // useEffect(() => {
-    //     fetchDaysAsync();
-    // }, []);
-
-    // return {
-    //     days,
-    //     isDaysFetching,
-    // };
 };

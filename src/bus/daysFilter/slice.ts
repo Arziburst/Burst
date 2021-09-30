@@ -7,20 +7,12 @@ import { FilterState } from './types';
 // Reducers
 import * as reducers from './reducers';
 
-const initialState: FilterState = {
-    isCloudy:   false,
-    isSunny:    false,
-    minTemp:    0,
-    maxTemp:    0,
-    isFiltered: false,
-    currentDay: {
-        id:               '',
-        rain_probability: 0,
-        humidity:         0,
-        day:              0,
-        temperature:      0,
-        type:             'cloudy',
-    },
+export const initialState: FilterState = {
+    isCloudy:   null,
+    isSunny:    null,
+    minTemp:    null,
+    maxTemp:    null,
+    currentDay: null,
 };
 
 export const filterSlice = createSlice({

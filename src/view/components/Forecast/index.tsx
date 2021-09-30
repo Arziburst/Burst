@@ -25,18 +25,20 @@ type PropTypes = {
 export const Forecast: FC<PropTypes> = ({ days }) => {
     const currentWeek = days.slice(0, 7);
 
-    const {   setCurrentDay, currentDay  } = useDaysFilter();
+    const { setCurrentDay, currentDay } = useDaysFilter();
+
+    console.log(currentWeek);
 
     return (
         <StyledForecast>
             {
-                currentWeek.map((day, idx) => {
+                currentWeek.map((day) => {
                     if (day.type === 'cloudy') {
                         return (
                             <CloudyDay
                                 key = { day.id }
-                                selected = { day.id === currentDay.id ?? idx === 0 }
-                                onClick = { () => setCurrentDay(day) }>
+                                selected = { day.id === currentDay?.id }
+                                onClick = { () => void setCurrentDay(day) }>
                                 <DayText>{moment(day.day).locale('ru')
                                     .format('dddd')}
                                 </DayText>
@@ -49,7 +51,7 @@ export const Forecast: FC<PropTypes> = ({ days }) => {
                         return (
                             <RainyDay
                                 key = { day.id }
-                                selected = { day.id === currentDay.id ?? idx === 0 }
+                                selected = { day.id === currentDay?.id }
                                 onClick = { () => setCurrentDay(day) }>
                                 <DayText>{moment(day.day).locale('ru')
                                     .format('dddd')}
@@ -63,7 +65,7 @@ export const Forecast: FC<PropTypes> = ({ days }) => {
                         return (
                             <SunnyDay
                                 key = { day.id }
-                                selected = { day.id === currentDay.id ?? idx === 0 }
+                                selected = { day.id === currentDay?.id }
                                 onClick = { () => setCurrentDay(day) }>
                                 <DayText>{moment(day.day).locale('ru')
                                     .format('dddd')}

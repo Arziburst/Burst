@@ -13,9 +13,10 @@ import * as API from './api';
 
 // Actions
 import { daysActions } from './slice';
+import { filterActions } from '../daysFilter/slice';
 
 // Types
-// import { DaysState } from './types';
+import { DayType } from './types';
 
 // Hooks
 export const useDays = () => {
@@ -25,39 +26,6 @@ export const useDays = () => {
         setTogglerAction,
     } = useTogglersRedux();
     const { days, filter } = useSelector((state) => state);
-
-    const filterHandler = () => {
-        console.log(days);
-        console.log(filter);
-
-        const { isCloudy, isSunny, minTemp, maxTemp, isFiltered } = filter;
-
-        // const daysFilterHandler = (callback: (days: DaysState) => boolean) => days.filter(callback);
-
-        if (isCloudy && days.length !== 0 && isFiltered) {
-            return days.filter(({ type }) => type === 'cloudy');
-        }
-
-        if (isSunny && days.length !== 0 && isFiltered) {
-            return days.filter(({ type }) => type === 'sunny');
-        }
-
-        if (minTemp && maxTemp) {
-            return days.filter(
-                ({ temperature }) => temperature >= minTemp && temperature <= maxTemp,
-            );
-        }
-
-        if (minTemp) {
-            return days.filter(({ temperature }) => temperature >= minTemp);
-        }
-
-        if (maxTemp) {
-            return days.filter(({ temperature }) => temperature <= maxTemp);
-        }
-
-        return days;
-    };
 
     const fetchDaysAsync = async () => {
         setTogglerAction({
@@ -69,6 +37,7 @@ export const useDays = () => {
 
         if (result !== null) {
             dispatch(daysActions.setDays(result));
+            dispatch(filterActions.setCurrentDay(result[ 0 ]));
         }
 
         setTogglerAction({
@@ -81,7 +50,64 @@ export const useDays = () => {
         fetchDaysAsync();
     }, []);
 
-    console.log(days);
+    const filteredDaysHandler = (type: DayType) => days.filter((day) => day.type === type);
+
+    const ifCurrentDayExistInFilteredDaysHandler = (filteredDays: typeof days) => {
+        return !filteredDays.map(({ id }) => id).includes(filter.currentDay?.id ?? '');
+    };
+
+    const filterHandler = () => {
+        const { isCloudy, isSunny, minTemp, maxTemp } = filter;
+
+        if (isCloudy) {
+            const filteredDays = filteredDaysHandler('cloudy');
+
+            if (ifCurrentDayExistInFilteredDaysHandler(filteredDays)) {
+                dispatch(filterActions.setCurrentDay(filteredDays[ 0 ]));
+            }
+
+            return filteredDays;
+        }
+
+        if (isSunny) {
+            const filteredDays = days.filter(({ type }) => type === 'sunny');
+            console.log('Сейчас произойдет setCurrentDay');
+
+            if (ifCurrentDayExistInFilteredDaysHandler(filteredDays)) {
+                dispatch(filterActions.setCurrentDay(filteredDays[ 0 ]));
+            }
+
+            return  filteredDays;
+        }
+
+        // if (minTemp && maxTemp) {
+        //     const filteredDays = days.filter(
+        //         ({ temperature }) => temperature >= minTemp && temperature <= maxTemp,
+        //     );
+
+        //     dispatch(filterActions.setCurrentDay(filteredDays[ 0 ]));
+
+        //     return  filteredDays;
+        // }
+
+        // if (minTemp) {
+        //     const filteredDays = days.filter(({ temperature }) => temperature >= minTemp);
+
+        //     dispatch(filterActions.setCurrentDay(filteredDays[ 0 ]));
+
+        //     return  filteredDays;
+        // }
+
+        // if (maxTemp) {
+        //     const filteredDays = days.filter(({ temperature }) => temperature <= maxTemp);
+
+        //     dispatch(filterActions.setCurrentDay(filteredDays[ 0 ]));
+
+        //     return  filteredDays;
+        // }
+
+        return days;
+    };
 
     return {
         days: filterHandler(),
