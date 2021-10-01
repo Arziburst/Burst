@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 import moment from 'moment';
 
 // Redux
-import { useDaysFilter } from '../../../bus/daysFilter';
+import { useFilters } from '../../../bus/client/filters';
 
 // Styles
 import {
@@ -25,9 +25,9 @@ type PropTypes = {
 export const Forecast: FC<PropTypes> = ({ days }) => {
     const currentWeek = days.slice(0, 7);
 
-    const { setCurrentDay, currentDay } = useDaysFilter();
+    const { setCurrentDay, currentDay } = useFilters();
 
-    console.log(currentWeek);
+    console.log('Это current week для списка', currentWeek);
 
     return (
         <StyledForecast>

@@ -2,30 +2,29 @@
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 
-// Tools
-import { useSelector } from '../../tools/hooks';
-
 // Redux
 import { useTogglersRedux } from '../client/togglers';
+
+// Tools
+import { useSelector } from '../../tools/hooks';
 
 // Api
 import * as API from './api';
 
 // Actions
 import { daysActions } from './slice';
-import { filterActions } from '../daysFilter/slice';
-
-// Types
-import { DayType } from './types';
+import { filtersActions } from '../client/filters/slice';
 
 // Hooks
 export const useDays = () => {
     const dispatch = useDispatch();
+
     const {
         togglersRedux: { isDaysFetching },
         setTogglerAction,
     } = useTogglersRedux();
-    const { days, filter } = useSelector((state) => state);
+
+    const { days, filters } = useSelector((state) => state);
 
     const fetchDaysAsync = async () => {
         setTogglerAction({
@@ -37,7 +36,7 @@ export const useDays = () => {
 
         if (result !== null) {
             dispatch(daysActions.setDays(result));
-            dispatch(filterActions.setCurrentDay(result[ 0 ]));
+            dispatch(filtersActions.setCurrentDay(result[ 0 ]));
         }
 
         setTogglerAction({
@@ -50,63 +49,32 @@ export const useDays = () => {
         fetchDaysAsync();
     }, []);
 
-    const filteredDaysHandler = (type: DayType) => days.filter((day) => day.type === type);
-
-    const ifCurrentDayExistInFilteredDaysHandler = (filteredDays: typeof days) => {
-        return !filteredDays.map(({ id }) => id).includes(filter.currentDay?.id ?? '');
+    const ifCurrentDayExistInFilteredDaysHandler = (
+        filteredDays: typeof days,
+    ) => {
+        return !filteredDays
+            .map(({ id }) => id)
+            .includes(filters.currentDay?.id ?? '');
     };
 
     const filterHandler = () => {
-        const { isCloudy, isSunny, minTemp, maxTemp } = filter;
+        const { isCloudy, isSunny, minTemp, maxTemp } = filters.filtersParams;
 
-        if (isCloudy) {
-            const filteredDays = filteredDaysHandler('cloudy');
+        const filteredDays = days.filter(
+            ({ type, temperature }) => !(
+                (isCloudy && type !== 'cloudy')
+          || (isSunny && type !== 'sunny')
+          || (minTemp && temperature < minTemp)
+          || (maxTemp && temperature > maxTemp)
+          || (maxTemp === 0 && true)
+            ),
+        );
 
-            if (ifCurrentDayExistInFilteredDaysHandler(filteredDays)) {
-                dispatch(filterActions.setCurrentDay(filteredDays[ 0 ]));
-            }
-
-            return filteredDays;
+        if (ifCurrentDayExistInFilteredDaysHandler(filteredDays)) {
+            dispatch(filtersActions.setCurrentDay(filteredDays[ 0 ]));
         }
 
-        if (isSunny) {
-            const filteredDays = days.filter(({ type }) => type === 'sunny');
-            console.log('Сейчас произойдет setCurrentDay');
-
-            if (ifCurrentDayExistInFilteredDaysHandler(filteredDays)) {
-                dispatch(filterActions.setCurrentDay(filteredDays[ 0 ]));
-            }
-
-            return  filteredDays;
-        }
-
-        // if (minTemp && maxTemp) {
-        //     const filteredDays = days.filter(
-        //         ({ temperature }) => temperature >= minTemp && temperature <= maxTemp,
-        //     );
-
-        //     dispatch(filterActions.setCurrentDay(filteredDays[ 0 ]));
-
-        //     return  filteredDays;
-        // }
-
-        // if (minTemp) {
-        //     const filteredDays = days.filter(({ temperature }) => temperature >= minTemp);
-
-        //     dispatch(filterActions.setCurrentDay(filteredDays[ 0 ]));
-
-        //     return  filteredDays;
-        // }
-
-        // if (maxTemp) {
-        //     const filteredDays = days.filter(({ temperature }) => temperature <= maxTemp);
-
-        //     dispatch(filterActions.setCurrentDay(filteredDays[ 0 ]));
-
-        //     return  filteredDays;
-        // }
-
-        return days;
+        return filteredDays.length !== 0 ? filteredDays : [];
     };
 
     return {

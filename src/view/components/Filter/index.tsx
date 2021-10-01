@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 
 // Redux
-import { useDaysFilter } from '../../../bus/daysFilter';
+import { useFilters } from '../../../bus/client/filters';
 
 // Hooks
 import { useForm } from '../../../tools/hooks';
@@ -16,10 +16,10 @@ import { DayType } from '../../../bus/days/types';
 
 export const Filter = () => {
     const {
-        filter,
-        setFilterState,
-        resetFilterState,
-    } = useDaysFilter();
+        filters,
+        setFiltersParams,
+        resetFiltersState,
+    } = useFilters();
 
     const [
         filterForm,
@@ -31,14 +31,14 @@ export const Filter = () => {
 
     const setDayTypeStateHandler = (dayType: DayType) => void setDayTypeState(
         dayType === 'cloudy'
-            ? { ...dayTypeState, isCloudy: true }
-            : { ...dayTypeState, isSunny: true },
+            ? { isCloudy: true, isSunny: null }
+            : { isCloudy: null, isSunny: true },
     );
     const isFormfilledHandler = (
         form: T.TemperatureInitialState & T.DayTypeInitialState,
     ) => Object.entries(form).some(([ , value ]) => value !== null);
 
-    const isReduxFormfilled = isFormfilledHandler(filter);
+    const isReduxFormfilled = isFormfilledHandler(filters);
     const isComponentFormfilled = isFormfilledHandler({
         ...filterForm,
         ...dayTypeState,
@@ -46,14 +46,14 @@ export const Filter = () => {
 
     const filterHandleSubmit = () => {
         if (isReduxFormfilled) {
-            resetFilterState();
+            resetFiltersState();
             resetFilterForm();
             setDayTypeState(T.dayTypeInitialState);
 
             return;
         }
 
-        setFilterState({ ...filterForm, ...dayTypeState });
+        setFiltersParams({ ...filterForm, ...dayTypeState });
     };
 
     return (

@@ -6,7 +6,7 @@ import togglers from '../../bus/client/togglers';
 import errors from '../../bus/client/errors';
 import messages from '../../bus/messages/slice';
 import days from '../../bus/days/slice';
-import filter from '../../bus/daysFilter/slice';
+import filters from '../../bus/client/filters/slice';
 
 // Middleware
 import { middleware, sagaMiddleware } from './middleware';
@@ -20,7 +20,7 @@ export const store = configureStore({
         errors,
         messages,
         days,
-        filter,
+        filters,
     },
     middleware,
     devTools: process.env.NODE_ENV !== 'production',
