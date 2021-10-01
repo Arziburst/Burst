@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 
 // Redux
-import { useFilters } from '../../../bus/client/filters';
+import { useFilter } from '../../../bus/client/filters';
 
 // Hooks
 import { useForm } from '../../../tools/hooks';
@@ -15,19 +15,14 @@ import * as T from './types';
 import { DayType } from '../../../bus/days/types';
 
 export const Filter = () => {
-    const {
-        filters,
-        setFiltersParams,
-        resetFiltersState,
-    } = useFilters();
+    const { filterData, setFilterData, resetFilterState } = useFilter();
 
-    const [
-        filterForm,
-        filterFormHandleChange, ,
-        resetFilterForm,
-    ] = useForm<T.TemperatureInitialState>(T.temperatureInitialState);
+    const [ filterForm, filterFormHandleChange, , resetFilterForm ]
+    = useForm<T.TemperatureInitialState>(T.temperatureInitialState);
 
-    const [ dayTypeState, setDayTypeState ] = useState<T.DayTypeInitialState>(T.dayTypeInitialState);
+    const [ dayTypeState, setDayTypeState ] = useState<T.DayTypeInitialState>(
+        T.dayTypeInitialState,
+    );
 
     const setDayTypeStateHandler = (dayType: DayType) => void setDayTypeState(
         dayType === 'cloudy'
@@ -38,7 +33,7 @@ export const Filter = () => {
         form: T.TemperatureInitialState & T.DayTypeInitialState,
     ) => Object.entries(form).some(([ , value ]) => value !== null);
 
-    const isReduxFormfilled = isFormfilledHandler(filters);
+    const isReduxFormfilled = isFormfilledHandler(filterData);
     const isComponentFormfilled = isFormfilledHandler({
         ...filterForm,
         ...dayTypeState,
@@ -46,14 +41,14 @@ export const Filter = () => {
 
     const filterHandleSubmit = () => {
         if (isReduxFormfilled) {
-            resetFiltersState();
+            resetFilterState();
             resetFilterForm();
             setDayTypeState(T.dayTypeInitialState);
 
             return;
         }
 
-        setFiltersParams({ ...filterForm, ...dayTypeState });
+        setFilterData({ ...filterForm, ...dayTypeState });
     };
 
     return (
@@ -62,15 +57,19 @@ export const Filter = () => {
                 disable = { isReduxFormfilled }
                 selected = { dayTypeState.isCloudy ?? false }
                 style = { isReduxFormfilled ? { pointerEvents: 'none' } : {} }
-                onClick = { () => void setDayTypeStateHandler('cloudy') }>Облачно
+                onClick = { () => void setDayTypeStateHandler('cloudy') }>
+                Облачно
             </S.Checkbox>
             <S.Checkbox
                 disable = { isReduxFormfilled }
                 selected = { dayTypeState.isSunny ?? false }
-                onClick = { () => void setDayTypeStateHandler('sunny') }>Солнечно
+                onClick = { () => void setDayTypeStateHandler('sunny') }>
+                Солнечно
             </S.Checkbox>
             <S.CustomInput>
-                <S.CustomInputLabel htmlFor = 'min-temperature'>Минимальная температура</S.CustomInputLabel>
+                <S.CustomInputLabel htmlFor = 'min-temperature'>
+                    Минимальная температура
+                </S.CustomInputLabel>
                 <S.CustomInputField
                     disabled = { isReduxFormfilled }
                     id = 'min-temperature'
@@ -81,7 +80,9 @@ export const Filter = () => {
                 />
             </S.CustomInput>
             <S.CustomInput>
-                <S.CustomInputLabel htmlFor = 'min-temperature'>Максимальная температура</S.CustomInputLabel>
+                <S.CustomInputLabel htmlFor = 'min-temperature'>
+                    Максимальная температура
+                </S.CustomInputLabel>
                 <S.CustomInputField
                     disabled = { isReduxFormfilled }
                     id = 'max-temperature'
@@ -94,7 +95,7 @@ export const Filter = () => {
             <S.FilterBtn
                 disabled = { !isComponentFormfilled }
                 onClick = { filterHandleSubmit }>
-                { isReduxFormfilled ? 'Сбросить' : 'Отфильтровать'}
+                {isReduxFormfilled ? 'Сбросить' : 'Отфильтровать'}
             </S.FilterBtn>
         </S.StyledFilter>
     );

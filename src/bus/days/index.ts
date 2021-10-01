@@ -13,7 +13,7 @@ import * as API from './api';
 
 // Actions
 import { daysActions } from './slice';
-import { filtersActions } from '../client/filters/slice';
+import { filterActions } from '../client/filters/slice';
 
 // Hooks
 export const useDays = () => {
@@ -36,7 +36,7 @@ export const useDays = () => {
 
         if (result !== null) {
             dispatch(daysActions.setDays(result));
-            dispatch(filtersActions.setCurrentDay(result[ 0 ]));
+            dispatch(filterActions.setCurrentDay(result[ 0 ]));
         }
 
         setTogglerAction({
@@ -58,7 +58,7 @@ export const useDays = () => {
     };
 
     const filterHandler = () => {
-        const { isCloudy, isSunny, minTemp, maxTemp } = filters.filtersParams;
+        const { isCloudy, isSunny, minTemp, maxTemp } = filters.filterData;
 
         const filteredDays = days.filter(
             ({ type, temperature }) => !(
@@ -71,7 +71,7 @@ export const useDays = () => {
         );
 
         if (ifCurrentDayExistInFilteredDaysHandler(filteredDays)) {
-            dispatch(filtersActions.setCurrentDay(filteredDays[ 0 ]));
+            dispatch(filterActions.setCurrentDay(filteredDays[ 0 ]));
         }
 
         return filteredDays.length !== 0 ? filteredDays : [];

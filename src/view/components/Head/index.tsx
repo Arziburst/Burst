@@ -9,23 +9,22 @@ import * as S from './styles';
 import * as Types from '../../../bus/days/types';
 
 type PropTypes = {
-    activeDay?: Types.Day
+    currentDay?: Types.Day | null;
 };
 
-export const Head: FC<PropTypes> = ({ activeDay }) => {
+export const Head: FC<PropTypes> = ({ currentDay }) => {
     // const [ currentDay ] = days;
     let currentDateText = '';
     let currentDateNumber = '';
     let type = null;
 
-    if (activeDay?.day && activeDay?.type) {
-        currentDateText = moment(activeDay.day).locale('ru')
+    if (currentDay?.day && currentDay?.type) {
+        currentDateText = moment(currentDay.day).locale('ru')
             .format('dddd');
-        currentDateNumber = moment(activeDay.day).locale('ru')
+        currentDateNumber = moment(currentDay.day).locale('ru')
             .format('D MMMM');
-        type = activeDay.type;
+        type = currentDay.type;
     }
-
 
     return (
         <S.StyledHead>

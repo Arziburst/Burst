@@ -10,49 +10,38 @@ import {
     Forecast,
 } from '../../components';
 
+// Elements
+import { FallbackMessage, Spinner } from '../../elements';
+
 // Redux
 import { useDays } from '../../../bus/days';
-import { useFilters } from '../../../bus/client/filters';
+import { useFilter } from '../../../bus/client/filters';
 
 // Styles
 import { Main } from './styles';
 
 const WeatherWidget = () => {
     const { days, isDaysFetching } = useDays();
-    const { currentDay } = useFilters();
-
-    const filteredDays = days.find(({ id }) => id === currentDay?.id);
-
-    const activeDay = filteredDays ? filteredDays : days[ 0 ];
+    const { currentDay } = useFilter();
 
     if (isDaysFetching) {
-        return <div>Loading...</div>;
+        return <Spinner />;
     }
-
-    const fallbackTextJSX = (
-        <p style = {{ fontFamily: 'Roboto,sans-serif',
-            fontWeight: 'normal',
-            fontSize:   '28px',
-            color:      '#fff',
-            position:   'absolute',
-            bottom:     '50%',
-            left:       '50%',
-            transform:  'translate(-50%,-50%)' }}>По заданным критериям нет доступных дней!
-        </p>
-    );
-    const weatherInfoJSX = (
-        <section>
-            <Head activeDay = { activeDay } />
-            <CurrentWeather activeDay = { activeDay } />
-            <Forecast days = { days } />
-        </section>
-    );
 
     return (
         <Main>
             <Filter />
-            {days.length === 0 ? fallbackTextJSX
-                : weatherInfoJSX}
+            {days.length === 0 ? (
+                <FallbackMessage>
+                    По заданным критериям нет доступных дней!
+                </FallbackMessage>
+            ) : (
+                <section>
+                    <Head currentDay = { currentDay } />
+                    <CurrentWeather currentDay = { currentDay } />
+                    <Forecast days = { days } />
+                </section>
+            )}
         </Main>
     );
 };

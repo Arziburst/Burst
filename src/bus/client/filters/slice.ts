@@ -2,13 +2,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 // Types
-import { FiltersState } from './types';
+import { FilterState } from './types';
 
 // Reducers
 import * as reducers from './reducers';
 
-export const initialState: FiltersState = {
-    filtersParams: {
+export const initialState: FilterState = {
+    filterData: {
         isCloudy: null,
         isSunny:  null,
         minTemp:  null,
@@ -17,11 +17,11 @@ export const initialState: FiltersState = {
     currentDay: null,
 };
 
-export const filtersSlice = createSlice({
+export const filterSlice = createSlice({
     name: 'filters',
     initialState,
     reducers,
 });
 
-export const filtersActions = filtersSlice.actions;
-export default filtersSlice.reducer;
+export const filterActions = filterSlice.actions;
+export default filterSlice.reducer;

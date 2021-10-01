@@ -5,25 +5,22 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from '../../../tools/hooks';
 
 // Actions
-import { filtersActions } from './slice';
+import { filterActions } from './slice';
 
 // Types
-import { SetFiltersParams } from './types';
+import { SetFilterData } from './types';
 import { Day } from '../../days/types';
 
 // Hooks
-export const useFilters = () => {
+export const useFilter = () => {
     const dispatch = useDispatch();
 
-    const  {
-        filtersParams,
-        currentDay,
-    }  = useSelector(({ filters }) => filters);
+    const { filterData, currentDay } = useSelector(({ filters }) => filters);
 
-    const { isCloudy, isSunny, minTemp, maxTemp } = filtersParams;
+    const { isCloudy, isSunny, minTemp, maxTemp } = filterData;
 
     return {
-        filters: {
+        filterData: {
             isCloudy,
             isSunny,
             minTemp,
@@ -31,12 +28,10 @@ export const useFilters = () => {
         },
         currentDay,
 
-        setCurrentDay: (currentDay: Day) => void dispatch(filtersActions.setCurrentDay(currentDay)),
+        setCurrentDay: (currentDay: Day) => void dispatch(filterActions.setCurrentDay(currentDay)),
 
-        setFiltersParams: (filterState: SetFiltersParams) => void dispatch(
-            filtersActions.setFiltersState(filterState),
-        ),
+        setFilterData: (filterState: SetFilterData) => void dispatch(filterActions.setFilterData(filterState)),
 
-        resetFiltersState: () => void dispatch(filtersActions.resetFiltersState()),
+        resetFilterState: () => void dispatch(filterActions.resetFilterState()),
     };
 };

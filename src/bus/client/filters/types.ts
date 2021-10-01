@@ -4,29 +4,34 @@ import { CaseReducer, PayloadAction } from '@reduxjs/toolkit';
 // Type
 import { Day } from '../../days/types';
 
-export type FiltersParams = {
-    isCloudy: boolean | null,
-    isSunny: boolean | null,
-    minTemp: number | null,
-    maxTemp: number | null,
-}
-
-export type FiltersState = {
-    filtersParams : FiltersParams,
-    currentDay: Day | null
+export type FilterData = {
+    isCloudy: boolean | null;
+    isSunny: boolean | null;
+    minTemp: number | null;
+    maxTemp: number | null;
 };
 
-export type SetFiltersParams = {
-    isCloudy: FiltersParams['isCloudy'] | null,
-    isSunny: FiltersParams['isSunny'] | null,
-    minTemp: FiltersParams['minTemp'] | null,
-    maxTemp: FiltersParams['maxTemp'] | null,
+export type FilterState = {
+    filterData: FilterData;
+    currentDay: Day | null;
+};
+
+export type SetFilterData = {
+    isCloudy: FilterData['isCloudy'] | null;
+    isSunny: FilterData['isSunny'] | null;
+    minTemp: FilterData['minTemp'] | null;
+    maxTemp: FilterData['maxTemp'] | null;
 };
 
 // Contracts
-export type SetCurrentDayContract = CaseReducer<FiltersState, PayloadAction<Day>>;
+export type SetCurrentDayContract = CaseReducer<
+FilterState,
+PayloadAction<Day>
+>;
 
-export type SetFiltersParamsContract = CaseReducer<FiltersState, PayloadAction<SetFiltersParams>>;
+export type SetFilterDataContract = CaseReducer<
+FilterState,
+PayloadAction<SetFilterData>
+>;
 
-export type ResetFiltersState = CaseReducer<FiltersState>;
-
+export type ResetFilterStateContract = CaseReducer<FilterState>;

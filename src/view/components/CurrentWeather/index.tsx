@@ -2,21 +2,26 @@
 import React, { FC } from 'react';
 
 // Styles
-import { StyledCurrentWeather, Temperature, RainyMeta, HumidityMeta } from './styles';
+import {
+    StyledCurrentWeather,
+    Temperature,
+    RainyMeta,
+    HumidityMeta,
+} from './styles';
 
 // Types
 import * as Types from '../../../bus/days/types';
 
 type PropTypes = {
-    activeDay?: Types.Day
+    currentDay?: Types.Day | null;
 };
 
-export const CurrentWeather: FC<PropTypes> = ({ activeDay }) => {
-    console.log(activeDay);
+export const CurrentWeather: FC<PropTypes> = ({ currentDay }) => {
+    console.log(currentDay);
     // const [ currentDay ] = days;
-    const temperature = activeDay?.temperature;
-    const rainProbability = activeDay?.rain_probability;
-    const humidity = activeDay?.humidity;
+    const temperature = currentDay?.temperature;
+    const rainProbability = currentDay?.rain_probability;
+    const humidity = currentDay?.humidity;
 
     return (
         <StyledCurrentWeather>
