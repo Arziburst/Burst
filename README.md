@@ -1,3 +1,5 @@
+---README IN DEV---
+
 Welcome to Arziburst Boilerplate project.
 
 Project required technologies:
@@ -14,9 +16,10 @@ Project technologies:
 Project extensions:
  - Better Comments (id: aaron-bond.better-comments)
 
+Best comments names:
+
 <!--Init-->
 <!--Core-->
-
 <!--Api-->
 <!--Bus-->
 <!--Saga-->
@@ -26,7 +29,6 @@ Project extensions:
 <!--Slice-->
 <!--Reducer-->
 <!--Action-->
-
 <!--View-->
 <!--Route-->
 <!--Page-->
@@ -34,23 +36,19 @@ Project extensions:
 <!--Component-->
 <!--Element-->
 <!--Style-->
-
 <!--Tool-->
 <!--Hook-->
 <!--Helper-->
 <!--Util-->
 <!--Constant-->
-
 <!--Asset-->
 <!--Font-->
 <!--Svg-->
 <!--Icon-->
 <!--Theme-->
-
 <!--Contract-->
 <!--Type-->
 <!--Interface-->
-
 <!--?-->
 <!--!-->
 <!--eslint-->
