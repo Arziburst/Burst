@@ -29,11 +29,13 @@ export const Filter = () => {
             ? { isCloudy: true, isSunny: null }
             : { isCloudy: null, isSunny: true },
     );
+
     const isFormfilledHandler = (
         form: T.TemperatureInitialState & T.DayTypeInitialState,
     ) => Object.entries(form).some(([ , value ]) => value !== null);
 
     const isReduxFormfilled = isFormfilledHandler(filterData);
+
     const isComponentFormfilled = isFormfilledHandler({
         ...filterForm,
         ...dayTypeState,
@@ -54,14 +56,13 @@ export const Filter = () => {
     return (
         <S.StyledFilter>
             <S.Checkbox
-                disable = { isReduxFormfilled }
+                filled = { isReduxFormfilled }
                 selected = { dayTypeState.isCloudy ?? false }
-                style = { isReduxFormfilled ? { pointerEvents: 'none' } : {} }
                 onClick = { () => void setDayTypeStateHandler('cloudy') }>
                 Облачно
             </S.Checkbox>
             <S.Checkbox
-                disable = { isReduxFormfilled }
+                filled = { isReduxFormfilled }
                 selected = { dayTypeState.isSunny ?? false }
                 onClick = { () => void setDayTypeStateHandler('sunny') }>
                 Солнечно
@@ -80,7 +81,7 @@ export const Filter = () => {
                 />
             </S.CustomInput>
             <S.CustomInput>
-                <S.CustomInputLabel htmlFor = 'min-temperature'>
+                <S.CustomInputLabel htmlFor = 'max-temperature'>
                     Максимальная температура
                 </S.CustomInputLabel>
                 <S.CustomInputField

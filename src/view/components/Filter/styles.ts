@@ -9,7 +9,7 @@ export const StyledFilter = styled.div`
   align-items: flex-end;
 `;
 
-export const Checkbox = styled.span<{ selected?: boolean; disable?: boolean }>`
+export const Checkbox = styled.span<{ selected?: boolean; filled?: boolean }>`
   position: relative;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
@@ -43,10 +43,9 @@ export const Checkbox = styled.span<{ selected?: boolean; disable?: boolean }>`
       }
     `};
 
-  ${(props) => props.disable
-    && css`
-      pointer-events: none;
-    `};
+  ${(props) => props.filled && {
+        pointerEvents: 'none',
+    }};
 `;
 
 export const CustomInput = styled.p`

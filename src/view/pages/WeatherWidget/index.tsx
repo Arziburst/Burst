@@ -6,7 +6,7 @@ import {
     ErrorBoundary,
     Filter,
     Head,
-    CurrentWeather,
+    CurrentDay,
     Forecast,
 } from '../../components';
 
@@ -38,7 +38,7 @@ const WeatherWidget = () => {
             ) : (
                 <section>
                     <Head currentDay = { currentDay } />
-                    <CurrentWeather currentDay = { currentDay } />
+                    <CurrentDay currentDay = { currentDay } />
                     <Forecast days = { days } />
                 </section>
             )}

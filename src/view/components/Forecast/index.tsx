@@ -1,19 +1,11 @@
 // Core
 import React, { FC } from 'react';
-import moment from 'moment';
 
-// Redux
-import { useFilter } from '../../../bus/client/filters';
+// Components
+import { Day } from '../';
 
 // Styles
-import {
-    StyledForecast,
-    CloudyDay,
-    RainyDay,
-    SunnyDay,
-    DayText,
-    DayNumber,
-} from './styles';
+import * as S from './styles';
 
 // Types
 import * as Types from '../../../bus/days/types';
@@ -23,59 +15,16 @@ type PropTypes = {
 };
 
 export const Forecast: FC<PropTypes> = ({ days }) => {
-    const currentWeek = days.slice(0, 7);
-
-    const { setCurrentDay, currentDay } = useFilter();
-
-    console.log('Это current week для списка', currentWeek);
+    const week = days.slice(0, 7);
 
     return (
-        <StyledForecast>
-            {currentWeek.map((day) => {
-                if (day.type === 'cloudy') {
-                    return (
-                        <CloudyDay
-                            key = { day.id }
-                            selected = { day.id === currentDay?.id }
-                            onClick = { () => void setCurrentDay(day) }>
-                            <DayText>{moment(day.day).locale('ru')
-                                .format('dddd')}
-                            </DayText>
-                            <DayNumber>{day.temperature}</DayNumber>
-                        </CloudyDay>
-                    );
-                }
-
-                if (day.type === 'rainy') {
-                    return (
-                        <RainyDay
-                            key = { day.id }
-                            selected = { day.id === currentDay?.id }
-                            onClick = { () => setCurrentDay(day) }>
-                            <DayText>{moment(day.day).locale('ru')
-                                .format('dddd')}
-                            </DayText>
-                            <DayNumber>{day.temperature}</DayNumber>
-                        </RainyDay>
-                    );
-                }
-
-                if (day.type === 'sunny') {
-                    return (
-                        <SunnyDay
-                            key = { day.id }
-                            selected = { day.id === currentDay?.id }
-                            onClick = { () => setCurrentDay(day) }>
-                            <DayText>{moment(day.day).locale('ru')
-                                .format('dddd')}
-                            </DayText>
-                            <DayNumber>{day.temperature}</DayNumber>
-                        </SunnyDay>
-                    );
-                }
-
-                return null;
-            })}
-        </StyledForecast>
+        <S.StyledForecast>
+            {week.map((day) => (
+                <Day
+                    day = { day }
+                    key = { day.id }
+                />
+            ))}
+        </S.StyledForecast>
     );
 };
