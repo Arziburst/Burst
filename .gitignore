@@ -64,13 +64,6 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
-
-# == VSCode ==
-
-# Main
-.vscode/*
-
-
 # == macOS ==
 
 # Main

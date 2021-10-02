@@ -9,8 +9,10 @@ import { Routes } from './routes';
 import { useLocalStorage } from '../tools/hooks';
 import { useTogglersRedux } from '../bus/client/togglers';
 
-// Assets and Styles
+// Assets
 import { GlobalStyles, defaultTheme } from '../assets';
+
+// Styles
 import { AppContainer } from './styles';
 
 export const App: FC = () => {

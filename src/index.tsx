@@ -5,14 +5,14 @@ import { render } from 'react-dom';
 import { Router } from 'react-router-dom';
 import { Provider as ReduxProvider } from 'react-redux';
 
-// App initializaion
+// Init
 import {
     store as reduxStore,
     history as routerHistory,
     registerServiceWorker,
 } from './init';
 
-// App
+// View
 import { App } from './view';
 
 // Assets

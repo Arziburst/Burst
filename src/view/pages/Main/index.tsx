@@ -1,5 +1,8 @@
 // Core
-import React, { FC } from 'react';
+import React, { FC, useRef } from 'react';
+
+// Hooks
+import { useOnScreen } from '../../../tools/hooks';
 
 // Components
 import { ErrorBoundary } from '../../components';
@@ -8,9 +11,14 @@ import { ErrorBoundary } from '../../components';
 import { Container } from './styles';
 
 const Main: FC = () => {
+    const divRef = useRef(null);
+    const visible = useOnScreen(divRef, '0px');
+
     return (
         <Container>
-            main
+            <div ref = { divRef }>
+                {visible ? 'visible' : 'hide'}
+            </div>
         </Container>
     );
 };

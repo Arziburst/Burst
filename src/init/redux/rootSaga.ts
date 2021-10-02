@@ -1,7 +1,7 @@
 // Core
 import { all } from 'redux-saga/effects';
 
-// Instruments
+// Tools
 import { watchMessages } from '../../bus/messages/saga';
 
 export function* rootSaga() {
