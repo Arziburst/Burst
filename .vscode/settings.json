@@ -1,0 +1,150 @@
+{
+    "better-comments.tags": [
+        // -------------------------------------------------------
+        {
+            "tag": "Init",
+            "color": "#560bad",
+        },
+        {
+            "tag": "Core",
+            "color": "#7209b7",
+        },
+        // https://coolors.co/ff7b00-ff8800-ff9500-ffa200-ffaa00-ffb700-ffc300-ffd000-ffdd00-ffea00
+        {
+            "tag": "Api",
+            "color": "#ff7b00",
+        },
+        {
+            "tag": "Bus",
+            "color": "#ff8800",
+        },
+        {
+            "tag": "Saga",
+            "color": "#ff9500",
+        },
+        {
+            "tag": "Worker",
+            "color": "#ffa200",
+        },
+        {
+            "tag": "Watcher",
+            "color": "#ffaa00",
+        },
+        {
+            "tag": "Middleware",
+            "color": "#ffb700",
+        },
+        {
+            "tag": "Slice",
+            "color": "#ffc300",
+        },
+        {
+            "tag": "Reducer",
+            "color": "#ffd000",
+        },
+        {
+            "tag": "Action",
+            "color": "#ffd933",
+        },
+        // -------------------------------------------------------
+        {
+            "tag": "View",
+            "color": "#5390d9",
+        },
+        {
+            "tag": "Route",
+            "color": "#4ea8de",
+        },
+        {
+            "tag": "Page",
+            "color": "#48bfe3",
+        },
+        {
+            "tag": "Container",
+            "color": "#56cfe1",
+        },
+        {
+            "tag": "Component",
+            "color": "#64dfdf",
+        },
+        {
+            "tag": "Element",
+            "color": "#72efdd",
+        },
+        {
+            "tag": "Style",
+            "color": "#80ffdb",
+        },
+        // https://coolors.co/ffedd8-f3d5b5-e7bc91-d4a276-bc8a5f-a47148-8b5e34-6f4518-603808-583101
+        {
+            "tag": "Tool",
+            "color": "#bc8a5f",
+        },
+        {
+            "tag": "Hook",
+            "color": "#d4a276",
+        },
+        {
+            "tag": "Helper",
+            "color": "#e7bc91",
+        },
+        {
+            "tag": "Util",
+            "color": "#f3d5b5",
+        },
+        {
+            "tag": "Constant",
+            "color": "#ffedd8",
+        },
+        // https://coolors.co/ff0a54-ff477e-ff5c8a-ff7096-ff85a1-ff99ac-fbb1bd-f9bec7-f7cad0-fae0e4
+        {
+            "tag": "Asset",
+            "color": "#fbb1bd",
+        },
+        {
+            "tag": "Font",
+            "color": "#f9bec7",
+        },
+        {
+            "tag": "Svg",
+            "color": "#f9bec7",
+        },
+        {
+            "tag": "Icon",
+            "color": "#f7cad0",
+        },
+        {
+            "tag": "Theme",
+            "color": "#fae0e4",
+        },
+        // -------------------------------------------------------
+        {
+            "tag": "Contract",
+            "color": "#0077b6",
+        },
+        {
+            "tag": "Type",
+            "color": "#48cae4",
+        },
+        {
+            "tag": "Interface",
+            "color": "#48cae4",
+        },
+        // -------------------------------------------------------
+        {
+            "tag": "?",
+            "color": "#ffffff",
+            "backgroundColor": "#3498DB",
+        },
+        {
+            "tag": "!",
+            "color": "#ffffff",
+            "backgroundColor": "#d00000",
+        },
+        {
+            "tag": "eslint",
+            "color": "#ffffff",
+            "backgroundColor": "rgb(253,184,51, 0.2)",
+        },
+    ],
+}
