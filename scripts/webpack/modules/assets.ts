@@ -2,6 +2,8 @@
 import { Configuration } from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ImageMinimizerPlugin from 'image-minimizer-webpack-plugin';
+// @ts-ignore
+import FontminPlugin from 'fontmin-webpack';
 
 // Constants
 import { STATIC_DIRECTORY, APP_NAME } from '../constants';
@@ -73,14 +75,39 @@ export const loadAudio = (): Configuration => ({
     },
 });
 
-export const loadFonts = (): Configuration => ({
+export const loadFontsDev = (): Configuration => ({
     module: {
         rules: [
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/i,
                 type: 'asset/resource',
-                // FIXME OPTIONS
             },
         ],
     },
+});
+
+export const loadFontsProd = (): Configuration => ({
+    module: {
+        rules: [
+            {
+                test: /\.(woff|woff2|eot|ttf|otf)$/i,
+                use:  [
+                    {
+                        loader:  'file-loader',
+                        options: {
+                            name: 'assets/[hash:5].[ext]',
+                        },
+                    },
+                ],
+            },
+        ],
+    },
+    plugins: [
+        new FontminPlugin({
+            autodetect:        true, // automatically pull unicode characters from CSS
+            glyphs:            [],   // extra glyphs to include
+            allowedFilesRegex: null, // RegExp to only target specific fonts by their names
+            skippedFilesRegex: null, // RegExp to skip specific fonts by their names
+        }),
+    ],
 });

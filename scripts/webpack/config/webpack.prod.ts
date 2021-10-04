@@ -24,5 +24,6 @@ export const getProdConfig = () => {
         modules.connectBundleAnalyzer(),
         modules.generateServiceWorker(),
         modules.generateManifest(),
+        modules.loadFontsProd(),
     );
 };
