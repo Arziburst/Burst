@@ -1,7 +1,7 @@
 // Core
 import { CaseReducer, PayloadAction } from '@reduxjs/toolkit';
 
-// State
+// Types
 export type Message = {
     _id: string
     text: string

@@ -2,7 +2,7 @@
 import { Configuration } from 'webpack';
 import { createTransformer } from 'typescript-plugin-styled-components';
 
-// Instruments
+// Tools
 import { nodeModulePath } from '../constants';
 
 const styledComponentsTransformer = createTransformer();

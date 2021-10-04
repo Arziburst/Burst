@@ -9,7 +9,7 @@ import messages from '../../bus/messages/slice';
 // Middleware
 import { middleware, sagaMiddleware } from './middleware';
 
-// Sagas
+// Saga
 import { rootSaga } from './rootSaga';
 
 export const store = configureStore({

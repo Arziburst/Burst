@@ -1,13 +1,13 @@
 // Types
 import { MessagesState } from '../../types';
 
-// Sync actions
+// Actions
 import { messagesActions } from '../../slice';
 
 // Api
 import * as API from '../api';
 
-// Instruments
+// Tools
 import { IControlledError, makeRequest } from '../../../../tools/utils';
 
 export function* fetchMessages() {

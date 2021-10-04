@@ -1,11 +1,60 @@
-Main 
+---README IN DEV---
 
-.development.env | .production.env 
+Welcome to Arziburst Boilerplate project.
 
-{
-    APP_NAME=APP_NAME
-    PUBLIC_URL=http://localhost:3000
-    API_URL=http://localhost:4000
-}
+Project required technologies:
+- NPM ^6v
+- Node ^14v
 
-npm run [start|build]
+Project technologies:
+- Typescript
+- Webpack (Node ^14v required)
+- React
+- Redux
+- styled-components
+
+Project extensions:
+ - Better Comments (id: aaron-bond.better-comments)
+
+Best comments names:
+
+<!--Init-->
+<!--Core-->
+<!--Api-->
+<!--Bus-->
+<!--Saga-->
+<!--Worker-->
+<!--Watcher-->
+<!--Middleware-->
+<!--Slice-->
+<!--Reducer-->
+<!--Action-->
+<!--View-->
+<!--Route-->
+<!--Page-->
+<!--Container-->
+<!--Component-->
+<!--Element-->
+<!--Style-->
+<!--Tool-->
+<!--Hook-->
+<!--Helper-->
+<!--Util-->
+<!--Constant-->
+<!--Asset-->
+<!--Font-->
+<!--Svg-->
+<!--Icon-->
+<!--Theme-->
+<!--Contract-->
+<!--Type-->
+<!--Interface-->
+<!--?-->
+<!--!-->
+<!--eslint-->
+
+Environment setup:
+
+Create `.development.env` and `.production.env` by example from `.env.example`.
+
+npm run [start|build|analyze|serve]

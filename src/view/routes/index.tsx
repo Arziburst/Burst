@@ -5,7 +5,7 @@ import React, { FC, Suspense } from 'react';
 // import { Public } from './Public';
 import { Private } from './Private';
 
-// Redux
+// Bus
 // import { useTogglersRedux } from '../../../.init/redux/togglers';
 
 // Elements

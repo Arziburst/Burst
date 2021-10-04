@@ -1,7 +1,5 @@
 // Tools
 import { ControlledError } from '../../../../tools/utils';
-
-// Constants
 import { API_URL } from '../../../../init/constants';
 
 // Types

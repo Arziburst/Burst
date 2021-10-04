@@ -5,7 +5,7 @@ import { takeEvery, all, call } from 'redux-saga/effects';
 // Types
 import * as types from './types';
 
-// // Workers
+// Workers
 import {
     fetchMessages,
 } from './workers';
