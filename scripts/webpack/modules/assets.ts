@@ -42,7 +42,7 @@ export const loadImagesProd = (): Configuration => ({
                             deleteOriginalAssets: true,
                             minimizerOptions:     {
                                 plugins: [
-                                    [ 'optipng', { optimizationLevel: 7, interlaced: null }],
+                                    [ 'optipng', { optimizationLevel: 4, interlaced: null }],
                                     [ 'jpegtran', { progressive: true }],
                                     [ 'gifsicle', { optimizationLevel: 3, interlaced: false }],
                                     [ 'webp', { quality: 75 }],
