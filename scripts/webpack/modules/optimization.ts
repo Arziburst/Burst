@@ -125,9 +125,11 @@ export const filterMomentLocales = (): Configuration => ({
 export const filterLodashModules = (): Configuration => {
     const lodashPlugin = new LodashModuleReplacementPlugin({
         collections: true,
+        paths:       true,
     });
 
     return {
-        plugins: [ /* lodashPlugin */ ],
+        // @ts-ignore
+        plugins: [ /* lodashPlugin */ ],    // TODO Testing
     };
 };

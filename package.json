@@ -52,6 +52,7 @@
         "@types/store": "^2.0.2",
         "@types/styled-components": "^5.1.14",
         "@types/terser-webpack-plugin": "^5.2.0",
+        "@types/ttf2woff2": "^2.0.0",
         "@types/uuid": "^8.3.1",
         "@types/webpack-bundle-analyzer": "^4.4.1",
         "@types/webpack-dev-server": "^4.1.0",
@@ -106,6 +107,7 @@
         "webpack-dev-server": "^4.2.1",
         "webpack-merge": "^5.8.0",
         "webpack-pwa-manifest": "^4.3.0",
+        "webpack-shell-plugin-next": "^2.2.2",
         "webpackbar": "^5.0.0-3",
         "workbox-webpack-plugin": "^6.3.0"
     }

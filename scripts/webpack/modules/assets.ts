@@ -3,7 +3,7 @@ import { Configuration } from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ImageMinimizerPlugin from 'image-minimizer-webpack-plugin';
 // @ts-ignore
-import FontminPlugin from 'fontmin-webpack';
+import FontminPlugin from 'fontmin-webpack';    // FIXME .d.ts
 
 // Constants
 import { STATIC_DIRECTORY, APP_NAME } from '../constants';

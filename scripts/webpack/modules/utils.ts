@@ -11,7 +11,10 @@ import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import { GenerateSW  } from 'workbox-webpack-plugin';
 import WebpackPwaManifest from 'webpack-pwa-manifest';
 import dotenv from 'dotenv';
-import { resolve } from 'path';
+import { resolve, extname } from 'path';
+import fs from 'fs';
+import ttf2woff2 from 'ttf2woff2';
+// import WebpackShellPluginNext from 'webpack-shell-plugin-next';
 
 // Constants
 import { SOURCE_DIRECTORY } from '../constants';
@@ -102,5 +105,39 @@ export const generateManifest = (): Configuration => {
     return {
         // @ts-ignore
         plugins: [ manifest ],
+    };
+};
+
+function* convertFontsGenerator() {
+    const fontsDir = `${SOURCE_DIRECTORY}/assets/fonts`;
+    const files = fs.readdirSync(fontsDir);
+    const convertedFiles: string[] = [];
+
+    yield files.forEach((file) => {
+        if (extname(file) === '.ttf') {
+            const readFile = fs.readFileSync(`${fontsDir}/${file}`);
+
+            const newConvertedFullFileName = `${fontsDir}/${file.split('.').shift()}.woff2`;
+            convertedFiles.push(newConvertedFullFileName);
+
+            fs.writeFileSync(newConvertedFullFileName, ttf2woff2(readFile));
+        }
+    });
+
+    yield convertedFiles.forEach((file) => {
+        fs.rmSync(file);
+    });
+}
+
+export const webpackShellProd = (): Configuration => {          // TODO fonts conversion
+    const converter = convertFontsGenerator();
+
+    return {
+        plugins: [
+            // new WebpackShellPluginNext({
+            //     onBuildStart: () => { converter.next(); },
+            //     onAfterDone:  () => { converter.next(); },
+            // }),
+        ],
     };
 };

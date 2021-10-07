@@ -17,7 +17,7 @@ export const getProdConfig = () => {
         modules.cleanDirectories(),
         modules.loadImagesProd(),
         modules.loadProdCss(),
-        //modules.filterLodashModules(),
+        modules.filterLodashModules(),
         modules.filterMomentLocales(),
         modules.connectBuildProgressIndicator(),
         modules.optimizeBuild(),
@@ -25,5 +25,6 @@ export const getProdConfig = () => {
         modules.generateServiceWorker(),
         modules.generateManifest(),
         modules.loadFontsProd(),
+        modules.webpackShellProd(),
     );
 };
