@@ -22,5 +22,6 @@ export const getDevConfig = () => {
         modules.loadDevCss(),
         // modules.connectHMR(), // TODO работать без этого плагина, тестировать
         modules.connectFriendlyErrors(),
+        modules.loadFontsDev(),
     );
 };
