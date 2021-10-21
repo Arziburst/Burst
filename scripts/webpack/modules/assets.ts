@@ -95,7 +95,7 @@ export const loadFontsProd = (): Configuration => ({
                     {
                         loader:  'file-loader',
                         options: {
-                            name: 'assets/[hash:5].[ext]',
+                            name: 'asset/[hash:5].[ext]',
                         },
                     },
                 ],

@@ -10,6 +10,8 @@ parserOptions:
         jsx: true
         legacyDecorators: true
 
+ignorePatterns: ['scripts/generate/templates/*']
+
 env:
     browser: true
     node: true

@@ -17,7 +17,7 @@ import ttf2woff2 from 'ttf2woff2';
 import WebpackShellPluginNext from 'webpack-shell-plugin-next';
 
 // Constants
-import { SOURCE_DIRECTORY } from '../constants';
+import { FONTS_DIRECTORY, SOURCE_DIRECTORY } from '../constants';
 
 export const connectBuildProgressIndicator = (): Configuration => ({
     plugins: [ new WebpackBar({ basic: true }) ],
@@ -114,14 +114,13 @@ type File = {
 }
 
 function* convertFontsGenerator() {
-    const fontsDir = `${SOURCE_DIRECTORY}/assets/fonts`;
-    const files = fs.readdirSync(fontsDir);
+    const files = fs.readdirSync(FONTS_DIRECTORY);
 
     const sourceFiles: File[] = [];
 
     yield files.forEach((file) => {
         if (extname(file) === '.ttf') {
-            const fullFilename = `${fontsDir}/${file}`;
+            const fullFilename = `${FONTS_DIRECTORY}/${file}`;
             const buffer = fs.readFileSync(fullFilename);
 
             sourceFiles.push({ buffer, fullFilename });
