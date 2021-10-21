@@ -11,7 +11,8 @@
         "start": "cross-env-shell NODE_ENV=development ts-node -P \"./tsconfig.webpack.json\" \"./scripts/webpack/start\"",
         "build": "cross-env-shell NODE_ENV=production ts-node -P \"./tsconfig.webpack.json\" \"./scripts/webpack/build\"",
         "analyze": "webpack-bundle-analyzer \"./build/stats.json\"",
-        "serve": "serve \"./build\" -s"
+        "serve": "serve \"./build\" -s",
+        "font-conversion": "cross-env-shell ts-node -P \"./tsconfig.webpack.json\" \"./scripts/log\""
     },
     "dependencies": {
         "@fortawesome/fontawesome-svg-core": "^1.2.36",
@@ -39,7 +40,6 @@
         "@types/imagemin-mozjpeg": "^8.0.0",
         "@types/imagemin-svgo": "^9.0.1",
         "@types/lodash": "^4.14.173",
-        "@types/lodash-webpack-plugin": "^0.11.6",
         "@types/mini-css-extract-plugin": "^2.3.0",
         "@types/node": "^16.9.6",
         "@types/react": "^17.0.24",
@@ -88,7 +88,6 @@
         "imagemin-svgo": "^10.0.0",
         "imagemin-webp": "^6.0.0",
         "inquirer": "^8.1.5",
-        "lodash-webpack-plugin": "^0.11.6",
         "mini-css-extract-plugin": "^2.3.0",
         "react-dev-utils": "^11.0.4",
         "react-hot-loader": "^4.13.0",

@@ -14,7 +14,7 @@ import dotenv from 'dotenv';
 import { resolve, extname } from 'path';
 import fs from 'fs';
 import ttf2woff2 from 'ttf2woff2';
-// import WebpackShellPluginNext from 'webpack-shell-plugin-next';
+import WebpackShellPluginNext from 'webpack-shell-plugin-next';
 
 // Constants
 import { SOURCE_DIRECTORY } from '../constants';
@@ -108,36 +108,43 @@ export const generateManifest = (): Configuration => {
     };
 };
 
+type File = {
+    buffer: Buffer,
+    fullFilename: string,
+}
+
 function* convertFontsGenerator() {
     const fontsDir = `${SOURCE_DIRECTORY}/assets/fonts`;
     const files = fs.readdirSync(fontsDir);
-    const convertedFiles: string[] = [];
+
+    const sourceFiles: File[] = [];
 
     yield files.forEach((file) => {
         if (extname(file) === '.ttf') {
-            const readFile = fs.readFileSync(`${fontsDir}/${file}`);
+            const fullFilename = `${fontsDir}/${file}`;
+            const buffer = fs.readFileSync(fullFilename);
 
-            const newConvertedFullFileName = `${fontsDir}/${file.split('.').shift()}.woff2`;
-            convertedFiles.push(newConvertedFullFileName);
+            sourceFiles.push({ buffer, fullFilename });
 
-            fs.writeFileSync(newConvertedFullFileName, ttf2woff2(readFile));
+            fs.writeFileSync(fullFilename, ttf2woff2(buffer));
         }
     });
 
-    yield convertedFiles.forEach((file) => {
-        fs.rmSync(file);
+    yield sourceFiles.forEach(({ buffer, fullFilename }) => {
+        fs.writeFileSync(fullFilename, buffer);
     });
 }
 
-export const webpackShellProd = (): Configuration => {          // TODO fonts conversion
+export const webpackShellProd = (): Configuration => {
     const converter = convertFontsGenerator();
 
     return {
         plugins: [
-            // new WebpackShellPluginNext({
-            //     onBuildStart: () => { converter.next(); },
-            //     onAfterDone:  () => { converter.next(); },
-            // }),
+            new WebpackShellPluginNext({
+                onBuildStart: () => { converter.next(); },
+                onAfterDone:  () => { converter.next(); },
+                onBuildError: () => { converter.next(); },
+            }),
         ],
     };
 };

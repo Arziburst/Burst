@@ -4,7 +4,13 @@
         "module": "CommonJS",
         "rootDir": "scripts",
         "noImplicitReturns": false,
-        "typeRoots": [ "node_modules/@types", "src/init/@types" ]
+        "typeRoots": [ "node_modules/@types", "src/init/@types" ],
+        "baseUrl": "./",
+        "paths": {
+            "*": [
+                "src/init/@types/*"
+            ]
+        }
     },
     "include": [ "scripts", "src/**/*" ],
 }

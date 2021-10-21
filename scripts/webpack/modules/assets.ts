@@ -3,7 +3,7 @@ import { Configuration } from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ImageMinimizerPlugin from 'image-minimizer-webpack-plugin';
 // @ts-ignore
-import FontminPlugin from 'fontmin-webpack';    // FIXME .d.ts
+import FontminPlugin from 'fontmin-webpack';
 
 // Constants
 import { STATIC_DIRECTORY, APP_NAME } from '../constants';
@@ -104,10 +104,10 @@ export const loadFontsProd = (): Configuration => ({
     },
     plugins: [
         new FontminPlugin({
-            autodetect:        true, // automatically pull unicode characters from CSS
-            glyphs:            [],   // extra glyphs to include
-            allowedFilesRegex: null, // RegExp to only target specific fonts by their names
-            skippedFilesRegex: null, // RegExp to skip specific fonts by their names
+            autodetect:        true,
+            glyphs:            [],
+            allowedFilesRegex: null,
+            skippedFilesRegex: null,
         }),
     ],
 });

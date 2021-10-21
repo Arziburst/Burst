@@ -10,8 +10,6 @@ import { ErrorBoundary } from '../../components';
 // Styles
 import { Container } from './styles';
 
-import { camelCase, filter } from 'lodash';
-
 const Main: FC = () => {
     const divRef = useRef(null);
     const visible = useOnScreen(divRef, '0px');
@@ -19,8 +17,7 @@ const Main: FC = () => {
     return (
         <Container>
             <div ref = { divRef }>
-                {visible ? camelCase('visible') : camelCase('hide')}
-                <p>{filter([ 3, 1, 6, 1, 78 ])}</p>
+                {visible ? 'visible' : 'hide'}
             </div>
         </Container>
     );
