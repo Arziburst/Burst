@@ -1,11 +1,14 @@
-// Tools
-import { API_URL } from '../../../../init/constants';
 
 // Types
 import * as types from '../../types';
 
+// Tools
+import { API_URL } from '../../../../init/constants';
+
+const ROUTE = '';
+
 export const fetch__entityName__(pascalCase): () => Promise<types.__entityName__(pascalCase)State> = async () => {
-    const response = await fetch(`${API_URL}/`, {
+    const response = await fetch(`${API_URL}/${ROUTE}`, {
         method:  'GET',
         headers: {
             'Content-Type': 'application/json',

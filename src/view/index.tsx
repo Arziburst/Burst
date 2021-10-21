@@ -1,6 +1,6 @@
 // Core
 import React, { FC, useEffect, useCallback } from 'react';
-import { ThemeProvider } from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 
 // Containers
 import { Routes } from './routes';
@@ -13,7 +13,12 @@ import { useTogglersRedux } from '../bus/client/togglers';
 import { GlobalStyles, defaultTheme } from '../assets';
 
 // Styles
-import { AppContainer } from './styles';
+export const AppContainer = styled.div`
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+`;
 
 export const App: FC = () => {
     const { setTogglerAction } = useTogglersRedux();

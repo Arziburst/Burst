@@ -2,26 +2,25 @@
 import React, { FC, Suspense } from 'react';
 
 // Routes
-// import { Public } from './Public';
+import { Public } from './Public';
 import { Private } from './Private';
 
 // Bus
-// import { useTogglersRedux } from '../../../.init/redux/togglers';
+import { useTogglersRedux } from '../../bus/client/togglers';
 
 // Elements
 import { Spinner } from '../elements';
 
 export const Routes: FC = () => {
-    // const { togglersRedux: { isLoggedIn }} = useTogglersRedux();
+    const { togglersRedux: { isLoggedIn }} = useTogglersRedux();
 
     return (
         <Suspense fallback = { <Spinner /> }>
-            <Private />
-            {/* {
+            {
                 isLoggedIn
                     ? <Private />
                     : <Public />
-            } */}
+            }
         </Suspense>
     );
 };

@@ -1,14 +1,13 @@
 /* eslint-disable babel/quotes */
 
 // Core
-import { generateTemplateFiles } from 'generate-template-files';
+import { generateTemplateFiles, CaseConverterEnum } from 'generate-template-files';
 import { path as PROJECT_ROOT } from 'app-root-path';
-import { IResults, CaseConverterEnum } from 'generate-template-files';
 import { resolve } from 'path';
 
 generateTemplateFiles([
     {
-        option:      'Create entity in /bus',
+        option:      'Entity: /bus__entityName__',
         defaultCase: CaseConverterEnum.CamelCase,
         entry:       {
             folderPath: resolve(PROJECT_ROOT, './scripts/generate/templates/busEntity'),
@@ -19,12 +18,12 @@ generateTemplateFiles([
             pathAndFileNameDefaultCase: CaseConverterEnum.CamelCase,
             overwrite:                  true,
         },
-        onComplete: (results: IResults) => {
+        onComplete: (results) => {
             console.log('results', results);
         },
     },
     {
-        option:      'Add Saga folder to /bus/someEntity',
+        option:      'Saga: /bus/__entityName__/saga',
         defaultCase: CaseConverterEnum.CamelCase,
         entry:       {
             folderPath: resolve(PROJECT_ROOT, './scripts/generate/templates/saga'),
@@ -35,7 +34,55 @@ generateTemplateFiles([
             pathAndFileNameDefaultCase: CaseConverterEnum.CamelCase,
             overwrite:                  true,
         },
-        onComplete: (results: IResults) => {
+        onComplete: (results) => {
+            console.log('results', results);
+        },
+    },
+    {
+        option:      'Component: /view/components/__componentName__',
+        defaultCase: CaseConverterEnum.CamelCase,
+        entry:       {
+            folderPath: resolve(PROJECT_ROOT, './scripts/generate/templates/component'),
+        },
+        stringReplacers: [ '__componentName__' ],
+        output:          {
+            path:                       resolve(PROJECT_ROOT, './src/view/components/__componentName__(pascalCase)'),
+            pathAndFileNameDefaultCase: CaseConverterEnum.CamelCase,
+            overwrite:                  true,
+        },
+        onComplete: (results) => {
+            console.log('results', results);
+        },
+    },
+    {
+        option:      'Container: /view/containers/__containerName__',
+        defaultCase: CaseConverterEnum.CamelCase,
+        entry:       {
+            folderPath: resolve(PROJECT_ROOT, './scripts/generate/templates/container'),
+        },
+        stringReplacers: [ '__containerName__' ],
+        output:          {
+            path:                       resolve(PROJECT_ROOT, './src/view/containers/__containerName__(pascalCase)'),
+            pathAndFileNameDefaultCase: CaseConverterEnum.CamelCase,
+            overwrite:                  true,
+        },
+        onComplete: (results) => {
+            console.log('results', results);
+        },
+    },
+    {
+        option:      'Page: /view/pages/__pageName__',
+        defaultCase: CaseConverterEnum.CamelCase,
+        entry:       {
+            folderPath: resolve(PROJECT_ROOT, './scripts/generate/templates/page'),
+        },
+        stringReplacers: [ '__pageName__' ],
+        output:          {
+            path:                       resolve(PROJECT_ROOT, './src/view/pages/__pageName__(pascalCase)'),
+            pathAndFileNameDefaultCase: CaseConverterEnum.CamelCase,
+            overwrite:                  true,
+        },
+        onComplete: (results) => {
             console.log('results', results);
         },
     },

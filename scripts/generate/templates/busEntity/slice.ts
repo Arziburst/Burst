@@ -4,7 +4,7 @@ import { createSlice } from '@reduxjs/toolkit';
 // Types
 import { __entityName__(pascalCase)State } from './types';
 
-// Reducers
+// Cases
 import * as cases from './cases';
 
 const initialState: __entityName__(pascalCase)State = [];

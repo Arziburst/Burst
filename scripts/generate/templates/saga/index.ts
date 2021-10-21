@@ -6,12 +6,10 @@ import { takeEvery, all, call } from 'redux-saga/effects';
 import * as types from './types';
 
 // Workers
-import {
-    fetch__entityName__(pascalCase),
-} from './workers';
+import * as workers from './workers';
 
 function* watchFetch__entityName__(pascalCase)(): SagaIterator {
-    yield takeEvery(types.FETCH___entityName__(constantCase)_ASYNC, fetch__entityName__(pascalCase));
+    yield takeEvery(types.FETCH___entityName__(constantCase)_ASYNC, workers.fetch__entityName__(pascalCase));
 }
 
 export function* watch__entityName__(pascalCase)(): SagaIterator {

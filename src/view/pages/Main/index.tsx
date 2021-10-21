@@ -1,7 +1,7 @@
 // Core
 import React, { FC, useRef } from 'react';
 
-// Hooks
+// Tools
 import { useOnScreen } from '../../../tools/hooks';
 
 // Components
