@@ -1,5 +1,3 @@
-/* eslint-disable babel/quotes */
-
 // Core
 import { generateTemplateFiles, CaseConverterEnum } from 'generate-template-files';
 import { path as PROJECT_ROOT } from 'app-root-path';
