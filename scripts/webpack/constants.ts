@@ -11,7 +11,7 @@ export { PROJECT_ROOT };
 export const SOURCE_DIRECTORY = resolve(PROJECT_ROOT, './src');
 export const BUILD_DIRECTORY = resolve(PROJECT_ROOT, './build');
 export const STATIC_DIRECTORY = resolve(PROJECT_ROOT, './static');
-export const FONTS_DIRECTORY = resolve(PROJECT_ROOT, './src/assets/fonts');
+export const BUILD_ASSETS_DIRECTORY = resolve(PROJECT_ROOT, './build/assets');
 export const nodeModulePath = (nodeModuleName: string) => resolve(PROJECT_ROOT, `./node_modules/${nodeModuleName}`);
 
 // App
