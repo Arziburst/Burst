@@ -109,8 +109,8 @@ export const generateManifest = (): Configuration => {
 };
 
 function convertFonts() {
-    fs.stat(BUILD_ASSETS_DIRECTORY, (err) => {
-        if(!err) {
+    fs.stat(BUILD_ASSETS_DIRECTORY, (error) => {
+        if (!error) {
             const files = fs.readdirSync(BUILD_ASSETS_DIRECTORY);
 
             files.forEach((file) => {
@@ -122,7 +122,7 @@ function convertFonts() {
                 }
             });
         }
-    })
+    });
 }
 
 export const webpackShellProd = (): Configuration => {
