@@ -108,24 +108,24 @@ export const generateManifest = (): Configuration => {
     };
 };
 
-function convertFonts() {
-    fs.stat(BUILD_ASSETS_DIRECTORY, (error) => {
-        if (!error) {
-            const files = fs.readdirSync(BUILD_ASSETS_DIRECTORY);
-
-            files.forEach((file) => {
-                if (extname(file) === '.ttf') {
-                    const fullFilename = `${BUILD_ASSETS_DIRECTORY}/${file}`;
-                    const buffer = fs.readFileSync(fullFilename);
-
-                    fs.writeFileSync(fullFilename, ttf2woff2(buffer));
-                }
-            });
-        }
-    });
-}
-
 export const webpackShellProd = (): Configuration => {
+    const convertFonts = () => {
+        fs.stat(BUILD_ASSETS_DIRECTORY, (error) => {
+            if (!error) {
+                const files = fs.readdirSync(BUILD_ASSETS_DIRECTORY);
+
+                files.forEach((file) => {
+                    if (extname(file) === '.ttf') {
+                        const fullFilename = `${BUILD_ASSETS_DIRECTORY}/${file}`;
+                        const buffer = fs.readFileSync(fullFilename);
+
+                        fs.writeFileSync(fullFilename, ttf2woff2(buffer));
+                    }
+                });
+            }
+        });
+    };
+
     return {
         plugins: [
             new WebpackShellPluginNext({
