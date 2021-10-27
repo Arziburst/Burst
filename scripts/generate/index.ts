@@ -5,7 +5,7 @@ import { resolve } from 'path';
 
 generateTemplateFiles([
     {
-        option:      'Entity: /bus__entityName__',
+        option:      'Entity: /bus/__entityName__',
         defaultCase: CaseConverterEnum.CamelCase,
         entry:       {
             folderPath: resolve(PROJECT_ROOT, './scripts/generate/templates/busEntity'),

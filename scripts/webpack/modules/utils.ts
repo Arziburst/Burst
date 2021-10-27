@@ -17,7 +17,7 @@ import ttf2woff2 from 'ttf2woff2';
 import WebpackShellPluginNext from 'webpack-shell-plugin-next';
 
 // Constants
-import { FONTS_DIRECTORY, SOURCE_DIRECTORY } from '../constants';
+import { BUILD_ASSETS_DIRECTORY, SOURCE_DIRECTORY } from '../constants';
 
 export const connectBuildProgressIndicator = (): Configuration => ({
     plugins: [ new WebpackBar({ basic: true }) ],
@@ -108,41 +108,28 @@ export const generateManifest = (): Configuration => {
     };
 };
 
-type File = {
-    buffer: Buffer,
-    fullFilename: string,
-}
-
-function* convertFontsGenerator() {
-    const files = fs.readdirSync(FONTS_DIRECTORY);
-
-    const sourceFiles: File[] = [];
-
-    yield files.forEach((file) => {
-        if (extname(file) === '.ttf') {
-            const fullFilename = `${FONTS_DIRECTORY}/${file}`;
-            const buffer = fs.readFileSync(fullFilename);
-
-            sourceFiles.push({ buffer, fullFilename });
-
-            fs.writeFileSync(fullFilename, ttf2woff2(buffer));
-        }
-    });
-
-    yield sourceFiles.forEach(({ buffer, fullFilename }) => {
-        fs.writeFileSync(fullFilename, buffer);
-    });
-}
-
 export const webpackShellProd = (): Configuration => {
-    const converter = convertFontsGenerator();
+    const convertFonts = () => {
+        fs.stat(BUILD_ASSETS_DIRECTORY, (error) => {
+            if (!error) {
+                const files = fs.readdirSync(BUILD_ASSETS_DIRECTORY);
+
+                files.forEach((file) => {
+                    if (extname(file) === '.ttf') {
+                        const fullFilename = `${BUILD_ASSETS_DIRECTORY}/${file}`;
+                        const buffer = fs.readFileSync(fullFilename);
+
+                        fs.writeFileSync(fullFilename, ttf2woff2(buffer));
+                    }
+                });
+            }
+        });
+    };
 
     return {
         plugins: [
             new WebpackShellPluginNext({
-                onBuildStart: () => { converter.next(); },
-                onAfterDone:  () => { converter.next(); },
-                onBuildError: () => { converter.next(); },
+                onAfterDone: () => convertFonts(),
             }),
         ],
     };

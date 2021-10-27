@@ -11,6 +11,12 @@ declare module '*.jpg' {
     export = File
 }
 
+declare module '*.jpeg' {
+    const File: string;
+
+    export = File
+}
+
 declare module '*.gif' {
     const File: string;
 
