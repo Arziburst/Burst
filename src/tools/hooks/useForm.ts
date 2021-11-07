@@ -4,15 +4,18 @@
 import { useState, ChangeEvent } from 'react';
 
 type HandleChange = (
-    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>  | null
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>  | null,
+    transformer?: (value: string | number) => string | number
 ) => void;
 
-type UseForm = <T>(initialValue: T) => [T, HandleChange, (newInitialValue: T) => void, Function]
+type UseForm = <T>(
+    initialValue: T,
+) => [T, HandleChange, (newInitialValue: T) => void, Function]
 
 export const useForm: UseForm = (initialValue) => {
     const [ form, setForm ] = useState(initialValue);
 
-    const handleChange: HandleChange = (event) => {
+    const handleChange: HandleChange = (event, transformer) => {
         if (event === null) {
             console.warn('Event do not exist.');
 
@@ -23,6 +26,10 @@ export const useForm: UseForm = (initialValue) => {
 
         if (event.target.type === 'number' && value !== '') {
             value = parseInt(value, 10);
+        }
+
+        if (transformer) {
+            value = transformer(value);
         }
 
         return void setForm({ ...form, [ event.target.name ]: value });
