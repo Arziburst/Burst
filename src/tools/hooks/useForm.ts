@@ -3,30 +3,36 @@
 // Core
 import { useState, ChangeEvent } from 'react';
 
-type HandleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>  | null, isNumber?: boolean) => void;
+type HandleChange = (
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>  | null
+) => void;
 
-export const useForm = <T>(initialValue: T): [T, HandleChange, (newInitialValue: T) => void, Function] => {
+type UseForm = <T>(initialValue: T) => [T, HandleChange, (newInitialValue: T) => void, Function]
+
+export const useForm: UseForm = (initialValue) => {
     const [ form, setForm ] = useState(initialValue);
 
-    const handleChange: HandleChange = (event, isNumber) => {
+    const handleChange: HandleChange = (event) => {
         if (event === null) {
-            return void setForm(initialValue);
+            console.warn('Event do not exist.');
+
+            return;
         }
 
         let value: string | number = event.target.value;
 
-        if (isNumber) {
-            value = value !== '' && parseInt(value, 10) >= 0  ? parseInt(value, 10) : 0;
+        if (event.target.type === 'number' && value !== '') {
+            value = parseInt(value, 10);
         }
 
         return void setForm({ ...form, [ event.target.name ]: value });
     };
 
-    const setInitialForm = (newInitialValue: T) => void setForm(newInitialValue);
-
     const resetForm = () => void setForm(initialValue);
 
-    return [ form, handleChange, setInitialForm, resetForm ];
+    const setInitialForm = (newInitialValue: typeof initialValue) => void setForm(newInitialValue);
+
+    return [ form, handleChange, resetForm, setInitialForm ];
 };
 
 type ArrayOfStringsForm = (initialValues: Array<string>) => [
