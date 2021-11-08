@@ -1,18 +1,18 @@
 // Actions
 import { __entityName__Actions } from '../../slice';
+import * as sagaActions from '../sagaActions';
 
 // Tools
 import * as API from '../api';
 import { makeRequest } from '../../../../tools/utils';
 
 // Types
-import { __entityName__(pascalCase)State } from '../../types';
-import { Fetch__entityName__(pascalCase)Contract } from '../types';
+import { __entityName__(pascalCase) } from '../../types';
 
-export function* fetch__entityName__(pascalCase)(action: ReturnType<Fetch__entityName__(pascalCase)Contract>) {
+export function* fetch__entityName__(pascalCase)(action: ReturnType<typeof sagaActions.fetch__entityName__(pascalCase)Action>) {
     console.log('🚀action', action);
 
-    const result: __entityName__(pascalCase)State | null = yield makeRequest<__entityName__(pascalCase)State>({
+    const result: __entityName__(pascalCase) | null = yield makeRequest<__entityName__(pascalCase)>({
         fetcher:           API.fetch__entityName__(pascalCase),
         succesAction:      __entityName__Actions.set__entityName__(pascalCase),
         successSideEffect: function* (result) {
