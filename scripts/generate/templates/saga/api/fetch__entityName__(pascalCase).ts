@@ -1,13 +1,12 @@
-
 // Types
 import * as types from '../../types';
+type FetchContact = () => Promise<types.__entityName__(pascalCase)>
 
 // Tools
 import { API_URL } from '../../../../init/constants';
-
 const ROUTE = '';
 
-export const fetch__entityName__(pascalCase): () => Promise<types.__entityName__(pascalCase)State> = async () => {
+export const fetch__entityName__(pascalCase): FetchContact = async () => {
     const response = await fetch(`${API_URL}/${ROUTE}`, {
         method:  'GET',
         headers: {

@@ -2,20 +2,19 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 // Types
-import { __entityName__(pascalCase)State } from './types';
+import * as types from './types';
 
-// Cases
-import * as cases from './cases';
+// Reducers
+import * as reducers from './reducers';
 
-const initialState: __entityName__(pascalCase)State = [];
+const initialState = null;
 
-export const __entityName__Slice = createSlice({
-    name:     '__entityName__',
+export const __entityName__Slice = createSlice<types.__entityName__(pascalCase)State, typeof reducers>({
+    name: '__entityName__',
     initialState,
-    reducers: {
-        ...cases,
-    },
+    reducers,
 });
 
+export const sliceName = __entityName__Slice.name;
 export const __entityName__Actions = __entityName__Slice.actions;
 export default __entityName__Slice.reducer;
