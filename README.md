@@ -77,6 +77,7 @@ local:
 ### `docker push [dokerId]/[imageName]`
 
 Remote:
+### `docker pull [dokerId]/[imageName]`
 ### `docker tag [dokerId]/[imageName] dokku/[appName]`
 
 ### `dokku tags:deploy [appName]`
