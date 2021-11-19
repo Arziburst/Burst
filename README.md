@@ -94,14 +94,14 @@ dokku postgres:create db
 
 dokku postgres:[unexpose|expose] db [?port]
 
-dokku apps:create [dokkuContainerName]
+dokku apps:create [dokkuAppName]
 
-dokku postgres:link db [dokkuContainerName]
+dokku postgres:link db [dokkuAppName]
 
-dokku config:set [dokkuContainerName] [key=value] [key=value]...
+dokku config:set [dokkuAppName] [key=value] [key=value]...
 
-dokku domains:[add|remove][?-global] [?dokkuContainerName] [domain]
+dokku domains:[add|remove][?-global] [?dokkuAppName] [domain]
 
-dokku proxy:ports-[add|remove|clear] [dokkuContainerName] [?http:[port:port]]
+dokku proxy:ports-[add|remove|clear] [dokkuAppName] [?http:[port:port]]
 
-dokku letsencrypt [dokkuContainerName]
+dokku letsencrypt:enable [dokkuAppName]
