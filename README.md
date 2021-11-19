@@ -67,3 +67,41 @@ You may need to correct `settings.json` in VS Code
 Best comments names:
 
 ![image](https://user-images.githubusercontent.com/53538417/139050274-e7f87f9e-7d8c-4b9c-8ac2-8f65837850c2.png)
+
+## Deploy
+
+local:
+### `npm run build`
+### `docker build -t [dokerId]/[imageName] .`
+
+### `docker push [dokerId]/[imageName]`
+
+Remote:
+### `docker tag [dokerId]/[imageName] dokku/[appName]`
+
+### `dokku tags:deploy [appName]`
+### `dokku [module]:[report|help]`
+
+Mini Dokku docs:
+
+sudo dokku plugin:install https://github.com/dokku/dokku-postgres.git postgres
+
+sudo dokku plugin:install https://github.com/dokku/dokku-mongo.git mongo
+
+sudo dokku plugin:install https://github.com/dokku/dokku-letsencrypt.git
+
+dokku postgres:create db
+
+dokku postgres:[unexpose|expose] db [?port]
+
+dokku apps:create [dokkuContainerName]
+
+dokku postgres:link db [dokkuContainerName]
+
+dokku config:set [dokkuContainerName] [key=value] [key=value]...
+
+dokku domains:[add|remove][?-global] [?dokkuContainerName] [domain]
+
+dokku proxy:ports-[add|remove|clear] [dokkuContainerName] [?http:[port:port]]
+
+dokku letsencrypt [dokkuContainerName]
