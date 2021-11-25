@@ -1,13 +1,12 @@
 // Core
 import React from 'react';
 import { render } from 'react-dom';
-import { Router } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom'; // TODO check import Router
 import { Provider as ReduxProvider } from 'react-redux';
 
 // Init
 import {
     store as reduxStore,
-    history as routerHistory,
     registerServiceWorker,
 } from './init';
 
@@ -22,7 +21,7 @@ initIconsLibrary();
 const Root = () => {
     return (
         <ReduxProvider store = { reduxStore }>
-            <Router history = { routerHistory }>
+            <Router>
                 <App />
             </Router>
         </ReduxProvider>

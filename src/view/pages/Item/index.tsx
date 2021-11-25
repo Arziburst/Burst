@@ -1,9 +1,6 @@
 // Core
 import React, { FC } from 'react';
-import { Link } from 'react-router-dom';
-
-// Bus
-// import {} from '../../../bus/'
+import { useParams } from 'react-router';
 
 // Components
 import { ErrorBoundary } from '../../components';
@@ -16,18 +13,18 @@ type PropTypes = {
     /* type props here */
 }
 
-const Register: FC<PropTypes> = () => {
+const Item: FC<PropTypes> = () => {
+    const { id } = useParams<'id'>();
+
     return (
         <S.Container>
-            Page: Register
-            <br/>
-            <Link to = '/items'>Items</Link>
+            <p>{ id }</p>
         </S.Container>
     );
 };
 
 export default () => (
     <ErrorBoundary>
-        <Register />
+        <Item />
     </ErrorBoundary>
 );
