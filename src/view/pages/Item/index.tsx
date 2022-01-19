@@ -18,7 +18,7 @@ const Item: FC<PropTypes> = () => {
 
     return (
         <S.Container>
-            <p>{ id }</p>
+            <p>Page Item: { id }</p>
         </S.Container>
     );
 };

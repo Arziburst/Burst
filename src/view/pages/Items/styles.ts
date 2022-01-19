@@ -1,15 +1,16 @@
 // Core
-import styled from 'styled-components';
+import styled, { CSSProperties } from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
-type ContainerPropTypes = {
-    padding: number
+interface ContainerPropTypes {
+    addStyle: CSSProperties,
 }
 
-export const Container = styled.div<ContainerPropTypes>(({ padding }) => ({
-    padding: `${padding}px`,
+export const Container = styled.div<ContainerPropTypes>(({ addStyle }) => ({
+    ...addStyle,
 }));
 
 export const NavButton = styled(NavLink)(() => ({
-
+    display:        'block',
+    textDecoration: 'none',
 }));

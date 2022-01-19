@@ -1,24 +1,49 @@
 // Core
-import React, { FC, useRef } from 'react';
-
-// Tools
-import { useOnScreen } from '../../../tools/hooks';
+import React, { FC } from 'react';
+import { Outlet, Link, useLocation } from 'react-router-dom';
+import { FontAwesomeIcon  } from '@fortawesome/react-fontawesome';
 
 // Components
 import { ErrorBoundary } from '../../components';
 
 // Styles
-import { Container } from './styles';
+import { Container, Nav, Breadcrumbs, Crumb } from './styles';
+
+// Icons
+import { faHome } from '@fortawesome/free-solid-svg-icons';
 
 const Main: FC = () => {
-    const divRef = useRef(null);
-    const visible = useOnScreen(divRef, '0px');
+    const { pathname } = useLocation();
 
     return (
         <Container>
-            <div ref = { divRef }>
-                {visible ? 'visible' : 'hide'}
-            </div>
+            <Nav>
+                <Link to = 'register'>Registation</Link>
+                <Link to = '/items'>Items</Link>
+            </Nav>
+            <Breadcrumbs>
+                <Crumb to = '/'>
+                    <FontAwesomeIcon
+                        icon = { faHome }
+                        size = '2x'
+                    />
+                </Crumb>
+                {pathname.split('/').map((crumb, i) => {
+                    const path = pathname.split('/').slice(0, i + 1)
+                        .join('/');
+
+                    return (
+                        crumb && (
+                            <Crumb
+                                key = { path }
+                                to = { path }>
+                                {crumb}
+                            </Crumb>
+                        )
+                    );
+                })}
+            </Breadcrumbs>
+            <Outlet />
         </Container>
     );
 };

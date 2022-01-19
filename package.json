@@ -12,7 +12,8 @@
         "build": "cross-env-shell NODE_ENV=production ts-node -P \"./tsconfig.webpack.json\" \"./scripts/webpack/build\"",
         "gen": "cross-env-shell ts-node -P \"./tsconfig.generate.json\" \"./scripts/generate\"",
         "analyze": "webpack-bundle-analyzer \"./build/stats.json\"",
-        "serve": "serve \"./build\" -s"
+        "serve": "serve \"./build\" -s",
+        "clean": "rm -rf node_modules"
     },
     "dependencies": {
         "@fortawesome/fontawesome-svg-core": "^1.2.36",
