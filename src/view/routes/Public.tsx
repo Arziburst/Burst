@@ -1,20 +1,26 @@
 // Core
 import React, { FC } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { useRoutes, Navigate } from 'react-router-dom';
 
 // Pages
-import { Register } from '../pages';
+import { Main, Register, Items, Item } from '../pages';
 
 export const Public: FC = () => {
-    return (
-        <Switch>
-            <Route
-                exact
-                path = '/register'>
-                <Register />
-            </Route>
+    const routes = useRoutes([
+        {
+            path:     '',
+            element:  <Main />,
+            children: [
+                { path: 'register', element: <Register /> },
+                {
+                    path:     'items',
+                    element:  <Items />,
+                    children: [{ path: ':id', element: <Item /> }],
+                },
+                { path: '*', element: <Navigate to = 'register' /> },
+            ],
+        },
+    ]);
 
-            <Redirect to = '/register' />
-        </Switch>
-    );
+    return routes;
 };
