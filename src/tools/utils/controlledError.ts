@@ -1,9 +1,6 @@
-// Core
-import { v4 } from 'uuid';
-
 type Options = {
-    statusCode: number
     message: string
+    statusCode?: number
     data?: any
 }
 
@@ -11,7 +8,6 @@ export class ControlledError<T extends Options> extends Error {
     readonly message;
     readonly statusCode;
     readonly data;
-    readonly errorId;
 
     constructor(args: T) {
         super(args.message);
@@ -32,7 +28,6 @@ export class ControlledError<T extends Options> extends Error {
         this.statusCode = statusCode;
         this.message = message;
         this.data = data;
-        this.errorId = v4();
     }
 }
 

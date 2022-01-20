@@ -1,13 +1,19 @@
 // Core
+import { useDispatch } from 'react-redux';
 import { SagaIterator } from '@redux-saga/core';
-import { takeEvery, all } from 'redux-saga/effects';
+import { all, call } from 'redux-saga/effects';
 
-// Types
-import * as sagaActions from './sagaActions';
+// Watchers & Actions
+import { fetch__entityName__(pascalCase)Action, watchFetch__entityName__(pascalCase) } from './fetch__entityName__(pascalCase)';
 
-// Workers
-import * as workers from './workers';
+export const use__entityName__(pascalCase)Saga = () => {
+    const dispatch = useDispatch();
+
+    return {
+        fetch__entityName__(pascalCase): () => void dispatch(fetch__entityName__(pascalCase)Action(1)),
+    };
+};
 
 export function* watch__entityName__(pascalCase)(): SagaIterator {
-    yield all([ yield takeEvery(sagaActions.fetch__entityName__(pascalCase)Action.type, workers.fetch__entityName__(pascalCase)) ]);
+    yield all([ call(watchFetch__entityName__(pascalCase)) ]);
 }
