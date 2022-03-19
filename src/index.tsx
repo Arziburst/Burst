@@ -1,7 +1,7 @@
 // Core
 import React from 'react';
 import { render } from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom'; // TODO check import Router
+import { BrowserRouter } from 'react-router-dom';
 import { Provider as ReduxProvider } from 'react-redux';
 
 // Init
@@ -21,9 +21,9 @@ initIconsLibrary();
 const Root = () => {
     return (
         <ReduxProvider store = { reduxStore }>
-            <Router>
+            <BrowserRouter>
                 <App />
-            </Router>
+            </BrowserRouter>
         </ReduxProvider>
     );
 };

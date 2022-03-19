@@ -6,6 +6,4 @@ export type __entityName__(pascalCase) = Array<any>
 export type __entityName__(pascalCase)State = __entityName__(pascalCase) | null
 
 // Contracts
-type BaseContact<T> = CaseReducer<__entityName__(pascalCase)State, PayloadAction<T>>
-
-export type Set__entityName__(pascalCase)Contract = BaseContact<__entityName__(pascalCase)>
+export type BaseContact<T = any> = CaseReducer<__entityName__(pascalCase)State, PayloadAction<T>>
