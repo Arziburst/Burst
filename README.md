@@ -12,7 +12,7 @@ If you have some enhancements, please [file an pull request](https://github.com/
 INITIALIZING COMMANDS
 ```
 
-Also you can create `.development.env` and `.production.env` by example from `.env.example`.
+Also you can create `.env.development` and `.env.production` by example from `.env.example`.
 
 ### `npm start`
 To run project in dev mode
