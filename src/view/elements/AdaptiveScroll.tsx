@@ -34,6 +34,7 @@ const ScrollContainer = styled.section<{ heightDiff: number; disableOnMobile?: t
 type Ref = RefObject<HTMLElement | HTMLHeadingElement>;
 
 type Proptypes = {
+    children: React.ReactNode;
     refs: Array<Ref>;
     backgroundColor?: string;
     minHeight?: true;

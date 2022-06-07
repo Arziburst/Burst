@@ -1,6 +1,7 @@
 // Core
 import { Configuration } from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 
 const loadCss = ({ sourceMap }: { sourceMap: boolean }) => ({
     loader:  'css-loader',
@@ -13,7 +14,7 @@ export const loadDevCss = (): Configuration => ({
     module: {
         rules: [
             {
-                test: /\.css$/,
+                test: /.s?css$/,
                 use:  [
                     'style-loader',
                     loadCss({ sourceMap: true }),
@@ -27,13 +28,17 @@ export const loadProdCss = (): Configuration => ({
     module: {
         rules: [
             {
-                test: /\.css$/,
+                test: /.s?css$/,
                 use:  [
                     MiniCssExtractPlugin.loader,
                     loadCss({ sourceMap: false }),
+                    'sass-loader',
                 ],
             },
         ],
+    },
+    optimization: {
+        minimizer: [ new CssMinimizerPlugin() ],
     },
     plugins: [
         new MiniCssExtractPlugin({

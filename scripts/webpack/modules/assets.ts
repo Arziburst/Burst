@@ -1,6 +1,7 @@
 // Core
 import { Configuration } from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+// @ts-ignore
 import ImageMinimizerPlugin from 'image-minimizer-webpack-plugin';
 // @ts-ignore
 import FontminPlugin from 'fontmin-webpack';
@@ -23,7 +24,6 @@ export const loadImagesDev = (): Configuration => ({
         rules: [
             {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
-                type: 'asset/resource',
             },
         ],
     },
@@ -34,7 +34,6 @@ export const loadImagesProd = (): Configuration => ({
         rules: [
             {
                 test: /\.(png|svg|jpg|jpeg|gif|webp)$/i,
-                type: 'asset/resource',
                 use:  [
                     {
                         loader:  ImageMinimizerPlugin.loader,
@@ -61,7 +60,6 @@ export const loadAudio = (): Configuration => ({
         rules: [
             {
                 test: /\.(wav|mp3)$/,
-                type: 'asset/resource',
                 use:  [
                     {
                         loader:  'file-loader',
@@ -80,7 +78,6 @@ export const loadFontsDev = (): Configuration => ({
         rules: [
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/i,
-                type: 'asset/resource',
             },
         ],
     },

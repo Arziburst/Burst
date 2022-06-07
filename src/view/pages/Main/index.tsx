@@ -6,6 +6,7 @@ import { ErrorBoundary } from '../../components';
 
 // Styles
 import { Container } from './styles';
+import './style.css';
 
 const Main: FC = () => {
     return (

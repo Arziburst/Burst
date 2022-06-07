@@ -1,11 +1,13 @@
 // Core
-import React, { Component} from 'react';
+import React, { Component } from 'react';
 
 type State =  {
     error: Error | null;
 }
 
-export class ErrorBoundary extends Component<{}, State> {
+export class ErrorBoundary extends Component<{
+    children: React.ReactNode;
+}, State> {
     static getDerivedStateFromError(error: Error) {
         return { error };
     }

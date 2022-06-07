@@ -1,5 +1,5 @@
 // Core
-import webpack from 'webpack';
+import webpack, { Compiler } from 'webpack';
 import DevServer from 'webpack-dev-server';
 import chalk from 'chalk';
 import openBrowser from 'react-dev-utils/openBrowser';
@@ -26,7 +26,6 @@ const compiler = webpack(getDevConfig());
         }
 
         const server = new DevServer({
-            host:               HOST,
             port:               choosenPort,
             historyApiFallback: true,
             hot:                false,
