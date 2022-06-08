@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 // Core
 import React, { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
