@@ -1,5 +1,5 @@
 // Core
-import webpack, { Compiler } from 'webpack';
+import webpack from 'webpack';
 import DevServer from 'webpack-dev-server';
 import chalk from 'chalk';
 import openBrowser from 'react-dev-utils/openBrowser';
