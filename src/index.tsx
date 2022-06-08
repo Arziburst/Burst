@@ -13,11 +13,6 @@ import {
 // View
 import { App } from './view';
 
-// Assets
-import { initIconsLibrary } from './assets';
-
-initIconsLibrary();
-
 const Root = () => {
     return (
         <ReduxProvider store = { reduxStore }>

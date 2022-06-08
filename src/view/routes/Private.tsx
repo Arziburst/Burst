@@ -3,14 +3,17 @@ import React, { FC } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 // Pages
-import { Main } from '../pages';
+import * as Pages from '../pages';
+
+// Tools
+import * as book from './book';
 
 export const Private: FC = () => {
     return (
         <Routes>
             <Route
-                element = { <Main /> }
-                path = '/'
+                element = { <Pages.Main /> }
+                path = { book.ROOT }
             />
         </Routes>
     );
