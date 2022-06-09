@@ -17,7 +17,7 @@ export const getDevConfig = () => {
         },
         modules.loadImagesDev(),
         modules.loadDevCss(),
-        modules.connectFriendlyErrors(),
         modules.loadFontsDev(),
+        modules.connectFriendlyErrors(),
     );
 };

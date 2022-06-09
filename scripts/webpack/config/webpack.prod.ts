@@ -17,13 +17,12 @@ export const getProdConfig = () => {
         modules.cleanDirectories(),
         modules.loadImagesProd(),
         modules.loadProdCss(),
+        modules.loadFontsProd(),
         modules.filterMomentLocales(),
         modules.connectBuildProgressIndicator(),
         modules.optimizeBuild(),
         modules.connectBundleAnalyzer(),
         modules.generateServiceWorker(),
         modules.generateManifest(),
-        modules.loadFontsProd(),
-        modules.webpackShellProd(),
     );
 };
