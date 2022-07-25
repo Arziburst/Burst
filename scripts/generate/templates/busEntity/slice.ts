@@ -8,7 +8,7 @@ import * as types from './types';
 import * as reducers from './reducers';
 
 // ExtraReducers
-// import extraReducers from './thunk/extraReducers';
+// import {extraReducers} from './thunk/extraReducers';
 
 const initialState = {
     status:   'idle',
