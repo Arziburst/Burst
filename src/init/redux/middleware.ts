@@ -2,11 +2,12 @@
 import { Middleware } from 'redux';
 import { createLogger } from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
+import thunkMiddleware from 'redux-thunk';
 
 const isDev = process.env.NODE_ENV === 'development';
 const sagaMiddleware = createSagaMiddleware();
 
-const middleware: Middleware[] = [ sagaMiddleware ];
+const middleware: Middleware[] = [ sagaMiddleware, thunkMiddleware ];
 
 isDev && middleware.push(
     createLogger({
