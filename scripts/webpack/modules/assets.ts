@@ -46,7 +46,7 @@ export const loadImagesProd = (): Configuration => ({
                     implementation: ImageMinimizerPlugin.imageminMinify,
                     options:        {
                         plugins: [
-                            'imagemin-gifsicle',
+                            // 'imagemin-gifsicle',
                             'imagemin-mozjpeg',
                             'imagemin-pngquant',
                             'imagemin-svgo',
