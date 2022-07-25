@@ -43,17 +43,8 @@ export const loadImagesProd = (): Configuration => ({
         minimizer: [
             new ImageMinimizerPlugin({
                 minimizer: {
-                    implementation: ImageMinimizerPlugin.imageminMinify,
-                    options:        {
-                        plugins: [
-                            // 'imagemin-gifsicle',
-                            'imagemin-mozjpeg',
-                            'imagemin-pngquant',
-                            'imagemin-svgo',
-                        ],
-                    },
+                    implementation: ImageMinimizerPlugin.squooshMinify,
                 },
-                loader: false,
             }),
         ],
     },
