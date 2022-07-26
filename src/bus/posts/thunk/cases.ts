@@ -2,19 +2,20 @@
 import * as types from '../types';
 
 // fetchPosts cases
-export const PostsPending = (state: types.PostsState) => {
+export const PostsPending: types.BaseContact = (state) => {
     state!.status = 'loading';
     state!.error = null;
 };
 
-export const PostsFullfiled = (state: types.PostsState, action: types.ActionType) => {
+export const PostsFullfiled: types.BaseContact = (state, action) => {
     state!.posts = action.payload;
     state!.status = 'idle';
     state!.error = null;
 };
 
-export const PostsRejected = (state: types.PostsState, action: types.ActionType) => {
+export const PostsRejected: types.BaseContact = (state, action) => {
     state!.status = 'failed';
     state!.posts = [];
     state!.error = action.error;
+    console.log(action.error);
 };

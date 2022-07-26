@@ -13,4 +13,4 @@ export type PostsState = {
 export type ActionType = {[key: string]: any}
 
 // Contracts
-export type BaseContact<T = any> = CaseReducer<PostsState, PayloadAction<T>>
+export type BaseContact<T = any> = CaseReducer<PostsState, ActionType & PayloadAction<T>>
