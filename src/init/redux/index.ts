@@ -10,7 +10,6 @@ import { middleware, sagaMiddleware } from './middleware';
 
 // Saga
 import { rootSaga } from './rootSaga';
-// import thunk, { ThunkDispatch } from 'redux-thunk';
 
 
 export const store = configureStore({
