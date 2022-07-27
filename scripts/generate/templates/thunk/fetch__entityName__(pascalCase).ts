@@ -1,20 +1,33 @@
 // Core
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
 
 // Tools
 import { API_URL } from '../../../init/constants';
+import { customFetchThunk } from '../../../tools/utils/customFetchThunk';
 
 // Types
 import { __entityName__(pascalCase) } from '../types';
 
-// Thunk
-export const fetch__entityName__(pascalCase) = createAsyncThunk< __entityName__(pascalCase), undefined, {rejectValue: string}>('FETCH_MESSAGES_ASYNC',
-    async (_, { rejectWithValue }) => {
-        const response = await fetch(`${API_URL}/__entityName__`);
+// State
+import { sliceName } from '../slice';
+import { RootState } from '../../../init';
 
-        if (!response.ok) {
-            return rejectWithValue('Something went wrong');
-        }
+// Action
+export const fetch__entityName__(pascalCase)Action = createAction(`${sliceName}/FETCH_${sliceName.toUpperCase()}_ASYNC`);
 
-        return response.json();
-    });
+export const fetch__entityName__(pascalCase) = createAsyncThunk<__entityName__(pascalCase), undefined, {state: RootState}>(
+    fetch__entityName__(pascalCase)Action.type,
+    async (_, { getState }): Promise<any> => {
+        const result: __entityName__(pascalCase) = await customFetchThunk<any>({
+            successStatusCode: 200,
+            fetch:             () => fetch(`${API_URL}`, {
+                method:  'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            }),
+        });
+
+        getState().__entityName__ = result;
+    },
+);

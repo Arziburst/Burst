@@ -1,5 +1,5 @@
 // Core
-import { useDispatch } from 'react-redux';
+import { useDispatch } from '../../../tools/hooks';
 
 import { fetch__entityName__(pascalCase) } from './fetch__entityName__(pascalCase)';
 

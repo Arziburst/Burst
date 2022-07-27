@@ -17,6 +17,7 @@
     },
     "dependencies": {
         "@reduxjs/toolkit": "^1.8.2",
+        "@types/redux-thunk": "^2.1.0",
         "lodash": "^4.17.21",
         "moment": "^2.29.3",
         "react": "^18.1.0",
