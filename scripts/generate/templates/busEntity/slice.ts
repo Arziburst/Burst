@@ -6,6 +6,7 @@ import * as types from './types';
 
 // Reducers
 import * as reducers from './reducers';
+import {extraReducers} from './thunk/extraReducers';
 
 const initialState = null;
 
@@ -13,6 +14,7 @@ export const __entityName__Slice = createSlice<types.__entityName__(pascalCase)S
     name: '__entityName__',
     initialState,
     reducers,
+    extraReducers
 });
 
 export const sliceName = __entityName__Slice.name;

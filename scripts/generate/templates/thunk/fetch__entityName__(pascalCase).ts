@@ -1,24 +1,22 @@
 // Core
 import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
 
-// Tools
+// API
 import { API_URL } from '../../../init/constants';
+
+// Tools
 import { customFetchThunk } from '../../../tools/utils/customFetchThunk';
 
 // Types
 import { __entityName__(pascalCase) } from '../types';
 
-// State
-import { sliceName } from '../slice';
-import { RootState } from '../../../init';
-
 // Action
-export const fetch__entityName__(pascalCase)Action = createAction(`${sliceName}/FETCH_${sliceName.toUpperCase()}_ASYNC`);
+export const fetch__entityName__(pascalCase)Action = createAction('__entityName__(pascalCase)/FETCH_SOMETHING_ASYNC');
 
-export const fetch__entityName__(pascalCase) = createAsyncThunk<__entityName__(pascalCase), undefined, {state: RootState}>(
+export const fetch__entityName__(pascalCase) = createAsyncThunk<__entityName__(pascalCase), undefined>(
     fetch__entityName__(pascalCase)Action.type,
-    async (_, { getState }): Promise<any> => {
-        const result: __entityName__(pascalCase) = await customFetchThunk<any>({
+    async (_) => {
+        const result = await customFetchThunk<any>({
             successStatusCode: 200,
             fetch:             () => fetch(`${API_URL}`, {
                 method:  'GET',
@@ -28,6 +26,6 @@ export const fetch__entityName__(pascalCase) = createAsyncThunk<__entityName__(p
             }),
         });
 
-        getState().__entityName__ = result;
+        return result;
     },
 );
