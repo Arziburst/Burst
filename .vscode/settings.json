@@ -23,6 +23,10 @@
             "color": "#ff9500",
         },
         {
+            "tag": "Thunk",
+            "color": "#ff9500",
+        },
+        {
             "tag": "Worker",
             "color": "#ffa200",
         },

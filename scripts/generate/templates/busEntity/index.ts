@@ -2,18 +2,18 @@
 // import { useEffect } from 'react';
 
 // Tools
-import { useSelector } from '../../tools/hooks';
+import { useSelector } from '../../tools/hooks'; /* Typed selector */
 
-// Saga
-// import { use__entityName__(pascalCase)Saga } from './saga';
-
-// Thunk
+// Middleware
+// import { use__entityName__(pascalCase)Saga } from './saga'; /* Choose one technology */
 // import { use__entityName__(pascalCase)Thunk } from './thunk';
 
 export const use__entityName__(pascalCase) = () => {
-    // const { fetch__entityName__(pascalCase) } = use__entityName__(pascalCase)Saga();
-    // const { fetch__entityName__(pascalCase) } = use__entityName__(pascalCase)Thunk();
-    const __entityName__ = useSelector((state) => state.__entityName__); // Add __entityName__ to ./src/init/redux/index.ts
+    // const { fetch__entityName__(pascalCase) } = use__entityName__(pascalCase)Saga();  /* Saga api hook */
+    // const { fetch__entityName__(pascalCase) } = use__entityName__(pascalCase)Thunk();  /* Thunk api hook */
+
+    /* Add __entityName__ slice reducer to ./src/init/redux/index.ts */
+    const __entityName__ = useSelector((state) => state.__entityName__);
 
     // useEffect(() => {
     //     fetch__entityName__(pascalCase)();

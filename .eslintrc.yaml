@@ -13,8 +13,6 @@ parserOptions:
 env:
     browser: true
     node: true
-    jest: true
-    es6: true
 
 globals:
     __ENV__: false
@@ -31,7 +29,6 @@ globals:
 
 plugins:
     - react
-    - jest
     - babel
     - react-hooks
     - import
@@ -44,26 +41,6 @@ settings:
 rules:
     # hooks
     react-hooks/rules-of-hooks: 2
-
-    # Jest
-    # jest/consistent-test-it:
-    #     - 2
-    #     - fn: test
-    # jest/lowercase-name: 2
-    # jest/no-disabled-tests: 2
-    # jest/no-focused-tests: 2
-    # jest/no-identical-title: 2
-    # jest/no-large-snapshots:
-    #     - 2
-    #     - maxSize: 10
-    # jest/no-test-prefixes: 2
-    # jest/no-jest-import: 2
-    # jest/prefer-to-have-length: 2
-    # jest/prefer-to-be-null: 2
-    # jest/prefer-to-be-undefined: 2
-    # jest/valid-describe: 2
-    # jest/valid-expect: 2
-    # jest/valid-expect-in-promise: 2
 
     # React core
     react/no-access-state-in-setstate: 2
@@ -103,9 +80,9 @@ rules:
                   - getSnapshotBeforeUpdate
                   - componentDidUpdate
                   - componentWillUnmount
-                  - componentDiddCatch
+                  - componentDidCatch
 
-        # React JSX
+    # React JSX
     react/jsx-boolean-value: 2
     react/jsx-curly-spacing:
         - 2
@@ -150,7 +127,7 @@ rules:
           logical: ignore
           prop: ignore
 
-        # ESLint: possible errors
+    # ESLint: possible errors
     for-direction: 2
     getter-return:
         - 2
@@ -460,8 +437,7 @@ rules:
         - single
     babel/new-cap: 0
 
-        # TypeScript
-    # "@typescript-eslint/no-unused-vars-experimental": 2
+    # TypeScript
     "@typescript-eslint/no-unused-vars": 2
     "@typescript-eslint/no-use-before-define": 2
     "@typescript-eslint/indent":
