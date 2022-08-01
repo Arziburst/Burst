@@ -37,6 +37,22 @@ generateTemplateFiles([
         },
     },
     {
+        option:      'Thunk: /bus/__entityName__/thunk',
+        defaultCase: CaseConverterEnum.CamelCase,
+        entry:       {
+            folderPath: resolve(PROJECT_ROOT, './scripts/generate/templates/thunk'),
+        },
+        stringReplacers: [ '__entityName__' ],
+        output:          {
+            path:                       resolve(PROJECT_ROOT, './src/bus/__entityName__/thunk'),
+            pathAndFileNameDefaultCase: CaseConverterEnum.CamelCase,
+            overwrite:                  true,
+        },
+        onComplete: (results) => {
+            console.log('results', results);
+        },
+    },
+    {
         option:      'Component: /view/components/__componentName__',
         defaultCase: CaseConverterEnum.CamelCase,
         entry:       {
