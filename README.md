@@ -36,14 +36,6 @@ To generate some template file
 🔍 Auto generated manifest<br>
 🔍 Bundle file stats analytics<br>
 
-## Technologies
-✅ Webpack `v5.60.0`<br>
-✅ Typescript `v4.4.4`<br>
-✅ React `v17.0.2`<br>
-✅ Redux `v4.1.1`<br>
-✅ Styled-components `v5.3.1`<br>
-✅ ESLint `v7.18.0`<br>
-
 ## Requirements
 ❗️ NPM `v6.0.0 or later`<br>
 ❗️ Node `v14.0.0 of later`<br>

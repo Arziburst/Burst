@@ -11,6 +11,7 @@ import { middleware, sagaMiddleware } from './middleware';
 // Saga
 import { rootSaga } from './rootSaga';
 
+
 export const store = configureStore({
     reducer: {
         togglers,
@@ -21,5 +22,6 @@ export const store = configureStore({
 });
 
 export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch;
 
 sagaMiddleware.run(rootSaga);

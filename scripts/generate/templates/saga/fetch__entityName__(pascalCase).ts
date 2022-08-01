@@ -11,7 +11,7 @@ import { makeRequest } from '../../../tools/utils';
 import { API_URL } from '../../../init/constants';
 
 // Action
-export const fetch__entityName__(pascalCase)Action = createAction<number>(`${sliceName}/FETCH_MESSAGES_ASYNC`);
+export const fetch__entityName__(pascalCase)Action = createAction<number>(`${sliceName}/FETCH___entityName__(constantCase)_ASYNC`);
 
 // Types
 import { __entityName__(pascalCase) } from '../types';
