@@ -45,6 +45,7 @@ You may need to add code below to your `settings.json` in VSCode
 
 📍 Extention for VS Code `Better Comments (id: aaron-bond.better-comments)`
 Сolorizes your comments based on the config file ```.vscode/settings.json ```, best comments examples below:
+
 ![image](https://user-images.githubusercontent.com/53538417/139050274-e7f87f9e-7d8c-4b9c-8ac2-8f65837850c2.png)
 
 ## Deploy
