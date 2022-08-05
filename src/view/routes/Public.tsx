@@ -16,10 +16,6 @@ export const Public: FC = () => {
                 path = { book.ROOT }
             />
             <Route
-                element = { <Pages.Lesson1 /> }
-                path = { book.LESSON1 }
-            />
-            <Route
                 element = {
                     <Navigate
                         replace
