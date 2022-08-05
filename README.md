@@ -17,7 +17,7 @@ Ready to use, just waiting for you!
 ### Initializing
 Burst is easy to use and all it needs is installed `node_modules`.
 
-Also you can create `.env.development` and `.env.production` for better control you environment by example from `.env.example`.</br>
+If need better control on your environment, you can create `.env.development` and `.env.production` by example from `.env.example`.</br>
 If you do not create any `.env.**`, Burst use `.env.example` by default.
 
 ## Requirements
@@ -27,10 +27,10 @@ If you do not create any `.env.**`, Burst use `.env.example` by default.
 ### Available scripts
 ```sh
 npm start        /* calls webpack devserver */
-npm run build    /* generate lightweight bundle */
+npm run build    /* generate lightweight build */
 npm run gen      /* file generation CLI */
 npm run analyze  /* web bundle analysis */
-npm run serve    /* web bundle analysis */
+npm run serve    /* start web process based on build */
 npm run clean    /* delete node_modules */
 ```
 ## Optional VSCode Extensions
@@ -50,7 +50,7 @@ You may need to add code below to your `settings.json` in VSCode
 
 ## Deploy
 ```sh
-npm run build                            /* generate lightweight bundle */
+npm run build                            /* generate lightweight build */
 docker build -t [dokerId]/[imageName] .  /* create docker image based on build */
 docker push [dokerId]/[imageName]        /* push docker image to dockerHub */
 ```
