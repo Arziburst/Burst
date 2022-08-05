@@ -1,4 +1,4 @@
-# Welcome to Burst.🔥
+# Welcome to Burst🔥
 
 Burst is the perfect template for react web applications.
 
@@ -17,11 +17,11 @@ Ready to use, just waiting for you!
 ### Initializing
 Burst is easy to use and all it needs is installed `node_modules`.
 
-Also you can create `.env.development` and `.env.production` for better control you environment by example from `.env.example`.
+Also you can create `.env.development` and `.env.production` for better control you environment by example from `.env.example`.</br>
 If you do not create any `.env.**`, Burst use `.env.example` by default.
 
 ## Requirements
-❗️ NPM `v6.0.0 or later`
+❗️ NPM `v6.0.0 or later`</br>
 ❗️ Node `v14.0.0 of later`
 
 ### Available scripts
@@ -43,7 +43,7 @@ You may need to add code below to your `settings.json` in VSCode
 "eslint.format.enable": true,
 ```
 
-📍 Extention for VS Code `Better Comments (id: aaron-bond.better-comments)`
+📍 Extention for VS Code `Better Comments (id: aaron-bond.better-comments)`.</br>
 Сolorizes your comments based on the config file ```.vscode/settings.json ```, best comments examples below:
 
 ![image](https://user-images.githubusercontent.com/53538417/139050274-e7f87f9e-7d8c-4b9c-8ac2-8f65837850c2.png)
