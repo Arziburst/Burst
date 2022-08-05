@@ -1,52 +1,41 @@
-# Arziburst React App
+# Welcome to Burst.🔥
 
-### Welcome to Arziburst React App.
+Burst is the perfect template for react web applications.
 
-Arziburst React App works on Windows, Linux, macOS.<br>
-If something doesn’t work, please [file an issue](https://github.com/Arziburst/boilerplate/issues/new).<br>
-If you have some enhancements, please [file an pull request](https://github.com/Arziburst/boilerplate/compare).<br>
+Typescript, webpack, react, redux are the basis of most SPA applications, and here they are already fully and conveniently configured. Simple and flexible react architecture with customized routing. Also Redux is configured with DDD approach, which makes it possible to generate boilerplate code in a couple of steps.
 
-## Quick Overview
+Ready to use, just waiting for you!
 
-```
-INITIALIZING COMMANDS
-```
+### Features
+ - Simple, flexible, extensible architecture
+ - Custom modular Webpack
+ - Configured custom ESlint
+ - Docker ready
+ - Lightweight bundle
+ - Code generating
 
-Also you can create `.env.development` and `.env.production` by example from `.env.example`.
+### Initializing
+Burst is easy to use and all it needs is installed `node_modules`.
 
-### `npm start`
-To run project in dev mode
-
-### `npm run build`
-To create bundle
-
-### `npm run serve`
-To serve bundle
-
-### `npm run analyze`
-To analyze bundle with `webpack-bundle-analyzer`
-
-### `npm run gen`
-To generate some template file
-
-## Features
-🔍 Code generating<br>
-🔍 Font minification<br>
-🔍 Image lossless minification<br>
-🔍 Auto generated manifest<br>
-🔍 Bundle file stats analytics<br>
+Also you can create `.env.development` and `.env.production` for better control you environment by example from `.env.example`.
+If you do not create any `.env.**`, Burst use `.env.example` by default.
 
 ## Requirements
-❗️ NPM `v6.0.0 or later`<br>
-❗️ Node `v14.0.0 of later`<br>
-❗️ Font types `ttf`  `eot` `woff` `woff2`<br>
+❗️ NPM `v6.0.0 or later`
+❗️ Node `v14.0.0 of later`
 
-### ⚠️ If you will use another tools you may catch unexpected errors
-
-## Additions
+### Available scripts
+```sh
+npm start        /* calls webpack devserver */
+npm run build    /* generate lightweight bundle */
+npm run gen      /* file generation CLI */
+npm run analyze  /* web bundle analysis */
+npm run serve    /* web bundle analysis */
+npm run clean    /* delete node_modules */
+```
+## Optional VSCode Extensions
 📍 Auto formatting code with ESLint
-
-You may need to correct `settings.json` in VS Code
+You may need to add code below to your `settings.json` in VSCode
 ```json
 "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,
@@ -55,46 +44,12 @@ You may need to correct `settings.json` in VS Code
 ```
 
 📍 Extention for VS Code `Better Comments (id: aaron-bond.better-comments)`
-
-Best comments names:
-
+Сolorizes your comments based on the config file ```.vscode/settings.json ```, best comments examples below:
 ![image](https://user-images.githubusercontent.com/53538417/139050274-e7f87f9e-7d8c-4b9c-8ac2-8f65837850c2.png)
 
 ## Deploy
-
-local:
-### `npm run build`
-### `docker build -t [dokerId]/[imageName] .`
-
-### `docker push [dokerId]/[imageName]`
-
-Remote:
-### `docker pull [dokerId]/[imageName]`
-### `docker tag [dokerId]/[imageName] dokku/[appName]`
-
-### `dokku tags:deploy [appName]`
-### `dokku [module]:[report|help]`
-
-Mini Dokku docs:
-
-sudo dokku plugin:install https://github.com/dokku/dokku-postgres.git postgres
-
-sudo dokku plugin:install https://github.com/dokku/dokku-mongo.git mongo
-
-sudo dokku plugin:install https://github.com/dokku/dokku-letsencrypt.git
-
-dokku postgres:create db
-
-dokku postgres:[unexpose|expose] db [?port]
-
-dokku apps:create [dokkuAppName]
-
-dokku postgres:link db [dokkuAppName]
-
-dokku config:set [dokkuAppName] [key=value] [key=value]...
-
-dokku domains:[add|remove][?-global] [?dokkuAppName] [domain]
-
-dokku proxy:ports-[add|remove|clear] [dokkuAppName] [?http:[port:port]]
-
-dokku letsencrypt:enable [dokkuAppName]
+```sh
+npm run build                            /* generate lightweight bundle */
+docker build -t [dokerId]/[imageName] .  /* create docker image based on build */
+docker push [dokerId]/[imageName]        /* push docker image to dockerHub */
+```
