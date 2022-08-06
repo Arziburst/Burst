@@ -15,4 +15,4 @@ export const BUILD_ASSETS_DIRECTORY = resolve(PROJECT_ROOT, './build/assets');
 export const nodeModulePath = (nodeModuleName: string) => resolve(PROJECT_ROOT, `./node_modules/${nodeModuleName}`);
 
 // App
-export const APP_NAME = process.env.APP_NAME || 'boilerplate';
+export const APP_NAME = process.env.APP_NAME || 'burst-template';

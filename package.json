@@ -1,7 +1,7 @@
 {
-    "name": "boilerplate-frontend",
+    "name": "burst-template",
     "version": "6.3.1",
-    "description": "boilerplate",
+    "description": "Burst is the perfect template for react SPA's.",
     "author": "arziburst@gmail.com",
     "keywords": [
         "create-react-app",
@@ -13,7 +13,7 @@
     ],
     "repository": {
         "type": "git",
-        "url": "https://github.com/Arziburst/boilerplate.git"
+        "url": "https://github.com/Arziburst/Burst.git"
     },
     "scripts": {
         "start": "cross-env-shell NODE_ENV=development ts-node -P \"./tsconfig.webpack.json\" \"./scripts/webpack/start\"",
