@@ -12,7 +12,7 @@ export const Public: FC = () => {
     return (
         <Routes>
             <Route
-                element = { <Pages.Main /> }
+                element = { <Pages.Root /> }
                 path = { book.ROOT }
             />
             <Route

@@ -5,10 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider as ReduxProvider } from 'react-redux';
 
 // Init
-import {
-    store as reduxStore,
-    registerServiceWorker,
-} from './init';
+import { store as reduxStore } from './init';
 
 // View
 import { App } from './view';
@@ -28,8 +25,4 @@ const container = document.getElementById('app');
 if (container) {
     const root = createRoot(container);
     root.render(<Root />);
-}
-
-if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
-    registerServiceWorker();
 }

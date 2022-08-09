@@ -1,22 +1,14 @@
 // Core
 import webpack from 'webpack';
-import chalk from 'chalk'; // Console Coloring
+import chalk from 'chalk';
 
 // Config
 import { getProdConfig } from './config';
 
 const compiler = webpack(getProdConfig());
 
-// compiler.hooks.beforeRun.tap({ name: 'start' }, () => {
-//     console.log('→ compilation started');
-// });
-// compiler.hooks.done.tap({ name: 'done' }, () => {
-//     console.log('→ compilation completed');
-// });
-
 compiler.run((error, stats) => {
     if (error) {
-        // ошибка конфигурации
         console.error(error.stack || error);
 
         if (error.message) {
@@ -44,13 +36,11 @@ compiler.run((error, stats) => {
     console.log(info);
 
     if (stats?.hasErrors()) {
-        // ошибка во время компиляции (битый импорт, ошибка синтаксиса, etc)
         console.log(chalk.redBright('→ Error!'));
         console.error(info);
     }
 
     if (stats?.hasWarnings()) {
-        // ворнинг во время компиляции
         console.log(chalk.yellowBright('→ Warning!'));
         console.warn(info);
     }

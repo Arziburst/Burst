@@ -2,4 +2,4 @@
 import { lazy } from 'react';
 
 // Pages
-export const Main = lazy(() => import(/* webpackChunkName: "Main" */ './Main'));
+export const Root = lazy(() => import(/* webpackChunkName: "Root" */ './Root'));

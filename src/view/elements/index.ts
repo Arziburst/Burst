@@ -1,1 +1,2 @@
-export * from './AdaptiveScroll';
+// Re-export
+export * from './HelloBurst';

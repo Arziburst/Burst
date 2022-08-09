@@ -11,7 +11,7 @@ export const getProdConfig = () => {
     return merge(
         getCommonConfig(),
         {
-            mode:    'none', // none to remove bundle chunk size warning
+            mode:    'production',
             devtool: false,
         },
         modules.cleanDirectories(),
@@ -22,7 +22,5 @@ export const getProdConfig = () => {
         modules.connectBuildProgressIndicator(),
         modules.optimizeBuild(),
         modules.connectBundleAnalyzer(),
-        modules.generateServiceWorker(),
-        modules.generateManifest(),
     );
 };

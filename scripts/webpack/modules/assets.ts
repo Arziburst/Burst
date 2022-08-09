@@ -1,7 +1,6 @@
 // Core
 import { Configuration } from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-// @ts-ignore
 import ImageMinimizerPlugin from 'image-minimizer-webpack-plugin';
 // @ts-ignore
 import FontminPlugin from 'fontmin-webpack';

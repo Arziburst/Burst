@@ -2,11 +2,10 @@
 import React, { FC, useEffect, useCallback } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 
-// Containers
+// Routes
 import { Routes } from './routes';
 
 // Hooks
-import { useLocalStorage } from '../tools/hooks';
 import { useTogglersRedux } from '../bus/client/togglers';
 
 // Assets
@@ -16,13 +15,10 @@ import { GlobalStyles, defaultTheme } from '../assets';
 export const AppContainer = styled.div`
     height: 100vh;
     width: 100vw;
-    display: flex;
-    flex-direction: column;
 `;
 
 export const App: FC = () => {
     const { setTogglerAction } = useTogglersRedux();
-    const [ isDefaultTheme ] = useLocalStorage('isDefaultTheme', true);
 
     const setOnlineStatusHanlder = useCallback(() => void setTogglerAction({
         type:  'isOnline',
@@ -36,7 +32,7 @@ export const App: FC = () => {
     }, []);
 
     return (
-        <ThemeProvider theme = { isDefaultTheme ? defaultTheme : defaultTheme } >
+        <ThemeProvider theme = { defaultTheme }>
             <GlobalStyles />
             <AppContainer>
                 <Routes />

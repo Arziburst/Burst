@@ -1,6 +1,5 @@
 // Core
 import { useState } from 'react';
-import localStorage from 'store';
 
 // Instruments
 import { APP_NAME } from '../../init';

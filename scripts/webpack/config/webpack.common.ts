@@ -7,7 +7,6 @@ import { SOURCE_DIRECTORY, BUILD_DIRECTORY } from '../constants';
 // Modules
 import * as modules from '../modules';
 
-// https://webpack.js.org/configuration/
 export const getCommonConfig = () => {
     const { NODE_ENV } = process.env;
     const IS_DEVELOPMENT = NODE_ENV === 'development';

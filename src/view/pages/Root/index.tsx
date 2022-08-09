@@ -4,19 +4,22 @@ import React, { FC } from 'react';
 // Components
 import { ErrorBoundary } from '../../components';
 
+// Elements
+import { HelloBurst } from '../../elements';
+
 // Styles
 import { Container } from './styles';
 
-const Main: FC = () => {
+const Root: FC = () => {
     return (
         <Container>
-            <p>Page: Main</p>
+            <HelloBurst />
         </Container>
     );
 };
 
 export default () => (
     <ErrorBoundary>
-        <Main />
+        <Root />
     </ErrorBoundary>
 );
