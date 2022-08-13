@@ -32,8 +32,7 @@ class ErrorBoundaryClass extends Component<PropTypes, State> {
                 <div>Error component</div>
                 <button onClick = { () => navigation(-1) }>Go Back</button>
             </section>
-        )
-            : children;
+        ) : children;
     }
 }
 
