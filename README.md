@@ -62,10 +62,6 @@ You may need to add code below to your `settings.json` in VSCode
 "eslint.format.enable": true,
 ```
 
-📍 Extention for VS Code `Better Comments (id: aaron-bond.better-comments)`
-
-Сolorizes your comments based on the config file```.vscode/settings.json```.
-
 ## Deploy
 
 ```sh
