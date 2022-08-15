@@ -1,6 +1,6 @@
 {
     "name": "burst-template",
-    "version": "6.4.4",
+    "version": "6.5.0",
     "description": "Burst is the perfect template for react SPA's.",
     "author": "arziburst@gmail.com",
     "keywords": [
@@ -29,7 +29,6 @@
         "react-dom": "^18.2.0",
         "react-redux": "^8.0.2",
         "react-router-dom": "^6.3.0",
-        "redux-saga": "^1.1.3",
         "styled-components": "^5.3.5",
         "styled-reset": "^4.4.2"
     },
@@ -84,6 +83,7 @@
         "react-dev-utils": "^12.0.1",
         "redux-devtools-extension": "^2.13.9",
         "redux-logger": "^3.0.6",
+        "redux-saga": "^1.2.0",
         "resolve-url-loader": "^5.0.0",
         "sass": "^1.54.4",
         "sass-loader": "^13.0.2",
