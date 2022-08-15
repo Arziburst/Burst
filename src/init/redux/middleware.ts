@@ -1,3 +1,6 @@
+// ESlint
+/* eslint-disable array-bracket-newline */
+
 // Middlewares
 import { Middleware } from '@reduxjs/toolkit';
 import { createLogger } from 'redux-logger';
@@ -6,7 +9,7 @@ import { createLogger } from 'redux-logger';
 // import thunkMiddleware from 'redux-thunk';
 
 const isDev = process.env.NODE_ENV === 'development';
-// const sagaMiddleware = createSagaMiddleware(); /* If you chose saga */
+// const sagaMiddleware = createSagaMiddleware(); /* Uncomment If you use saga middleware */
 
 const middleware: Middleware[] = [
     // sagaMiddleware, /* Choose one technology */
@@ -29,5 +32,5 @@ isDev && middleware.push(
 
 export {
     middleware,
-    // sagaMiddleware, /* If you chose saga */
+    // sagaMiddleware, /* Uncomment If you use saga middleware */
 };

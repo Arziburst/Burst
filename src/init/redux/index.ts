@@ -8,11 +8,11 @@ import toggles from '../../bus/client/toggles';
 // Middleware
 import {
     middleware,
-    // sagaMiddleware, /* If you chose saga */
+    // sagaMiddleware, /* Uncomment If you use saga middleware */
 } from './middleware';
 
 // Saga
-// import { rootSaga } from './rootSaga'; /* If you chose saga */
+// import { rootSaga } from './rootSaga'; /* Uncomment If you use saga middleware */
 
 export const store = configureStore({
     reducer: {
@@ -26,4 +26,4 @@ export const store = configureStore({
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = ReturnType<typeof store.dispatch>
 
-// sagaMiddleware.run(rootSaga); /* If you chose saga */
+// sagaMiddleware.run(rootSaga); /* Uncomment If you use saga middleware */
