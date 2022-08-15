@@ -6,10 +6,10 @@ import { Public } from './Public';
 import { Private } from './Private';
 
 // Bus
-import { useTogglersRedux } from '../../bus/client/togglers';
+import { useTogglesRedux } from '../../bus/client/toggles';
 
 export const Routes: FC = () => {
-    const { togglersRedux: { isLoggedIn }} = useTogglersRedux();
+    const { togglesRedux: { isLoggedIn }} = useTogglesRedux();
 
     return (
         <Suspense fallback = { <div>Spinner</div> }>

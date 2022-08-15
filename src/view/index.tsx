@@ -6,7 +6,7 @@ import styled, { ThemeProvider } from 'styled-components';
 import { Routes } from './routes';
 
 // Hooks
-import { useTogglersRedux } from '../bus/client/togglers';
+import { useTogglesRedux } from '../bus/client/toggles';
 
 // Assets
 import { GlobalStyles, defaultTheme } from '../assets';
@@ -18,7 +18,7 @@ export const AppContainer = styled.div`
 `;
 
 export const App: FC = () => {
-    const { setTogglerAction } = useTogglersRedux();
+    const { setToggleAction: setTogglerAction } = useTogglesRedux();
 
     const setOnlineStatusHanlder = useCallback(() => void setTogglerAction({
         type:  'isOnline',

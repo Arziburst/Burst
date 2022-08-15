@@ -3,10 +3,10 @@ import { Action } from '@reduxjs/toolkit';
 import { put, call } from 'redux-saga/effects';
 
 // Redux
-import { TogglersKeys } from '../../bus/client/togglers';
+import { TogglesKeys } from '../../bus/client/toggles';
 
 // Action
-import { togglerCreatorAction } from '../../bus/client/togglers';
+import { toggleCreatorAction } from '../../bus/client/toggles';
 
 // Tools
 import { customFetch } from './customFetch';
@@ -20,7 +20,7 @@ export type FetchOptions = {
 type OptionsType<SuccessData, ErrorData> = {
     fetchOptions: FetchOptions;
     callAction?: Action<any>;
-    togglerType?: TogglersKeys;
+    toggleType?: TogglesKeys;
     // -------------------------------------------------
     tryStart?: Function;
     succes?: (successData: SuccessData) => void;
@@ -38,7 +38,7 @@ export function* makeRequest<SuccessData, ErrorData = {}>(options: OptionsType<S
     const {
         fetchOptions,
         callAction,
-        togglerType,
+        toggleType,
         tryStart, tryEnd,
         catchStart, catchEnd,
         finallyStart, finallyEnd,
@@ -51,9 +51,9 @@ export function* makeRequest<SuccessData, ErrorData = {}>(options: OptionsType<S
             yield tryStart();
         }
 
-        if (togglerType) {
-            yield put(togglerCreatorAction({
-                type:  togglerType,
+        if (toggleType) {
+            yield put(toggleCreatorAction({
+                type:  toggleType,
                 value: true,
             }));
         }
@@ -96,9 +96,9 @@ export function* makeRequest<SuccessData, ErrorData = {}>(options: OptionsType<S
         }
 
         // ------------- FINALLY BLOCK START -------------
-        if (togglerType) {
-            yield put(togglerCreatorAction({
-                type:  togglerType,
+        if (toggleType) {
+            yield put(toggleCreatorAction({
+                type:  toggleType,
                 value: false,
             }));
         }
