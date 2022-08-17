@@ -1,8 +1,10 @@
 // Core
 import { configureStore } from '@reduxjs/toolkit';
+import { setupListeners } from '@reduxjs/toolkit/dist/query'; /* Uncomment If you use RTK Query */
 
 // Reducers
 import toggles from '../../bus/client/toggles';
+import { postsApi } from '../../bus/post/RTKQuery/posts.api';
 // import __entityName__ from '../../bus/__entityName__/slice';
 
 // Middleware
@@ -17,6 +19,7 @@ import {
 export const store = configureStore({
     reducer: {
         toggles,
+        [ postsApi.reducerPath ]: postsApi.reducer,
         // __entityName__,
     },
     middleware,
@@ -27,3 +30,8 @@ export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = ReturnType<typeof store.dispatch>
 
 // sagaMiddleware.run(rootSaga); /* Uncomment If you use saga middleware */
+
+// optional but required for refetchOnFocus/refetchOnReconnect behavior
+// see https://redux-toolkit.js.org/rtk-query/usage/rtk-query-with-redux#setuplisteners
+
+setupListeners(store.dispatch); /* Uncomment If you use RTK Query */

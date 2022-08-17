@@ -46,8 +46,37 @@ const Container = styled.section`
 
 // Imgages
 import burstLogo from '../../assets/images/burst-logo.png';
+import { useAddPostMutation, useFetchPostsQuery } from '../../bus/post/RTKQuery/posts.api';
 
 export const HelloBurst = () => {
+    const { data, isLoading, isError } = useFetchPostsQuery();
+    const [ addPost, { isLoading: isAddPostLoading }] = useAddPostMutation();
+
+    const handleAddPost = async () => {
+        let obj = {
+            username: 'RAT:TEST2',
+            text:     '2222',
+        };
+
+        await addPost(obj).unwrap();
+    };
+
+    if (isLoading) {
+        return <h1>Loading...</h1>;
+    }
+
+    if (data) {
+        return (
+            <div onClick = { handleAddPost }>
+                {
+                    data && data.map((post: any) => (
+                        <div key = { post._id }>{post.text}</div>
+                    ))
+                }
+            </div>
+        );
+    }
+
     return (
         <Container>
             <div>
