@@ -12,7 +12,7 @@ export const __entityName__Api = createApi({
     tagTypes:          [ '__entityName__' ],
     // This is how long in seconds RTK Query will keep your data cached
     keepUnusedDataFor: 60,
-    baseQuery:         fetchBaseQuery({ baseUrl: `${API_URL}/__entityName__` }),
+    baseQuery:         fetchBaseQuery({ baseUrl: `${API_URL}/` }),
     endpoints,
 });
 
