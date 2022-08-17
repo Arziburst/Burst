@@ -1,11 +1,13 @@
 // ESlint
 /* eslint-disable array-bracket-newline */
+
 // Middlewares
 import { Middleware } from '@reduxjs/toolkit';
 import { createLogger } from 'redux-logger';
 import { getDefaultMiddleware } from '@reduxjs/toolkit'; /* Uncomment If you use RTK Query */
+
+// RTKQuery API
 // import {__entityName__Api} from '../../bus/__entityName__/__entityName__.api';
-import { postsApi } from '../../bus/post/RTKQuery/posts.api';
 
 // import createSagaMiddleware from 'redux-saga'; /* Choose one technology */
 // import thunkMiddleware from 'redux-thunk';
@@ -17,8 +19,7 @@ const middleware: Middleware[] = [
     ...getDefaultMiddleware(), /* Uncomment if you use RTKQuery */
     // sagaMiddleware, /* Choose one technology */
     // thunkMiddleware,
-    // __entityName__.middleware, /* Insert if you use RTKQuery */
-    postsApi.middleware,
+    // __entityName__Api.middleware, /* Insert if you use RTKQuery */
 ];
 
 isDev && middleware.push(

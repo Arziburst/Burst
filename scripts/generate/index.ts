@@ -53,6 +53,22 @@ generateTemplateFiles([
         },
     },
     {
+        option:      'RTKQuery: /bus/__entityName__/',
+        defaultCase: CaseConverterEnum.CamelCase,
+        entry:       {
+            folderPath: resolve(PROJECT_ROOT, './scripts/generate/templates/RTKQuery'),
+        },
+        stringReplacers: [ '__entityName__' ],
+        output:          {
+            path:                       resolve(PROJECT_ROOT, './src/bus/__entityName__'),
+            pathAndFileNameDefaultCase: CaseConverterEnum.CamelCase,
+            overwrite:                  true,
+        },
+        onComplete: (results) => {
+            console.log('results', results);
+        },
+    },
+    {
         option:      'Component: /view/components/__componentName__',
         defaultCase: CaseConverterEnum.CamelCase,
         entry:       {

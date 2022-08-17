@@ -1,5 +1,5 @@
 // Core
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 // Styles
@@ -46,42 +46,8 @@ const Container = styled.section`
 
 // Imgages
 import burstLogo from '../../assets/images/burst-logo.png';
-import { useAddPostMutation, useFetchPostsQuery } from '../../bus/post/RTKQuery/posts.api';
 
 export const HelloBurst = () => {
-    const [ limit, setLimit ] = useState(10);
-    const { data, isLoading, isError } = useFetchPostsQuery(limit);
-    const [ addPost, { isLoading: isAddPostLoading }] = useAddPostMutation();
-
-    const handleAddPost = async () => {
-        let obj = {
-            username: 'RAT:TEST2',
-            text:     '333',
-        };
-
-        await addPost(obj).unwrap();
-    };
-
-    if (isLoading) {
-        return <h1>Loading...</h1>;
-    }
-
-    if (data) {
-        return (
-            <>
-                <div onClick = { () => handleAddPost() }>
-                    {
-                        data && data.map((post: any) => (
-                            <div key = { post.id }>{post.id}</div>
-                        ))
-                    }
-                </div>
-                <button onClick = { () => setLimit(5) }>limit 5</button>
-                <button onClick = { () => setLimit(10) }>limit 10</button>
-            </>
-        );
-    }
-
     return (
         <Container>
             <div>

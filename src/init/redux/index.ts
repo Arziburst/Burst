@@ -4,8 +4,11 @@ import { setupListeners } from '@reduxjs/toolkit/dist/query'; /* Uncomment If yo
 
 // Reducers
 import toggles from '../../bus/client/toggles';
-import { postsApi } from '../../bus/post/RTKQuery/posts.api';
 // import __entityName__ from '../../bus/__entityName__/slice';
+
+// RTKQuery API
+// import { __entityName__Api } from '../../bus/__entityName__/__entityName__.api';
+
 
 // Middleware
 import {
@@ -19,7 +22,7 @@ import {
 export const store = configureStore({
     reducer: {
         toggles,
-        [ postsApi.reducerPath ]: postsApi.reducer,
+        // [__entityName__.reducerPath]: __entityName__.reducer, /* If you use RTK Query */
         // __entityName__,
     },
     middleware,
