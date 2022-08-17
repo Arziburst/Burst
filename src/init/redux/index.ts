@@ -22,8 +22,8 @@ import {
 export const store = configureStore({
     reducer: {
         toggles,
-        // [__entityName__.reducerPath]: __entityName__.reducer, /* If you use RTK Query */
         // __entityName__,
+        // [__entityName__.reducerPath]: __entityName__.reducer, /* If you use RTK Query */
     },
     middleware,
     devTools: process.env.NODE_ENV !== 'production',
