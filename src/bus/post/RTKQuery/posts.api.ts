@@ -6,9 +6,9 @@ import { endpoints } from './endpoints';
 export const postsApi = createApi({
     reducerPath:       'postsApi',
     tagTypes:          [ 'posts' ],
-    // This is how long RTK Query will keep your data cached
+    // This is how long in seconds RTK Query will keep your data cached
     keepUnusedDataFor: 60,
-    baseQuery:         fetchBaseQuery({ baseUrl: 'https://api.barbarossa.pp.ua/' }),
+    baseQuery:         fetchBaseQuery({ baseUrl: 'https://jsonplaceholder.typicode.com/' }),
     endpoints,
 });
 

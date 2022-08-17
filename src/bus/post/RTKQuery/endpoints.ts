@@ -5,10 +5,12 @@ import { EndpointBuilder } from '@reduxjs/toolkit/dist/query/endpointDefinitions
 // Types
 import * as types from './types';
 
-export const endpoints = (builder: EndpointBuilder<BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError, {}, FetchBaseQueryMeta>, 'posts', 'postsApi'>) => ({
+type EndpointBuilderType = EndpointBuilder<BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError, {}, FetchBaseQueryMeta>, 'posts', 'postsApi'>
+
+export const endpoints = (builder: EndpointBuilderType) => ({
     // first argument is return type, second is payload
-    fetchPosts: builder.query<types.Post, void>({
-        query:        (/* payload */) => `messages${/* payload */ ''}`,
+    fetchPosts: builder.query<types.Post, number>({
+        query:        (/* payload */payload) => `posts${/* payload */ ''}?_limit=${payload}`,
         providesTags: (result) => result
             ? [
                 ...result.map(({ id }) => ({ type: 'posts', id } as const)),
@@ -19,10 +21,10 @@ export const endpoints = (builder: EndpointBuilder<BaseQueryFn<string | FetchArg
     // first argument is return type, second is payload
     addPost: builder.mutation<any, any>({
         query: (payload) => ({
-            url:    'messages',
+            url:    'posts',
             method: 'POST',
             body:   payload,
         }),
-        invalidatesTags: [{ type: 'posts', id: 'POSTS' }],
+        invalidatesTags: [{ type: 'posts', id: 'LOSTS' }],
     }),
 });

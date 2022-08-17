@@ -7,3 +7,4 @@ export type PostState = Post | null
 
 // Contracts
 export type BaseContact<T = any> = CaseReducer<PostState, PayloadAction<T>>
+
