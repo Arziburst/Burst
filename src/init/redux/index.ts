@@ -1,6 +1,6 @@
 // Core
 import { configureStore } from '@reduxjs/toolkit';
-import { setupListeners } from '@reduxjs/toolkit/dist/query'; /* Uncomment If you use RTK Query */
+// import { setupListeners } from '@reduxjs/toolkit/dist/query'; /* Uncomment If you use RTKQuery */
 
 // Reducers
 import toggles from '../../bus/client/toggles';
@@ -23,7 +23,7 @@ export const store = configureStore({
     reducer: {
         toggles,
         // __entityName__,
-        // [__entityName__.reducerPath]: __entityName__.reducer, /* If you use RTK Query */
+        // [__entityName__.reducerPath]: __entityName__.reducer, /* If you use RTKQuery */
     },
     middleware,
     devTools: process.env.NODE_ENV !== 'production',
@@ -37,4 +37,4 @@ export type AppDispatch = ReturnType<typeof store.dispatch>
 // optional but required for refetchOnFocus/refetchOnReconnect behavior
 // see https://redux-toolkit.js.org/rtk-query/usage/rtk-query-with-redux#setuplisteners
 
-setupListeners(store.dispatch); /* Uncomment If you use RTK Query */
+// setupListeners(store.dispatch); /* Uncomment If you use RTKQuery */
