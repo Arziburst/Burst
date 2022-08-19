@@ -9,7 +9,6 @@ import toggles from '../../bus/client/toggles';
 // RTKQuery API
 // import { __entityName__Api } from '../../bus/__entityName__/__entityName__.api';
 
-
 // Middleware
 import {
     middleware,
