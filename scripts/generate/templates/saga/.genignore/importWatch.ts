@@ -1,0 +1,1 @@
+import { watch__entityName__(pascalCase) } from '../../bus/__entityName__/saga';
