@@ -1,2 +1,2 @@
-// Re-export
+// MarkerGen re-export
 export * from './ErrorBoundary';

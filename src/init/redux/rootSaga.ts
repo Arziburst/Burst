@@ -1,9 +1,10 @@
 // Core
 import { all } from 'redux-saga/effects';
 
-// Tools
-// import { watch__entityName__ } from '../../bus/__entityName__/saga';
+// MarkerGen tools imports
 
 export function* rootSaga() {
-    yield all([ /* watch__entityName__() */ ]);
+    yield all([
+        // MarkerGen use watch
+    ]);
 }

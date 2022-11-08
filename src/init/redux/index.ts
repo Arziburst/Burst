@@ -1,23 +1,21 @@
 // Core
 import { configureStore } from '@reduxjs/toolkit';
 
-// Reducers
+// MarkerGen reducers
 import toggles from '../../bus/client/toggles';
-// import __entityName__ from '../../bus/__entityName__/slice';
 
 // Middleware
 import {
     middleware,
-    // sagaMiddleware, /* Uncomment If you use saga middleware */
+    // MarkerGen sagaMiddleware
 } from './middleware';
 
-// Saga
-// import { rootSaga } from './rootSaga'; /* Uncomment If you use saga middleware */
+// MarkerGen import rootSaga
 
 export const store = configureStore({
     reducer: {
+        // MarkerGen add reducer
         toggles,
-        // __entityName__,
     },
     middleware,
     devTools: process.env.NODE_ENV !== 'production',
@@ -26,4 +24,4 @@ export const store = configureStore({
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = ReturnType<typeof store.dispatch>
 
-// sagaMiddleware.run(rootSaga); /* Uncomment If you use saga middleware */
+// MarkerGen run rootSaga

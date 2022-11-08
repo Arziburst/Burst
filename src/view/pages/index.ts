@@ -1,5 +1,5 @@
 // Core
 import { lazy } from 'react';
 
-// Pages
+// MarkerGen pages
 export const Root = lazy(() => import(/* webpackChunkName: "Root" */ './Root'));

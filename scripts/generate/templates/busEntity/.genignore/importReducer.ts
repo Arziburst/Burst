@@ -1,0 +1,1 @@
+import __entityName__ from '../../bus/__entityName__/slice';

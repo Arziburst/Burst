@@ -1,0 +1,1 @@
+sagaMiddleware.run(rootSaga);

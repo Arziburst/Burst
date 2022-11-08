@@ -1,0 +1,1 @@
+export const __pageName__(pascalCase) = '/__pageName__(kebabCase)';

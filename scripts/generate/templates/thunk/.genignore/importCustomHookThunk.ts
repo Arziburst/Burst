@@ -1,0 +1,1 @@
+import { use__entityName__(pascalCase)Thunk } from './thunk'; /* Choose one technology, Saga or Thunk */

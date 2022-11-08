@@ -1,0 +1,1 @@
+export * from './__componentName__(pascalCase)';
