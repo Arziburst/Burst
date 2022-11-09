@@ -21,14 +21,14 @@ const fetch__entityName__(pascalCase) = (callAction: ReturnType<typeof fetch__en
     callAction,
     fetchOptions: {
         successStatusCode: 200,
-        fetch:             () => fetch(`${API_URL}/__entityName__`, {
+        fetch:             () => fetch(`${API_URL}/__entityName__(kebabCase)`, {
             method:  'GET',
             headers: {
                 'Content-Type': 'application/json',
             },
         }),
     },
-    succes: function* (result) {
+    success: function* (result) {
         yield console.log(result);
         yield put(__entityName__Actions.set__entityName__(pascalCase)(result));
     },

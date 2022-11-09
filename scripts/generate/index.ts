@@ -226,6 +226,12 @@ CLIGen(PROJECT_ROOT, [
                         markerTemplate: './scripts/generate/templates/page/.genignore/book.ts',
                         pathToMarker:   './src/view/routes/book.ts',
                     },
+                    {
+                        pattern:        /(\{\/\* MarkerGen route \*\/\})/,
+                        markerTemplate: './scripts/generate/templates/page/.genignore/route.ts',
+                        pathToMarker:   [ './src/view/routes/Private.tsx', './src/view/routes/Public.tsx' ],
+                        genDirection:   'before',
+                    },
                 ],
             },
         ],

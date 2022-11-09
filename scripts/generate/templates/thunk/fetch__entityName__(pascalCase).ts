@@ -20,7 +20,7 @@ export const fetch__entityName__(pascalCase) = createAsyncThunk<types.__entityNa
 
         const result = await customFetch<types.__entityName__(pascalCase)>({
             successStatusCode: 200,
-            fetch:             () => fetch(`${API_URL}/__entityName__`, {
+            fetch:             () => fetch(`${API_URL}/__entityName__(kebabCase)`, {
                 method:  'GET',
                 headers: {
                     'Content-Type': 'application/json',
