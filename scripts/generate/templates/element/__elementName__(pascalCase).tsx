@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 
 // Types
-interface PropTypes extends React.HTMLAttributes<HTMLDivElement> {
+type PropTypes = {
     /* type props here */
 }
 
