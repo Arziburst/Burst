@@ -1,15 +1,14 @@
 // Core
 import { CLIGen } from 'burst-generate-files';
-import { path as PROJECT_ROOT } from 'app-root-path';
 
-CLIGen(PROJECT_ROOT, [
+CLIGen([
     {
         name:      'Entity: ./src/bus/__entityName__',
         templates: [
             {
                 stringsReplacers: '__entityName__',
                 pathToTemplate:   './scripts/generate/templates/busEntity',
-                outputPath:       './src/bus/__entityName__',
+                outputPath:       './src/bus/__entityName__(pascalCase)',
                 markers:          [
                     {
                         pattern:        '// MarkerGen reducers',
@@ -31,7 +30,7 @@ CLIGen(PROJECT_ROOT, [
             {
                 stringsReplacers: '__entityName__',
                 pathToTemplate:   './scripts/generate/templates/saga',
-                outputPath:       './src/bus/__entityName__/saga',
+                outputPath:       './src/bus/__entityName__(pascalCase)/saga',
                 markers:          [
                     {
                         pattern:        '// MarkerGen middleware',
@@ -112,7 +111,7 @@ CLIGen(PROJECT_ROOT, [
             {
                 stringsReplacers: '__entityName__',
                 pathToTemplate:   './scripts/generate/templates/thunk',
-                outputPath:       './src/bus/__entityName__/thunk',
+                outputPath:       './src/bus/__entityName__(pascalCase)/thunk',
                 markers:          [
                     {
                         pattern:        '// MarkerGen middleware',
@@ -225,6 +224,12 @@ CLIGen(PROJECT_ROOT, [
                         pattern:        '// MarkerGen books',
                         markerTemplate: './scripts/generate/templates/page/.genignore/book.ts',
                         pathToMarker:   './src/view/routes/book.ts',
+                    },
+                    {
+                        pattern:        /(\{\/\* MarkerGen route \*\/\})/,
+                        markerTemplate: './scripts/generate/templates/page/.genignore/route.ts',
+                        pathToMarker:   [ './src/view/routes/Private.tsx', './src/view/routes/Public.tsx' ],
+                        genDirection:   'before',
                     },
                 ],
             },

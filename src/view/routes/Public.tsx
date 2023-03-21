@@ -15,6 +15,7 @@ export const Public: FC = () => {
                 element = { <Pages.Root /> }
                 path = { book.ROOT }
             />
+            {/* MarkerGen route */}
             <Route
                 element = {
                     <Navigate

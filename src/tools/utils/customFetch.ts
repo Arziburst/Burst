@@ -24,7 +24,7 @@ export const customFetch = async <SuccessData, ErrorData = {}>(fetchOptions: Fet
         });
     }
 
-    const succesData: SuccessData = await response.json();
+    const successData: SuccessData = await response.json();
 
-    return succesData;
+    return successData;
 };
