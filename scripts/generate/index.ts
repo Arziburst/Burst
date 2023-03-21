@@ -8,7 +8,7 @@ CLIGen([
             {
                 stringsReplacers: '__entityName__',
                 pathToTemplate:   './scripts/generate/templates/busEntity',
-                outputPath:       './src/bus/__entityName__(pascalCase)',
+                outputPath:       './src/bus/__entityName__',
                 markers:          [
                     {
                         pattern:        '// MarkerGen reducers',
@@ -30,7 +30,7 @@ CLIGen([
             {
                 stringsReplacers: '__entityName__',
                 pathToTemplate:   './scripts/generate/templates/saga',
-                outputPath:       './src/bus/__entityName__(pascalCase)/saga',
+                outputPath:       './src/bus/__entityName__/saga',
                 markers:          [
                     {
                         pattern:        '// MarkerGen middleware',
@@ -111,7 +111,7 @@ CLIGen([
             {
                 stringsReplacers: '__entityName__',
                 pathToTemplate:   './scripts/generate/templates/thunk',
-                outputPath:       './src/bus/__entityName__(pascalCase)/thunk',
+                outputPath:       './src/bus/__entityName__/thunk',
                 markers:          [
                     {
                         pattern:        '// MarkerGen middleware',
