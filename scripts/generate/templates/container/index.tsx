@@ -8,11 +8,11 @@ import React, { FC } from 'react';
 import * as S from './styles';
 
 // Types
-interface PropTypes extends React.HTMLAttributes<HTMLDivElement> {
+type PropTypes = {
     /* type props here */
 }
 
-export const __containerName__(pascalCase): FC<PropTypes> = ({children}) => {
+export const __containerName__(pascalCase): FC<PropTypes> = ({ children }) => {
     return (
         <S.Container>
             {children}

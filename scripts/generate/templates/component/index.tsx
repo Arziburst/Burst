@@ -8,7 +8,7 @@ import React, { FC } from 'react';
 import * as S from './styles';
 
 // Types
-interface PropTypes extends React.HTMLAttributes<HTMLDivElement> {
+type PropTypes = {
     /* type props here */
 }
 
