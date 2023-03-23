@@ -25,6 +25,16 @@ CLIGen([
         ],
     },
     {
+        name:      'BETA nori-store entity: ./src/bus/nori-store/__entityName__',
+        templates: [
+            {
+                stringsReplacers: '__entityName__',
+                pathToTemplate:   './scripts/generate/templates/noriStore',
+                outputPath:       './src/bus/nori-store/__entityName__',
+            },
+        ],
+    },
+    {
         name:      'Saga: ./src/bus/__entityName__/saga',
         templates: [
             {
