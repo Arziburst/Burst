@@ -5,7 +5,7 @@
 import { NoriStore, ReactTools } from 'nori-store';
 
 // Tools
-import { API_URL } from '../../../init/constants';
+import { API_URL } from '../../../init';
 
 type __entityName__(pascalCase) = Array<any>
 
