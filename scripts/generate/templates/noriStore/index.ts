@@ -2,24 +2,18 @@
 // https://www.npmjs.com/package/nori-store
 
 // Core
-import { NoriStore, ReactTools } from 'nori-store';
+import { ReactTools } from 'nori-store';
 
 // Tools
 import { API_URL } from '../../../init';
 
-type __entityName__(pascalCase) = Array<any>
+type __entityName__(pascalCase) = Array<any> | null;
 
-type __entityName__(pascalCase)State = {
-    __entityName__: __entityName__(pascalCase) | null
-}
-
-const initialState: __entityName__(pascalCase)State = {
-    __entityName__: null,
-};
+// Here use as SomeType or generic in createState<> to enable null
+const initialState = null as __entityName__(pascalCase);
 
 // Store
-export const __entityName__Store = new NoriStore(/* storeName: */'__entityName__', /* initialState: */ initialState);
-export const use__entityName__(pascalCase) = ReactTools.createUseState(__entityName__Store);
+export const { state: __entityName__State, hook: use__entityName__(pascalCase)State } = ReactTools.createState(initialState);
 
 // Action example
 export const fetch__entityName__(pascalCase) = async () => {
@@ -32,16 +26,16 @@ export const fetch__entityName__(pascalCase) = async () => {
 
     const result = await response.json();
 
-    __entityName__Store.setValues({ __entityName__: result });
+    __entityName__State.setValue(result);
 };
 
 // Mini docs
 
 // import { useEffect } from 'react';
-// import { fetch__entityName__(pascalCase), use__entityName__(pascalCase) } from '../../../bus/nori-store/__entityName__';
+// import { fetch__entityName__(pascalCase), use__entityName__(pascalCase)State } from '../../../bus/nori-store/__entityName__';
 
 // const __entityName__(pascalCase) = () => {
-//     const { __entityName__ } = use__entityName__(pascalCase)();
+//     const __entityName__ = use__entityName__(pascalCase)State();
 
 //     useEffect(() => {
 //         fetch__entityName__(pascalCase)();
