@@ -44,7 +44,7 @@ const Container = styled.section`
     }
 `;
 
-// Imgages
+// Images
 import burstLogo from '../../assets/images/burst-logo.png';
 
 export const HelloBurst = () => {
@@ -57,7 +57,7 @@ export const HelloBurst = () => {
                 />
                 <h1>Welcome to <span>Burst.🔥</span></h1>
             </div>
-            <h2>Docs are comming soon...</h2>
+            <h2>Docs are coming soon...</h2>
         </Container>
     );
 };
