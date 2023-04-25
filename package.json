@@ -36,7 +36,6 @@
     "devDependencies": {
         "@redux-saga/core": "^1.2.3",
         "@soda/friendly-errors-webpack-plugin": "^1.8.1",
-        "@squoosh/lib": "^0.5.3",
         "@types/app-root-path": "^1.2.4",
         "@types/node": "^18.15.3",
         "@types/react": "^18.0.28",
@@ -82,6 +81,7 @@
         "sass": "^1.59.3",
         "sass-loader": "^13.2.1",
         "serve": "^14.2.0",
+        "sharp": "^0.32.0",
         "source-map-loader": "^4.0.1",
         "style-loader": "^3.3.2",
         "ts-loader": "^9.4.2",
