@@ -42,7 +42,7 @@ export const loadImagesProd = (): Configuration => ({
         minimizer: [
             new ImageMinimizerPlugin({
                 minimizer: {
-                    implementation: ImageMinimizerPlugin.squooshMinify,
+                    implementation: ImageMinimizerPlugin.sharpMinify,
                 },
             }),
         ],
