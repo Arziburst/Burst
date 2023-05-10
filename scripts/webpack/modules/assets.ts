@@ -6,13 +6,13 @@ import ImageMinimizerPlugin from 'image-minimizer-webpack-plugin';
 import FontminPlugin from 'fontmin-webpack';
 
 // Constants
-import { STATIC_DIRECTORY, APP_NAME } from '../constants';
+import { STATIC_DIRECTORY } from '../constants';
 
 export const connectHtml = (): Configuration => ({
     plugins: [
         new HtmlWebpackPlugin({
             template: `${STATIC_DIRECTORY}/template.html`,
-            title:    APP_NAME,
+            title:    process.env.APP_NAME || 'burst-template',
             favicon:  `${STATIC_DIRECTORY}/favicon.ico`,
         }),
     ],
