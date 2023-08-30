@@ -20,15 +20,15 @@ export const AppContainer = styled.div`
 export const App: FC = () => {
     const { setToggleAction: setTogglerAction } = useTogglesRedux();
 
-    const setOnlineStatusHanlder = useCallback(() => void setTogglerAction({
+    const setOnlineStatusHandler = useCallback(() => void setTogglerAction({
         type:  'isOnline',
         value: navigator.onLine,
     }), [ setTogglerAction ]);
 
     useEffect(() => {
-        setOnlineStatusHanlder();
-        window.addEventListener('online', setOnlineStatusHanlder);
-        window.addEventListener('offline', setOnlineStatusHanlder);
+        setOnlineStatusHandler();
+        window.addEventListener('online', setOnlineStatusHandler);
+        window.addEventListener('offline', setOnlineStatusHandler);
     }, []);
 
     return (
