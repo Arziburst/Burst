@@ -1,5 +1,6 @@
 // Core
 import merge from 'webpack-merge';
+import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
 
 // Constants
 import { SOURCE_DIRECTORY, BUILD_DIRECTORY } from '../constants';
@@ -31,9 +32,11 @@ export const getCommonConfig = () => {
             },
             resolve: {
                 extensions: [ '.tsx', '.ts', '.js', '.jsx' ],
+                plugins:    [ new TsconfigPathsPlugin() ],
             },
         },
-        modules.loadTypeScript(),
+        modules.loadBabel(),
+        // modules.loadTypeScript(),
         modules.defineEnvVariables(),
         modules.connectHtml(),
         modules.provideGlobals(),
