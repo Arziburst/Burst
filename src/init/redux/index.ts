@@ -17,8 +17,8 @@ export const store = configureStore({
         // MarkerGen add reducer
         toggles,
     },
-    middleware,
-    devTools: process.env.NODE_ENV !== 'production',
+    middleware: (gDM) => gDM().concat(middleware),
+    devTools:   process.env.NODE_ENV !== 'production',
 });
 
 export type RootState = ReturnType<typeof store.getState>
